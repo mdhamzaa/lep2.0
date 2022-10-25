@@ -2,7 +2,8 @@
 
 function Home() {
     return (
-        <div>Homeasdsd</div>
+        <div className="">Homeasdsd
+        </div>
     )
 
 }
