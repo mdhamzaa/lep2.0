@@ -1,0 +1,32 @@
+{
+  "user": [
+    {
+      "username": "ABI",
+      "email": "hamzahadis2002@gmail.com",
+      "fname": "HAMZA",
+      "lname": "KHAN",
+      "level": "Employee",
+      "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
+      "gender": "Male",
+      "dob": "2022-10-20",
+      "pincode": "517541",
+      "phone": "07976976909",
+      "password": "sdfggfdfsd",
+      "id": 1
+    },
+    {
+      "username": "ABC",
+      "email": "hamzahadis2002@gmail.com",
+      "fname": "ABIHAMZA",
+      "lname": "KHAN",
+      "level": "Employee",
+      "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
+      "gender": "Male",
+      "dob": "2022-10-20",
+      "pincode": "517541",
+      "phone": "07976976909",
+      "password": "sdfggfdfsd",
+      "id": 2
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { addUser } from "../service/api";
 function RegisterEmployer() {
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("");
@@ -25,11 +26,25 @@ function RegisterEmployer() {
 
 
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
 
         console.log(username, email, fname, lname, level, address, gender, dob, pincode, phone, password, confirmPassword);
 
+        const user = {
+            username: username,
+            email: email,
+            fname: fname,
+            lname: lname,
+            level: level,
+            address: address,
+            gender: gender,
+            dob: dob,
+            pincode: pincode,
+            phone: phone,
+            password: password
 
+        }
+        await addUser(user);
         navigate("/");
 
     }

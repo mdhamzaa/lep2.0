@@ -16,6 +16,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "server": "json-server --watch src/Database/db.json --host 127.0.0.1 --port 3003",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
