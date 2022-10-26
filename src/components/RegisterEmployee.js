@@ -27,12 +27,29 @@ function RegisterEmployee() {
 
 
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
 
         console.log(username, email, fname, lname, level, address, gender, dob, pincode, pincode2, pincode3, skills, exp, phone, password, confirmPassword);
+        const user = {
+            username: username,
+            email: email,
+            fname: fname,
+            lname: lname,
+            level: level,
+            address: address,
+            gender: gender,
+            dob: dob,
+            pincode: [pincode, pincode2, pincode3],
+            skills: skills,
+            exp: exp,
+            phone: phone,
+            password: password
 
-
+        }
+        await addUser(user);
         navigate("/");
+
+
 
     }
     return (

@@ -9,6 +9,7 @@ function Login() {
     // const [{ }, dispatch] = useStateValue();
 
     const login = () => {
+
         navigate("/");
     }
     const register = () => {

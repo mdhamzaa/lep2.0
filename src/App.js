@@ -19,6 +19,8 @@ function App() {
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/employee-register" element={<RegisterEmployee />} />
           <Route path="/employer-register" element={<RegisterEmployer />} />
+          <Route path="/dashbord" element={<></>} />
+          <Route path="/search" element={<></>} />
           {/* <Route path="*" element={<NoPage />} /> */}
 
         </Routes>
