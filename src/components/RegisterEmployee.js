@@ -1,11 +1,12 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { addUser } from "../service/api";
 
 function RegisterEmployee() {
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("");
-    const [level, setLevel] = useState("Employer");
+    const [level, setLevel] = useState("Employee");
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
     const [gender, setGender] = useState("Male");
@@ -30,6 +31,7 @@ function RegisterEmployee() {
     const handleSubmit = async () => {
 
         console.log(username, email, fname, lname, level, address, gender, dob, pincode, pincode2, pincode3, skills, exp, phone, password, confirmPassword);
+        // skills = skills.toLowerCase();
         const user = {
             username: username,
             email: email,
@@ -58,10 +60,10 @@ function RegisterEmployee() {
 
             <div className="flex items-center justify-center">
                 <div className="w-1/3 p-1 mt-40 max-w-lg h- full bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8">
-                    <form className="space-y-6">
-                        <h5 className="text-xl font-medium text-gray-900">
+                    <div className="space-y-6">
+                        <h3 className="text-xl font-medium text-gray-900">
                             Register Employee
-                        </h5>
+                        </h3>
 
                         <div>
                             <label
@@ -331,7 +333,7 @@ function RegisterEmployee() {
                                 name="skills"
                                 id="skills"
                                 value={skills}
-                                onChange={(e) => setSkills(e.target.value)}
+                                onChange={(e) => setSkills((e.target.value).toLowerCase())}
                                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 placeHolder="Carpenter"
                                 required=""
@@ -410,7 +412,7 @@ function RegisterEmployee() {
                                 Register
                             </button>
                         </div>
-                    </form>
+                    </div>
                 </div >
             </div >
         </div >

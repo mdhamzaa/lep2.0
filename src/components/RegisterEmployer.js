@@ -54,7 +54,7 @@ function RegisterEmployer() {
 
             <div className="flex items-center justify-center">
                 <div className="w-1/3 p-1 mt-40 max-w-lg h- full bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8">
-                    <form className="space-y-6">
+                    <div className="space-y-6">
                         <h5 className="text-xl font-medium text-gray-900">
                             Register Employer
                         </h5>
@@ -324,7 +324,7 @@ function RegisterEmployer() {
                                 Register
                             </button>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div >
         </div >

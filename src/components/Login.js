@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import loginImg from '../Images/login.svg'
 
 
 function Login() {
@@ -19,11 +20,13 @@ function Login() {
 
 
 
-        <div className="h-screen  bg-slate-200">
-
-            <div className=" flex items-center justify-center">
-                <div className="w-1/3 p-1 mt-40 max-w-sm h- full bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8">
-                    <form className="space-y-6" action="#">
+        <div className="h-screen bg-slate-200">
+            <div className="lg:flex justify-evenly sm:block">
+                <div className="w-1/2">
+                    <img src={loginImg} className="h-full" />
+                </div>
+                <div className="w-2/3 my-auto p-1 max-w-sm h-full bg-white rounded-lg border border-gray-200 shadow-md transition hover:shadow-xl sm:m-auto sm:p-6 lg:p-8">
+                    <form className="space-y-9 " action="#">
                         <h5 className="text-xl font-medium text-gray-900 ">
                             Log in
                         </h5>

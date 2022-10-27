@@ -6,6 +6,7 @@ import Login from './components/Login'
 import ContactUs from './components/ContactUs'
 import RegisterEmployee from "./components/RegisterEmployee";
 import RegisterEmployer from "./components/RegisterEmployer";
+import Search from "./components/Search";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
           <Route path="/employee-register" element={<RegisterEmployee />} />
           <Route path="/employer-register" element={<RegisterEmployer />} />
           <Route path="/dashbord" element={<></>} />
-          <Route path="/search" element={<></>} />
+          <Route path="/search" element={<Search />} />
           {/* <Route path="*" element={<NoPage />} /> */}
 
         </Routes>
