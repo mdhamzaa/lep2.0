@@ -5,7 +5,7 @@ function NavBar() {
     return (
         <nav  >
 
-            <li><NavLink to='/' Style={"text-decoration: none"}>
+            <li><NavLink to='/' >
                 LEP
             </NavLink></li>
             <ul >
@@ -15,8 +15,7 @@ function NavBar() {
 
                 <li ><NavLink to="/login">Login</NavLink> </li>
 
-                {/* <form action="/logout" method="post"><button type="submit" className="navlinks"
-                        style="background-color: transparent;border: none;">Logout</button></form></li> */}
+
 
             </ul>
 

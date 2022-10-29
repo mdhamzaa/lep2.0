@@ -1,11 +1,13 @@
-// import styles from '../styles/search.module.css'
-import axios from 'axios';
+
+
 import { useState } from 'react';
 import '../App.css';
 import profile from '../Images/dummyImg.png'
 import searchImg from '../Images/search.svg'
 import { getSearch } from "../service/api";
-import { editUser, getallUsers } from '../service/api';
+import SearchResult from './SearchResult';
+import noData from '../Images/noDataImg.png'
+import Modal from './Modal';
 
 
 
@@ -14,7 +16,7 @@ function Search() {
     const [pincode, setPincode] = useState("");
     const [skill, setSkill] = useState("");
     const [user, setUser] = useState([]);
-
+    const [modalIsOpen, setModalIsOpen] = useState(false)
     const seachhandler = async () => {
         const d = await getSearch(pincode, skill);
         // try {
@@ -33,20 +35,20 @@ function Search() {
             <div id="searchImgBox">
                 <span id="searchImgBoxHead">
                     <h2>Showing Search Results for&#160;&#160;&#160;</h2>
-                    <h1> "&#160;skills&#160;"</h1>
+                    <h1> "&#160;{skill}&#160;"</h1>
                 </span>
             </div>
-
+            {/* <img src={searchImg} id='wave' /> */}
 
 
 
             <div id="contentContainer">
 
                 <div id="searchHead">
-                    <span class="searchBox"><span class="searchText">Pincode: </span>
-                        <input class="searchInput" type="text" value={pincode} onChange={(e) => setPincode(e.target.value)} /></span>
-                    <span class="searchBox"><span class="searchText">Service: </span>
-                        <input class="searchInput" type="text" value={skill} onChange={(e) => setSkill(e.target.value)} /></span>
+                    <span className="searchBox"><span className="searchText">Pincode: </span>
+                        <input className="searchInput" type="text" value={pincode} onChange={(e) => setPincode(e.target.value)} /></span>
+                    <span className="searchBox"><span className="searchText">Service: </span>
+                        <input className="searchInput" type="text" value={skill} onChange={(e) => setSkill(e.target.value)} /></span>
                     <button onClick={seachhandler} id="searchBtn">Search</button>
                 </div>
 
@@ -62,41 +64,33 @@ function Search() {
                         <h3>Search Results:</h3>
 
                         <div id="resultCards">
-                            {/* <% if(userData.length!=0){ userData.forEach(function(data){%> */}
+
+
                             {
 
-                                user.map((data) => (
-                                    <div class="resultCard">
-                                        <div class="userIntro">
-                                            <img class='profileImg' src={profile} alt="****" />
-                                            <div class="userNp">
-                                                <span class="userName">{data.username}</span>
-                                                <span class="profession">{data.skills}</span>
-                                            </div>
-                                        </div>
-                                        <div class="employeeDetails">
-                                            <span class="experience"><span class="ques">Experience : </span><span class="ans">{data.exp}</span></span>
-
-                                            <span class="pincodes"><span class="ques">Available in areas(Pincodes) : </span><span
-                                                class="ans">{`${data.pincode[0]},${data.pincode[1]},${data.pincode[2]}`}</span></span>
-                                        </div>
-                                        <div class="book">
-                                            <button type="submit" class="bookBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">Hire</button>
-                                        </div>
-                                    </div>
+                                user.map((data, i) => (
+                                    <SearchResult data={data} setModalIsOpen={setModalIsOpen} key={i} />
                                 ))
                             }
-                            {/* <%  }) %> <% } else{ %> */}
-                            {/* <div id="notFound">
+                            {user.length === 0 &&
+                                <div id="notFound">
                                     <h4 id="noDataHead">No Data Found</h4>
-                                    <img src="/Images/noDataImg.png" alt="" id="noDataImg" />
-                                    <% } %> */}
 
+                                    <img src={noData} alt="" id="noDataImg" />
+
+                                </div>
+                            }
                         </div>
 
                     </div>
                 </div>
             </div>
+
+            <div id="ModelContair">
+                {modalIsOpen && <Modal setModalIsOpen={setModalIsOpen} />}
+            </div>
+
+
 
 
 

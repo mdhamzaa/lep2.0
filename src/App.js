@@ -7,6 +7,7 @@ import ContactUs from './components/ContactUs'
 import RegisterEmployee from "./components/RegisterEmployee";
 import RegisterEmployer from "./components/RegisterEmployer";
 import Search from "./components/Search";
+;
 
 function App() {
   return (

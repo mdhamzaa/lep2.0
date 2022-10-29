@@ -9,6 +9,30 @@
   z-index: 10;
 }
 
+#searchImgBoxHead {
+  position: absolute;
+  top: 5vw;
+  color: white;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 100;
+  letter-spacing: 3px;
+  /* text-align: center; */
+}
+#searchImgBoxHead h1 {
+  font-size: 2.5vw;
+  font-family: "Bungee Inline", cursive;
+  font-weight: 100;
+}
+
+#searchImgBoxHead h2 {
+  font-size: 2vw;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 3px;
+}
+
 #searchResults {
   width: 100%;
   /* min-height: 100vh; */
@@ -75,15 +99,16 @@
   grid-template-rows: repeat(autofit, minmax(250px, 450px));
   justify-content: center;
   height: fit-content;
-  gap: 20px;
+  gap: 2px;
   min-height: 100vh;
 }
 .resultCard {
   height: 27vw;
+  width: 25vw;
   min-height: 300px;
   border-radius: 1vw;
   background-color: #ffffff;
-  margin: 20px;
+  margin: 10px;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -133,14 +158,14 @@
   flex-direction: column;
   width: 100%;
   height: 50%;
-  gap: 5px;
-  align-items: center;
-  justify-content: center;
+  gap: 25px;
+
   padding: 15px;
 }
 
 .ques {
   font-size: 1.5vw;
+
   font-family: "Days One", sans-serif;
 }
 .ans {
@@ -239,4 +264,130 @@
   background-blend-mode: screen;
   display: flex;
   align-items: center;
+}
+
+#noDataImg {
+  width: 20vw;
+  height: 20vw;
+}
+
+#notFound {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0;
+  width: 100%;
+  height: fit-content;
+}
+
+#noDataHead {
+  font-size: 1.5vw !important;
+  font-family: "Changa", sans-serif !important;
+}
+
+/* for model */
+
+#modalContainer {
+  z-index: 9000;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#modalContent {
+  z-index: 10000;
+  width: 50vw;
+  height: 90vh;
+  background-color: aliceblue;
+  border-radius: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+}
+#slots {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: fit-content;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 30px;
+  justify-content: center;
+  align-items: center;
+}
+.slot {
+  font-size: 1.5vw;
+  border-radius: 5px;
+  border: 1px solid #0d84ec;
+  padding: 8px 12px;
+  background-color: rgb(255, 255, 255);
+  color: #0d84ec;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition-property: all;
+  transition-duration: 0.1s;
+  --selected: 0;
+}
+.slot:hover {
+  background-color: rgb(73, 167, 255);
+  color: #ffffff;
+}
+
+#closeModalBtn {
+  font-size: 4vw;
+  font-weight: 500;
+  position: absolute;
+  top: 8vh;
+  right: 27vw;
+  cursor: pointer;
+  transition-property: all;
+  transition-timing-function: linear;
+  transition-duration: 0.2s;
+  width: 3vw;
+  height: 3vw;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#closeModalBtn:hover {
+  border: 1px solid black;
+  animation-name: rotate;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-in-out;
+  background-color: rgb(220, 220, 220);
+}
+#dateDisplay {
+  z-index: 10000;
+  width: fit-content;
+  height: fit-content;
+}
+
+#hireBtn {
+  padding: 6px 12px;
+  width: fit-content;
+  height: fit-content;
+  font-size: 1.5vw;
+  border-radius: 5px;
+  font-family: "Days One", sans-serif;
+  font-weight: 100;
+  letter-spacing: 4px;
+  border: none;
+  background-color: #0d84ec;
+  color: whitesmoke;
+  transition-property: all;
+  transition-timing-function: linear;
+  transition-duration: 0.5s;
+  cursor: pointer;
+}
+#hireBtn:hover {
+  box-shadow: 0 0 10px #008aff;
 }
