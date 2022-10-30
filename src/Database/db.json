@@ -154,6 +154,40 @@
       "phone": "07976976909",
       "password": "Hamza",
       "id": 10
+    },
+    {
+      "username": "wasd",
+      "email": "hamzahadis2002@gmail.com",
+      "fname": "HAMZA",
+      "lname": "KHAN",
+      "level": "Employee",
+      "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
+      "gender": "Male",
+      "dob": "1984-01-17",
+      "pincode": ["517541", "517541", "517541"],
+      "skills": "plumber",
+      "exp": "1 year",
+      "phone": "7976976909",
+      "password": "hamza1234",
+      "confirmPassword": "hamza1234",
+      "id": 11
+    },
+    {
+      "username": "ABcd",
+      "email": "hamzahadis2002@gmail.com",
+      "fname": "HAMZA",
+      "lname": "KHAN",
+      "level": "Employee",
+      "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
+      "gender": "Male",
+      "dob": "2000-01-30",
+      "pincode": ["517541", "", ""],
+      "skills": "plumber",
+      "exp": "1 year",
+      "phone": "7976976909",
+      "password": "hamza1234",
+      "confirmPassword": "hamza1234",
+      "id": 12
     }
   ]
 }

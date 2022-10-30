@@ -4,12 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { addUser } from "../service/api";
 
 function RegisterEmployee() {
+
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("");
     const [level, setLevel] = useState("Employee");
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
-    const [gender, setGender] = useState("Male");
+    const [gender, setGender] = useState("");
     const [dob, setDob] = useState("");
     const [pincode, setPincode] = useState("");
     const [pincode2, setPincode2] = useState("");
@@ -21,6 +22,89 @@ function RegisterEmployee() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [address, setAddress] = useState("");
     let navigate = useNavigate();
+    const [formErrors, setFormErrors] = useState({});
+    const [isSubmit, setIsSubmit] = useState(false);
+    const validate = (values) => {
+        const errors = {};
+
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+        if (!values.username) {
+            errors.username = "Username is required!";
+
+        } else if (values.username.length <= 2 || values.username.length > 20) {
+            errors.username = "Username length should be from 3 to 19";
+        }
+        if (!values.email) {
+            errors.email = "Email is required!";
+        } else if (!regex.test(values.email)) {
+            errors.email = "This is not a valid email format!";
+        }
+
+        if (!values.password) {
+            errors.password = "Password is required";
+        } else if (values.password.length < 8) {
+            errors.password = "Password must be more than 8 characters";
+        }
+        if (!values.confirmPassword) {
+            errors.confirmPassword = "Required";
+            console.log(values.confirmPassword);
+        } else if (values.password !== values.confirmPassword) {
+            errors.confirmPassword = "Password does not Match"
+            console.log(values.confirmPassword);
+        }
+
+        if (!values.fname) {
+            errors.fname = "First name is required"
+        }
+        if (!values.lname) {
+            errors.lname = "Last name is required"
+        }
+        if (!values.address) {
+            errors.address = "Address is required"
+        }
+        if (!values.gender) {
+            errors.gender = "Gender is is required"
+        }
+        if (!values.dob) {
+            errors.dob = "Date of Birth is required"
+        } else {
+
+
+            const ageDifMs = Date.now() - new Date(values.dob).getTime();
+            const ageDate = new Date(ageDifMs);
+            const age = Math.abs(ageDate.getUTCFullYear() - 1970);
+            if (age < 18) {
+                errors.dob = "Date of Birth should be greater than 18 for registering the website"
+            }
+            // console.log(age);
+
+
+        }
+        if (!values.pincode[0]) {
+            errors.pincode = "Atleast Pincode is required"
+
+        } else if (values.pincode[0].length !== 6) {
+            errors.pincode = "Pincode length can only be 6"
+        }
+
+        if (!values.phone) {
+            errors.phone = "Phone is required"
+        } else if (values.phone.length !== 10) {
+            errors.phone = "Phone length can only be 10"
+        }
+        if (!values.skills) {
+            errors.skills = "Skills are required"
+        }
+        if (!values.exp) {
+            errors.exp = "Experiance is required (if you dont have then type 0 years)"
+        }
+
+
+
+        return errors;
+    };
+
+
 
 
 
@@ -45,25 +129,31 @@ function RegisterEmployee() {
             skills: skills,
             exp: exp,
             phone: phone,
-            password: password
+            password: password,
+            confirmPassword: confirmPassword
 
         }
-        await addUser(user);
-        navigate("/");
+
+        setFormErrors(validate(user));
+        setIsSubmit(true);
+        if (Object.keys(formErrors).length === 0 && isSubmit) {
+            await addUser(user);
+            navigate("/");
+        }
 
 
 
     }
     return (
 
-        <div className="f-screen  bg-slate-200">
+        <div className=" bg-slate-200">
 
-            <div className="flex items-center justify-center">
-                <div className="w-1/3 p-1 mt-40 max-w-lg h- full bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8">
+            <div className="flex justify-center">
+                <div className="w-5/12 p-10 mt-20 h- full bg-white rounded-lg border border-gray-200 shadow-md">
                     <div className="space-y-6">
-                        <h3 className="text-xl font-medium text-gray-900">
-                            Register Employee
-                        </h3>
+                        <h5 className="text-xl font-medium text-gray-900" >
+                            Register Employer
+                        </h5>
 
                         <div>
                             <label
@@ -78,10 +168,12 @@ function RegisterEmployee() {
                                 id="username"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                placeHolder="abc@x.com"
+
+                                className={formErrors.username ? "bg-red-50 border border-red-500 text-red-900 placeholder-red-400 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" : "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"}
+                                placeHolder="abcd"
                                 required=""
                             />
+                            <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formErrors.username}</p>
                         </div>
 
                         <div>
@@ -97,10 +189,11 @@ function RegisterEmployee() {
                                 id="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                className={formErrors.email ? "bg-red-50 border border-red-500 text-red-900 placeholder-red-400 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" : "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"}
                                 placeholder="abc@x.com"
                                 required=""
                             />
+                            <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formErrors.email}</p>
                         </div>
 
                         <div className="flex flex-wrap -mx-3 mb-6">
@@ -117,10 +210,11 @@ function RegisterEmployee() {
                                     id="fname"
                                     value={fname}
                                     onChange={(e) => setFname(e.target.value)}
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    className={formErrors.fname ? "bg-red-50 border border-red-500 text-red-900 placeholder-red-400 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" : "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"}
                                     placeHolder="Your first name"
                                     required=""
                                 />
+                                <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formErrors.fname}</p>
 
                             </div>
 
@@ -138,10 +232,12 @@ function RegisterEmployee() {
                                     id="lname"
                                     value={lname}
                                     onChange={(e) => setLname(e.target.value)}
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    className={formErrors.lname ? "bg-red-50 border border-red-500 text-red-900 placeholder-red-400 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" : "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"}
                                     placeHolder="Your last name"
+
                                     required=""
                                 />
+                                <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formErrors.lname}</p>
                             </div>
 
 
@@ -166,10 +262,11 @@ function RegisterEmployee() {
                                 id="address"
                                 value={address}
                                 onChange={(e) => setAddress(e.target.value)}
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                className={formErrors.address ? "bg-red-50 border border-red-500 text-red-900 placeholder-red-400 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" : "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"}
                                 placeHolder="City / State"
                                 required=""
                             />
+                            <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formErrors.address}</p>
                         </div>
 
 
@@ -191,8 +288,8 @@ function RegisterEmployee() {
                                     id="pincode1"
                                     value={pincode}
                                     onChange={(e) => setPincode(e.target.value)}
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    placeHolder="9045464576"
+                                    className={formErrors.username ? "bg-red-50 border border-red-500 text-red-900 placeholder-red-400 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" : "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"}
+                                    placeHolder="400612"
                                     required=""
                                 />
 
@@ -211,7 +308,7 @@ function RegisterEmployee() {
                                     value={pincode2}
                                     onChange={(e) => setPincode2(e.target.value)}
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    placeHolder="9045464576"
+                                    placeHolder="400612"
                                     required=""
                                 />
                             </div>
@@ -231,56 +328,62 @@ function RegisterEmployee() {
                                     value={pincode3}
                                     onChange={(e) => setPincode3(e.target.value)}
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    placeHolder="9045464576"
+                                    placeHolder="400612"
                                     required=""
                                 />
 
                             </div>
-                        </div>
 
-
-                        <div className="flex">
-                            <label className="text-sm font-medium text-gray-900 mr-3">Gender :</label>
-                            <div className="flex items-center mr-3">
-                                <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                                    <input
-                                        type="radio"
-                                        value="Male"
-                                        name="Gender"
-                                        // onChange={this.onValueChange}
-
-                                        onChange={(e) => setGender(e.target.value)}
-                                    />
-                                    Male
-                                </label>
-                            </div>
-                            <div className="flex items-center mr-3">
-                                <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                                    <input
-                                        type="radio"
-                                        value="Female"
-                                        name="Gender"
-                                        onChange={(e) => setGender(e.target.value)}
-
-                                    />
-                                    Female
-                                </label>
-                            </div>
-                            <div className="flex items-center mr-3">
-                                <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                                    <input
-                                        type="radio"
-                                        value="Other"
-                                        name="Gender"
-                                        onChange={(e) => setGender(e.target.value)}
-
-                                    />
-                                    Other
-                                </label>
-                            </div>
+                            <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formErrors.pincode}</p>
 
                         </div>
 
+                        <div>
+                            <div className="flex">
+                                <label className="text-sm font-medium text-gray-900 mr-3">Gender :</label>
+                                <div className="flex items-center mr-3">
+                                    <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                        <input
+                                            type="radio"
+                                            value="Male"
+                                            name="Gender"
+                                            // onChange={this.onValueChange}
+
+                                            onChange={(e) => setGender(e.target.value)}
+                                        />
+                                        Male
+                                    </label>
+                                </div>
+                                <div className="flex items-center mr-3">
+                                    <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                        <input
+                                            type="radio"
+                                            value="Female"
+                                            name="Gender"
+                                            onChange={(e) => setGender(e.target.value)}
+
+                                        />
+                                        Female
+                                    </label>
+                                </div>
+                                <div className="flex items-center mr-3">
+                                    <label className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                        <input
+                                            type="radio"
+                                            value="Other"
+                                            name="Gender"
+                                            onChange={(e) => setGender(e.target.value)}
+
+                                        />
+                                        Other
+                                    </label>
+                                </div>
+                                <br />
+                            </div>
+                            <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formErrors.gender}</p>
+
+
+                        </div>
                         <div className="relative">
                             <label
                                 htmlFor="dob"
@@ -288,11 +391,12 @@ function RegisterEmployee() {
                             >
                                 Date of Birth:
                             </label>
-                            <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                                <svg aria-hidden="true" className="mt-6 w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
-                            </div>
+                            {/* <div className="flex mr-5 absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                                <svg aria-hidden="true" className="mt-5 w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+                            </div> */}
                             {/* <input type="Date" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeHolder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeHolder="Select date"> */}
-                            <input type="date" id="date" name="date" value={dob} onChange={(e) => setDob(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 " />
+                            <input type="date" id="date" name="date" value={dob} onChange={(e) => setDob(e.target.value)} className={formErrors.dob ? " bg-red-50 border border-red-500 text-red-900 placeholder-red-400 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" : " bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"} />
+                            <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formErrors.dob}</p>
                         </div>
 
 
@@ -301,7 +405,7 @@ function RegisterEmployee() {
                         <div>
                             <label
                                 htmlFor="phone"
-                                className="block mb-2 text-sm font-medium text-gray-900"
+                                className="mb-2 text-sm font-medium text-gray-900"
                             >
                                 Phone Number
                             </label>
@@ -311,11 +415,16 @@ function RegisterEmployee() {
                                 id="phone"
                                 value={phone}
                                 onChange={(e) => setPhone(e.target.value)}
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                className={formErrors.phone ? "bg-red-50 border border-red-500 text-red-900 placeholder-red-400 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" : "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"}
                                 placeHolder="9045464576"
                                 required=""
                             />
+                            <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formErrors.phone}</p>
                         </div>
+
+
+
+
 
 
 
@@ -334,10 +443,13 @@ function RegisterEmployee() {
                                 id="skills"
                                 value={skills}
                                 onChange={(e) => setSkills((e.target.value).toLowerCase())}
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                className={formErrors.skills ? "bg-red-50 border border-red-500 text-red-900 placeholder-red-400 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" : "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"}
+
                                 placeHolder="Carpenter"
+
                                 required=""
                             />
+                            <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formErrors.skills}</p>
                         </div>
 
 
@@ -354,10 +466,11 @@ function RegisterEmployee() {
                                 id="exp"
                                 value={exp}
                                 onChange={(e) => setExp(e.target.value)}
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                className={formErrors.exp ? "bg-red-50 border border-red-500 text-red-900 placeholder-red-400 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" : "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"}
                                 placeHolder="like 1 Year"
                                 required=""
                             />
+                            <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formErrors.exp}</p>
                         </div>
 
 
@@ -377,9 +490,11 @@ function RegisterEmployee() {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeHolder="••••••••"
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+
+                                className={formErrors.password ? "bg-red-50 border border-red-500 text-red-900 placeholder-red-400 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" : "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"}
                                 required=""
                             />
+                            <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formErrors.password}</p>
                         </div>
 
 
@@ -397,9 +512,10 @@ function RegisterEmployee() {
                                 value={confirmPassword}
                                 onChange={(e) => setConfirmPassword(e.target.value)}
                                 placeHolder="••••••••"
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                className={formErrors.confirmPassword ? "bg-red-50 border border-red-500 text-red-900 placeholder-red-400 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" : "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"}
                                 required=""
                             />
+                            <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formErrors.confirmPassword}</p>
                         </div>
 
                         <div className="flex text-sm font-medium text-gray-500 ">
