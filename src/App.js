@@ -14,6 +14,11 @@ import Bookings from "./components/Bookings";
 import History from "./components/History";
 import Profile from "./components/Profile";
 import JoinUs from "./components/JoinUs";
+import Admin from "./components/Admin";
+import Analytics from "./components/Analytics";
+import Employees from "./components/Employees";
+import Employers from "./components/Employers";
+import Workhistory from "./components/Workhistory";
 
 function App() {
   return (
@@ -37,7 +42,17 @@ function App() {
             <Route path="/dashboard/Logout" element={<></>} />
           </Route>
           <Route path="/search" element={<Search />} />
+
           <Route path="registration-choice" element={<JoinUs />} />
+
+          <Route path="/admin" element={<ProSidebarProvider style={{}}>
+            <Admin />
+          </ProSidebarProvider>} >
+            <Route path="Analytics" element={<Analytics />} />
+            <Route path="Employers" element={<Employers />} />
+            <Route path="Employees" element={<Employees />} />
+            <Route path="Workhistory" element={<Workhistory />} />
+          </Route>
 
           {/* <Route path="*" element={<NoPage />} /> */}
 

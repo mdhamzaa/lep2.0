@@ -25,19 +25,19 @@ function Dashboard() {
 
   const { collapseSidebar } = useProSidebar();
   return (
-    <div style={{ display: 'flex', height: '100%' }}>
+    <div style={{ display: 'flex', height: '100%', }}>
       <Sidebar defaultCollapsed={true} overlayColor='rgba(98,198,221,255)'>
         <Menu closeOnClick={false} >
-          <MenuItem icon={<FaUser style={{ color: 'rgb(25,118,210' }} />} routerLink={<Link to="Profile" />}> Profile</MenuItem>
-          <MenuItem icon={<FaHistory style={{ color: 'rgb(25,118,210' }} />} routerLink={<Link to="History" />}> History</MenuItem>
-          <MenuItem icon={<BsFillStarFill style={{ color: 'rgb(25,118,210' }} />} routerLink={<Link to="Booking" />}> Booking</MenuItem>
+          <MenuItem icon={<FaUser />} routerLink={<Link to="Profile" />}> Profile</MenuItem>
+          <MenuItem icon={<FaHistory />} routerLink={<Link to="History" />}> History</MenuItem>
+          <MenuItem icon={<BsFillStarFill />} routerLink={<Link to="Booking" />}> Booking</MenuItem>
           {/* <MenuItem icon={<MdPayment style={{color:'rgb(25,118,210'}}/>} routerLink={<Link to="Payment"/>}> Payment</MenuItem> */}
-          <MenuItem icon={<IoLogOut style={{ color: 'rgb(25,118,210' }} />} routerLink={<Link to="Logout" />}> Logout</MenuItem>
+          <MenuItem icon={<IoLogOut />} routerLink={<Link to="Logout" />}> Logout</MenuItem>
         </Menu>
       </Sidebar>
       <main>
         <button onClick={() => { collapseSidebar(); setIcon((old) => changeIcon(old)); }}>
-          {icon === "right" ? <BsFillArrowRightSquareFill size={30} style={{ color: 'rgb(25,118,210' }} /> : <BsArrowLeftSquareFill size={30} style={{ color: 'rgb(25,118,210' }} />}
+          {icon === "right" ? <BsFillArrowRightSquareFill size={30} /> : <BsArrowLeftSquareFill size={30} />}
         </button>
         <Outlet />
       </main>
