@@ -63,7 +63,7 @@ function Profile() {
 
 
     return (
-        <>
+        <div style={{ position: 'absolute', top: "6vw" }}>
             <div style={{ backgroundColor: 'rgb(226,232,240)' }}>
                 <Stack direction="row" spacing={2} style={{ scale: '3', marginLeft: '63vw' }}>
                     <StyledBadge
@@ -329,7 +329,7 @@ function Profile() {
                     </div >
                 </div >
             </div >
-        </>
+        </div>
     )
 
 }

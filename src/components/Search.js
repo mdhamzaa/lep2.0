@@ -45,7 +45,7 @@ function Search(props) {
 
 
 
-            <div id="contentContainer">
+            <div id="contentContainer" className='bg-slate-300'>
 
                 <div id="searchHead">
                     <span className="searchBox"><span className="searchText">Pincode: </span>
@@ -63,7 +63,7 @@ function Search(props) {
 
                 <div id="content">
 
-                    <div id="searchResults">
+                    <div id="searchResults" className='bg-slate-100'>
                         <h3>Search Results:</h3>
 
                         <div id="resultCards">

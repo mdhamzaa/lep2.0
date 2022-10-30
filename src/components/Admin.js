@@ -39,7 +39,7 @@ function Admin() {
   const { collapseSidebar } = useProSidebar();
   return (
     <>
-      <div style={{ display: 'flex', top: '20%', height: '100%' }}>
+      <div style={{ display: 'flex', height: '75vh' }}>
         <Sidebar defaultCollapsed={true} overlayColor='rgba(98,198,221,255)'>
           <Menu closeOnClick={false} >
             <MenuItem icon={<SiSimpleanalytics />} routerLink={<Link to="Analytics" />}> Anayltics</MenuItem>

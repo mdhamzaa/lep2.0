@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../App.css';
 
 
 function Modal({ setModalIsOpen }) {
-
+    let navigate = useNavigate();
     const [time, setDate] = useState((new Date()).toLocaleString());
     const [addClass, setAddClass] = useState(false)
 
@@ -33,7 +34,9 @@ function Modal({ setModalIsOpen }) {
     // }, [])
 
 
-
+    const hireHandler = () => {
+        navigate('/payment')
+    }
 
 
 
@@ -64,7 +67,7 @@ function Modal({ setModalIsOpen }) {
 
                 </div>
                 {/* <button id="hireBtn"  >Cancel</button> */}
-                <button id="hireBtn"  >Hire</button>
+                <button id="hireBtn" onClick={hireHandler} >Hire</button>
                 <button id="hireBtn" onClick={() => {
                     setModalIsOpen(false);
 

@@ -149,7 +149,7 @@ function RegisterEmployee() {
         <div className=" bg-slate-200">
 
             <div className="flex justify-center">
-                <div className="w-5/12 p-10 mt-20 h- full bg-white rounded-lg border border-gray-200 shadow-md">
+                <div className="w-5/12 p-10 mt-20 h-full bg-white rounded-lg border border-gray-200 shadow-md">
                     <div className="space-y-6">
                         <h5 className="text-xl font-medium text-gray-900" >
                             Register Employee

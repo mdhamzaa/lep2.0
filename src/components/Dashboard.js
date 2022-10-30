@@ -25,7 +25,7 @@ function Dashboard() {
 
   const { collapseSidebar } = useProSidebar();
   return (
-    <div style={{ display: 'flex', height: '100%', }}>
+    <div style={{ display: 'flex', height: '75vh' }}>
       <Sidebar defaultCollapsed={true} overlayColor='rgba(98,198,221,255)'>
         <Menu closeOnClick={false} >
           <MenuItem icon={<FaUser />} routerLink={<Link to="Profile" />}> Profile</MenuItem>

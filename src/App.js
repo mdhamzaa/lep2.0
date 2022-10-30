@@ -18,7 +18,9 @@ import Admin from "./components/Admin";
 import Analytics from "./components/Analytics";
 import Employees from "./components/Employees";
 import Employers from "./components/Employers";
-import Workhistory from "./components/Workhistory";
+import Workhistory from "./components/Workhistory"
+import Payment from "./components/payment_det";
+import RegistrationChoice from "./components/RegistrationChoice";
 
 function App() {
   return (
@@ -43,7 +45,7 @@ function App() {
           </Route>
           <Route path="/search" element={<Search />} />
 
-          <Route path="registration-choice" element={<JoinUs />} />
+          <Route path="registration-choice" element={<RegistrationChoice />} />
 
           <Route path="/admin" element={<ProSidebarProvider style={{}}>
             <Admin />
@@ -55,6 +57,7 @@ function App() {
           </Route>
 
           {/* <Route path="*" element={<NoPage />} /> */}
+          <Route path="/payment" element={<Payment />} />
 
         </Routes>
       </BrowserRouter>

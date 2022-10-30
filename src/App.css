@@ -1,3 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Monoton&family=Satisfy&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Days+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merienda+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Tapestry&display=swap");
 #navbar {
   position: fixed;
   width: 100%;
@@ -155,7 +166,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background-color: rgb(235, 235, 235);
+  /* background-color: #dfeaff; */
   margin-top: 4px;
   margin-left: 3px;
 }
@@ -331,7 +342,7 @@
   align-items: center;
   flex-direction: row;
   gap: 5vw;
-  background-color: rgb(255, 255, 255);
+  /* background-color: #dfeaff; */
 }
 
 .searchInput {
@@ -395,7 +406,7 @@
   height: fit-content;
 
   position: absolute;
-  top: 23vw;
+  top: 22.5vw;
   width: 100vw;
 
   margin-top: 5px;

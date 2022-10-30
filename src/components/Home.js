@@ -16,7 +16,7 @@ function Home() {
         <>
             <ImageBg imgNum={0} />
             <Categories />
-            <JoinUs />
+            <JoinUs color="#d3e2ff" />
             <RankBox />
             <ReviewBox />
             <Footer />
