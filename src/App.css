@@ -1,3 +1,118 @@
+#navbar {
+  position: fixed;
+  width: 100%;
+  height: 5.5vw;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(0, 0, 0) !important;
+  border-bottom: 1px solid white;
+}
+
+.navmenu {
+  z-index: 5;
+  float: right;
+  height: 100%;
+  width: 60%;
+  position: absolute;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3.5vw;
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: linear;
+  z-index: 1000;
+}
+
+.navlinks {
+  text-decoration: none;
+  color: var(--textcolor1);
+  font-family: monospace;
+  font-size: 2vw;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgb(0, 0, 0);
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: linear;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#brand {
+  text-shadow: 0 0 15px rgb(0, 0, 0);
+  text-decoration: none;
+  position: absolute;
+  left: 10vw;
+  list-style: none;
+  font-family: "Monoton", cursive;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  font-size: 4vw;
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: linear;
+}
+
+#brand a {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+#brand a:hover {
+  /* text-shadow: 0 0 35px rgb(109, 255, 197); */
+  color: #00c8ff;
+}
+
+/* #logo1{
+      width: 250px;
+      height: 120px;
+  } */
+
+.navitem {
+  list-style: none;
+  z-index: 10;
+}
+
+.navlinks::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  height: 2.5px;
+  width: 0px;
+  left: 0%;
+  background-color: rgb(255, 255, 255);
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: linear;
+}
+
+.navlinks::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  height: 2.5px;
+  width: 0px;
+  right: 0%;
+  background-color: whitesmoke;
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: linear;
+}
+
+.navlinks:hover:after {
+  /* text-decoration: underline; */
+  width: 100%;
+}
+.navlinks:hover:before {
+  /* text-decoration: underline; */
+  width: 100%;
+}
 #content {
   width: 102%;
   height: fit-content;
@@ -11,9 +126,9 @@
 
 #searchImgBoxHead {
   position: absolute;
-  top: 5vw;
+  top: 12vw;
   color: white;
-  width: 100%;
+  width: 102vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -208,7 +323,6 @@
 #searchHead {
   width: 100%;
   height: fit-content;
-  margin-top: 15vw;
   padding: 2vw;
   border-top: 1px solid rgb(212, 212, 212);
   border-bottom: 1px solid rgb(212, 212, 212);
@@ -225,6 +339,7 @@
   border-radius: 0.5vw;
   border: 1px solid rgb(0, 0, 0);
   /* border: none; */
+  padding: 0 1vw;
   height: 2.5vw;
   width: 15vw;
 }
@@ -239,31 +354,51 @@
 #searchBtn {
   position: relative;
   width: 7vw;
-  height: 2vw;
+  height: 2.5vw;
   border-radius: 0.3vw;
   border: none;
   font-size: 1.2vw;
   font-family: "Changa", sans-serif;
   letter-spacing: 3px;
-  background: linear-gradient(rgb(200, 104, 255), rgb(99, 185, 255));
+  background-color: #2667ff;
+  color: whitesmoke;
+  /* background: linear-gradient(rgb(200, 104, 255), rgb(99, 185, 255)); */
   /* background:linear-gradient(rgb(255, 17, 17),rgba(0, 229, 255, 1)); */
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+#searchBtn:hover {
+  box-shadow: 0 0 6px black;
 }
 
 #searchImgBox {
   position: absolute;
-  top: 5.5vw;
-  width: 100vw;
-  height: 16.5vw;
+  top: 0vw;
+  width: 102vw;
+  height: 22.5vw;
   overflow: hidden;
   background: url(./Images/searchBg.jpg);
   background-size: cover;
   background-blend-mode: screen;
   display: flex;
   align-items: center;
+}
+
+#contentContainer {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+
+  position: absolute;
+  top: 23vw;
+  width: 100vw;
+
+  margin-top: 5px;
 }
 
 #noDataImg {

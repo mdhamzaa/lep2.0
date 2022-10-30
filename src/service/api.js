@@ -16,9 +16,9 @@ export const getSearch = async (pincode, skills) => {
 
 }
 
-export const getallUsers = async (id) => {
-    id = id || '';
-    return await axios.get(`${url}/${id}`);
+export const getUsers = async (username) => {
+
+    return await axios.get(`${url}?username=${username}`);
 }
 
 export const addUser = async (user) => {

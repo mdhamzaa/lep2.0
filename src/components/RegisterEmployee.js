@@ -152,7 +152,7 @@ function RegisterEmployee() {
                 <div className="w-5/12 p-10 mt-20 h- full bg-white rounded-lg border border-gray-200 shadow-md">
                     <div className="space-y-6">
                         <h5 className="text-xl font-medium text-gray-900" >
-                            Register Employer
+                            Register Employee
                         </h5>
 
                         <div>
@@ -418,6 +418,7 @@ function RegisterEmployee() {
                                 className={formErrors.phone ? "bg-red-50 border border-red-500 text-red-900 placeholder-red-400 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" : "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"}
                                 placeHolder="9045464576"
                                 required=""
+
                             />
                             <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formErrors.phone}</p>
                         </div>

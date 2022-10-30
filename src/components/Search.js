@@ -8,15 +8,18 @@ import { getSearch } from "../service/api";
 import SearchResult from './SearchResult';
 import noData from '../Images/noDataImg.png'
 import Modal from './Modal';
+import { useEffect } from 'react';
 
 
 
-function Search() {
+function Search(props) {
 
     const [pincode, setPincode] = useState("");
     const [skill, setSkill] = useState("");
     const [user, setUser] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false)
+
+
     const seachhandler = async () => {
         const d = await getSearch(pincode, skill);
         // try {
@@ -30,7 +33,7 @@ function Search() {
         setUser(d.data);
     }
     return (
-        <div>
+        <>
 
             <div id="searchImgBox">
                 <span id="searchImgBoxHead">
@@ -93,8 +96,7 @@ function Search() {
 
 
 
-
-        </div>
+        </>
 
     )
 
