@@ -287,7 +287,16 @@ function RegisterEmployee() {
                                     name="pincode1"
                                     id="pincode1"
                                     value={pincode}
-                                    onChange={(e) => setPincode(e.target.value)}
+                                    onChange={(e) => {
+                                        if (e.target.value.length > e.target.maxLength) {
+                                            e.target.value = e.target.value.slice(0, e.target.maxLength);
+                                            setPincode(e.target.value)
+                                        } else {
+
+                                            setPincode(e.target.value)
+                                        }
+                                    }}
+                                    maxLength='6'
                                     className={formErrors.username ? "bg-red-50 border border-red-500 text-red-900 placeholder-red-400 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" : "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"}
                                     placeHolder="400612"
                                     required=""
@@ -306,7 +315,16 @@ function RegisterEmployee() {
                                     name="pincode2"
                                     id="pincode2"
                                     value={pincode2}
-                                    onChange={(e) => setPincode2(e.target.value)}
+                                    onChange={(e) => {
+                                        if (e.target.value.length > e.target.maxLength) {
+                                            e.target.value = e.target.value.slice(0, e.target.maxLength);
+                                            setPincode2(e.target.value)
+                                        } else {
+
+                                            setPincode2(e.target.value)
+                                        }
+                                    }}
+                                    maxLength='6'
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                     placeHolder="400612"
                                     required=""
@@ -326,7 +344,16 @@ function RegisterEmployee() {
 
 
                                     value={pincode3}
-                                    onChange={(e) => setPincode3(e.target.value)}
+                                    onChange={(e) => {
+                                        if (e.target.value.length > e.target.maxLength) {
+                                            e.target.value = e.target.value.slice(0, e.target.maxLength);
+                                            setPincode3(e.target.value)
+                                        } else {
+
+                                            setPincode3(e.target.value)
+                                        }
+                                    }}
+                                    maxLength='6'
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                     placeHolder="400612"
                                     required=""
@@ -414,7 +441,16 @@ function RegisterEmployee() {
                                 name="phone"
                                 id="phone"
                                 value={phone}
-                                onChange={(e) => setPhone(e.target.value)}
+                                onChange={(e) => {
+                                    if (e.target.value.length > e.target.maxLength) {
+                                        e.target.value = e.target.value.slice(0, e.target.maxLength);
+                                        setPhone(e.target.value)
+                                    } else {
+
+                                        setPhone(e.target.value)
+                                    }
+                                }}
+                                maxLength='10'
                                 className={formErrors.phone ? "bg-red-50 border border-red-500 text-red-900 placeholder-red-400 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" : "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"}
                                 placeHolder="9045464576"
                                 required=""

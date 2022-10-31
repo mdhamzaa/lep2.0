@@ -1,3 +1,4 @@
+import { Checkbox } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import loginImg from '../Images/login.svg'
@@ -7,15 +8,57 @@ function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     let navigate = useNavigate();
+    const [formErrors, setFormErrors] = useState({});
+    const [isSubmit, setIsSubmit] = useState(false);
 
+    const validate = (values) => {
+        const errors = {};
+
+
+        if (!values.username) {
+            errors.username = "Username is required!";
+
+        } else if (values.username.length <= 2 || values.username.length > 20) {
+            errors.username = "Username length should be from 3 to 19";
+        }
+
+        if (!values.password) {
+            errors.password = "Password is required";
+        } else if (values.password.length < 8) {
+            errors.password = "Password must be more than 8 characters";
+        }
+
+
+
+        return errors;
+    };
+
+    const validateCheck = () => {
+        if (Object.keys(formErrors).length === 0 && isSubmit) {
+            navigate(`/dashboard/Profile/${username}`);
+        }
+    }
 
     const login = () => {
+        const user = {
+            username: username,
+            password: password
 
-        navigate(`/dashboard/Profile/${username}`);
+
+        }
+        setFormErrors(validate(user));
+        setIsSubmit(true);
+
+        validateCheck();
+
+
+
     }
     const register = () => {
         navigate("/registration-choice");
     }
+
+
     return (
 
 
@@ -26,7 +69,7 @@ function Login() {
                     <img src={loginImg} className="h-full" />
                 </div>
                 <div className="w-2/3 my-auto p-1 max-w-sm h-full bg-white rounded-lg border border-gray-200 shadow-md transition hover:shadow-xl sm:m-auto sm:p-6 lg:p-8">
-                    <form className="space-y-9 " action="#">
+                    <div className="space-y-9">
                         <h5 className="text-xl font-medium text-gray-900 ">
                             Log in
                         </h5>
@@ -43,10 +86,11 @@ function Login() {
                                 id="username"
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                className={formErrors.username ? "bg-red-50 border border-red-500 text-red-900 placeholder-red-400 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" : "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"}
                                 placeholder="abc@x"
                                 required=""
                             />
+                            <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formErrors.username}</p>
                         </div>
                         <div>
                             <label
@@ -62,9 +106,10 @@ function Login() {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="••••••••"
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                                className={formErrors.password ? "bg-red-50 border border-red-500 text-red-900 placeholder-red-400 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" : "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"}
                                 required=""
                             />
+                            <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formErrors.password}</p>
                         </div>
 
                         <div className="flex text-sm font-medium text-gray-500 ">
@@ -85,7 +130,7 @@ function Login() {
                                 Login
                             </button>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
