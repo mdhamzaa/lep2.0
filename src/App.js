@@ -21,6 +21,7 @@ import Employers from "./components/Employers";
 import Workhistory from "./components/Workhistory"
 import Payment from "./components/payment_det";
 import RegistrationChoice from "./components/RegistrationChoice";
+import NoPage from "./components/NoPage";
 
 function App() {
   return (
@@ -56,7 +57,7 @@ function App() {
             <Route path="Workhistory" element={<Workhistory />} />
           </Route>
 
-          {/* <Route path="*" element={<NoPage />} /> */}
+          <Route path="*" element={<NoPage />} />
           <Route path="/payment" element={<Payment />} />
 
         </Routes>

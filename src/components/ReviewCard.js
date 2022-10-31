@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 export default function ReviewCard(props) {
+  
+  
   return (
     <div className="reviewcard">
       <div className="reviewImgCon">
@@ -11,13 +13,13 @@ export default function ReviewCard(props) {
         <div className="profession">{props.profession}</div>
       </div>
       <div className="rating">
-        {Array(props.stars).fill(0).map((e, i) => {
-          console.log("hi")
-          return <i className="fa-solid fa-star" key={i}></i>
-        })}
-
+        { Array(props.stars).fill(0).map(()=>{
+            
+            return <i className="fa-solid fa-star"></i>
+        })  }
+        
       </div>
-      <div className="reviewContent"></div>
+      <div className="reviewContent">{props.comment}</div>
     </div>
   );
 }

@@ -215,6 +215,95 @@
       "password": "asdf12345",
       "confirmPassword": "asdf12345",
       "id": 14
+    },
+    {
+      "username": "aasds",
+      "email": "hamzahadis2002@gmail.com",
+      "fname": "HAMZA",
+      "lname": "KHAN",
+      "level": "Employee",
+      "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
+      "gender": "Male",
+      "dob": "2002-01-04",
+      "pincode": "517541",
+      "phone": "7976976909",
+      "password": "asdf1234",
+      "confirmPassword": "asdf1234",
+      "id": 15
+    },
+    {
+      "username": "ABI",
+      "email": "hamzahadis2002@gmail.com",
+      "fname": "HAMZA",
+      "lname": "KHAN",
+      "level": "Employee",
+      "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
+      "gender": "Female",
+      "dob": "2002-01-01",
+      "pincode": "517541",
+      "phone": "7976976909",
+      "password": "asdfasdf",
+      "confirmPassword": "asdfasdf",
+      "id": 16
+    }
+  ],
+
+  "reviews": [
+    {
+      "name": "Harsh",
+      "profession": "Employer",
+      "gender": "male",
+      "stars": 4,
+      "comment": "I have been using LEP for over a year now and can't imagine living without it. It's a great app that has helped me find all types of professionals in my area, often times saving me hours on the phone. The app is really simple to use and gives you so many options on what you're looking for, with no hidden fees or catches. I can't think of anything negative to say about LEP so I would"
+    },
+    {
+      "name": "Rajat",
+      "profession": "Carpenter",
+      "gender": "male",
+      "stars": 5,
+      "comment": "I had just been laid off from my job of 10 years when I was offered a position with LEP. What attracted me to the company was their values and culture, which focuses on connecting people to jobs that are meaningful to them. I've had a great experience so far and am grateful for this opportunity."
+    },
+    {
+      "name": "Rohit",
+      "profession": "Barber",
+      "gender": "male",
+      "stars": 4,
+      "comment": "As a displaced worker, LEP has helped me find jobs where I wasn't able to find any myself. They have provided me with the opportunity to speak with recruiters and make a much better living wage than I would have been able to otherwise."
+    },
+    {
+      "name": "Shruti",
+      "profession": "Mechanic",
+      "gender": "female",
+      "stars": 5,
+      "comment": "I was looking for a new job when I found out about LEP. I'd been looking for months and was feeling hopeless. LEP helped me find a new position within 3 weeks! My experience with the app has been great so far; it's easy to use and the interface is aesthetically pleasing."
+    },
+    {
+      "name": "Tanmay",
+      "profession": "Employer",
+      "gender": "male",
+      "stars": 4,
+      "comment": "LEP is great! I am usually at a loss when I need to find someone to do something for me in my area. LEP not only matched me with someone, but the price was right too. I love how LEP helps me find the right person when I need it - whether it's for a task or for a date!"
+    },
+    {
+      "name": "Aishwarya",
+      "profession": "Employer",
+      "gender": "female",
+      "stars": 5,
+      "comment": "I came across LEP really recently and I'm really glad I did. As a recent college grad, I was worried about my future and whether or not I would find a job. LEP connected me with a few companies who were looking for people like me, so all in all it's been a really awesome experience."
+    },
+    {
+      "name": "Shubham",
+      "profession": "Painter",
+      "gender": "male",
+      "stars": 3,
+      "comment": "I've been unemployed for more than a month now and I've been struggling to find a job. I tried many different websites and apps but nothing helped. Until LEP...I saw an ad on Facebook about this app that claimed it would help me find my perfect job. There were a lot of mixed reviews about it so I didn't download it at first, but then one day I was just browsing in the App Store when I found"
+    },
+    {
+      "name": "Karan",
+      "profession": "Employer",
+      "gender": "male",
+      "stars": 5,
+      "comment": "I have been using LEP for the past year now and it has helped me find a number of professionals that are reliable and dependable. Whenever I needed some task done- be it home repairs, mechanic work or something else, LEP always had somebody for me!"
     }
   ]
 }
