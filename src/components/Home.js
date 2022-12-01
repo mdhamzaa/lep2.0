@@ -18,7 +18,7 @@ function Home() {
             <Categories />
             <JoinUs color="#d3e2ff" />
             <RankBox />
-            <ReviewBox />
+            {/* <ReviewBox /> */}
             <Footer />
         </>
     )

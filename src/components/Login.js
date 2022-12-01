@@ -1,7 +1,8 @@
-import { Checkbox } from "@mui/material";
+// import { Checkbox } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import loginImg from '../Images/login.svg'
+import { getUsers } from "../service/api";
 
 
 function Login() {
@@ -10,6 +11,7 @@ function Login() {
     let navigate = useNavigate();
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
+    // const [user, setUser] = useState({});
 
     const validate = (values) => {
         const errors = {};
@@ -33,9 +35,21 @@ function Login() {
         return errors;
     };
 
-    const validateCheck = () => {
+    const validateCheck = async () => {
         if (Object.keys(formErrors).length === 0 && isSubmit) {
-            navigate(`/dashboard/Profile/${username}`);
+            const d = await getUsers(username);
+            console.log((d.data)[0]);
+            console.log((d));
+            if ((d.data)[0]) {
+
+
+
+                localStorage.setItem('user', JSON.stringify((d.data)[0]))
+                navigate(`/dashboard`);
+            }
+            else {
+                navigate('/login')
+            }
         }
     }
 
@@ -75,7 +89,7 @@ function Login() {
                         </h5>
                         <div>
                             <label
-                                for="username"
+                                htmlFor="username"
                                 className="block mb-2 text-sm font-medium text-gray-900"
                             >
                                 Username
@@ -94,7 +108,7 @@ function Login() {
                         </div>
                         <div>
                             <label
-                                for="password"
+                                htmlFor="password"
                                 className="block mb-2 text-sm font-medium text-gray-900"
                             >
                                 password
@@ -133,7 +147,7 @@ function Login() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 
 }

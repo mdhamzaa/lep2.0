@@ -5,7 +5,7 @@
       "email": "hamzahadis2002@gmail.com",
       "fname": "HAMZA",
       "lname": "KHAN",
-      "level": "Employee",
+      "level": "Employer",
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Male",
       "dob": "2022-10-20",
@@ -19,7 +19,7 @@
       "email": "hamzahadis2002@gmail.com",
       "fname": "HAMZA",
       "lname": "KHAN",
-      "level": "Employee",
+      "level": "Employer",
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Male",
       "dob": "2022-10-20",
@@ -33,7 +33,7 @@
       "email": "hamzahadis2002@gmail.com",
       "fname": "HAMZA",
       "lname": "KHAN",
-      "level": "Employer",
+      "level": "Employee",
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Male",
       "dob": "2022-10-12",
@@ -245,6 +245,16 @@
       "password": "asdfasdf",
       "confirmPassword": "asdfasdf",
       "id": 16
+    }
+  ],
+
+  "order": [
+    {
+      "customer": "ABI",
+      "employee": "ABC",
+      "data": "2022-04-25T18:30:00.000+00:00",
+      "timeslot": "1:00 PM-3:00 PM",
+      "status": "pending"
     }
   ],
 

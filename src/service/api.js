@@ -11,9 +11,11 @@ export const getallDetails = async (key, value) => {
 }
 
 export const getSearch = async (pincode, skills) => {
-
-    return await axios.get(`${url}?pincode_like=${pincode}&&skills=${skills}`);
-
+    if (skills) {
+        return await axios.get(`${url}?pincode_like=${pincode}&&skills=${skills}`);
+    } else {
+        return await axios.get(`${url}?pincode_like=${pincode}&&level=Employee`);
+    }
 }
 
 export const getUsers = async (username) => {

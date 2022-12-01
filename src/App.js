@@ -36,8 +36,8 @@ function App() {
           <Route path="/employee-register" element={<RegisterEmployee />} />
           <Route path="/employer-register" element={<RegisterEmployer />} />
           <Route path="/dashboard" element={<ProSidebarProvider> <Dashboard /> </ProSidebarProvider>} >
-            <Route path="/dashboard/Profile/:username" element={<Profile />}  >
-              <Route path="/dashboard/Profile/:username" element={<Profile />} />
+            <Route path="/dashboard/Profile/" element={<Profile />}  >
+              {/* <Route path="/dashboard/Profile/:username" element={<Profile />} /> */}
             </Route>
             <Route path="/dashboard/History" element={<History />} />
             <Route path="/dashboard/Booking" element={<Bookings />} />

@@ -48,9 +48,10 @@ function Profile() {
     const { username } = params
     const [user, setUser] = useState({});
     const getallDetail = async () => {
-        const data = await getUsers(username);
-        console.log(data.data[0])
-        setUser(data.data[0]);
+        const user = JSON.parse(localStorage.getItem('user'));
+        // const data = await getUsers(username);
+        // console.log(data.data[0])
+        setUser(user);
 
     }
     React.useEffect(() => {
