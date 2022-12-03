@@ -3,14 +3,18 @@ import { NavLink } from 'react-router-dom'
 
 import '../CSS/home.css'
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { Logout, selectAllUser } from '../features/userSlice';
 
 export default function Navbar() {
-
-    const user = JSON.parse(localStorage.getItem('user'));
+    // const user = JSON.parse(localStorage.getItem('user'));
+    const user = useSelector(selectAllUser);
+    const dispatch = useDispatch();
     let navigate = useNavigate();
     const logOutHandler = () => {
-        localStorage.removeItem("user");
-        console.log("hamza")
+        // localStorage.removeItem("user");
+        dispatch(Logout())
+        // console.log("hamza")
         navigate("/")
 
     }

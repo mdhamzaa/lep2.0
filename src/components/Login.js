@@ -1,17 +1,33 @@
 // import { Checkbox } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { fetchUsers } from "../features/userSlice";
 import loginImg from '../Images/login.svg'
-import { getUsers } from "../service/api";
+import { getOrders, getUsers } from "../service/api";
+import { SetLogin } from "../features/userSlice";
+
+
 
 
 function Login() {
+    const dispatch = useDispatch();
+    let navigate = useNavigate();
+
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    let navigate = useNavigate();
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
-    // const [user, setUser] = useState({});
+
+
+
+    useEffect(() => {
+
+        console.log("ok")
+        validateCheck();
+
+    }, [isSubmit])
 
     const validate = (values) => {
         const errors = {};
@@ -38,13 +54,20 @@ function Login() {
     const validateCheck = async () => {
         if (Object.keys(formErrors).length === 0 && isSubmit) {
             const d = await getUsers(username);
-            console.log((d.data)[0]);
-            console.log((d));
+            // console.log((d.data)[0]);
+            // console.log((d));
+            // store.dispatch(fetchUsers(username));
+
             if ((d.data)[0]) {
+                const order = await getOrders(username);
+                dispatch(
+                    SetLogin({
+                        user: d.data[0],
+                        order: order.data
 
-
-
-                localStorage.setItem('user', JSON.stringify((d.data)[0]))
+                    })
+                );
+                // localStorage.setItem('user', JSON.stringify((d.data)[0]))
                 navigate(`/dashboard`);
             }
             else {
@@ -60,10 +83,10 @@ function Login() {
 
 
         }
-        setFormErrors(validate(user));
         setIsSubmit(true);
+        setFormErrors(validate(user));
 
-        validateCheck();
+
 
 
 

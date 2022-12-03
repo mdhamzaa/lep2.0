@@ -10,6 +10,10 @@ export const getallDetails = async (key, value) => {
     return await axios.get(`${url}?${key}=${value}`);
 }
 
+export const getOrders = async (username) => {
+    return await axios.get(`http://127.0.0.1:3003/order?employee=${username}`);
+}
+
 export const getSearch = async (pincode, skills) => {
     if (skills) {
         return await axios.get(`${url}?pincode_like=${pincode}&&skills=${skills}`);
@@ -22,6 +26,8 @@ export const getUsers = async (username) => {
 
     return await axios.get(`${url}?username=${username}`);
 }
+
+
 
 export const addUser = async (user) => {
     return await axios.post(url, user);

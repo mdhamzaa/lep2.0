@@ -7,7 +7,9 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import Rating from '@mui/material/Rating';
 import { useNavigate, useParams } from "react-router-dom";
-import { getUsers } from '../service/api';
+// import { getUsers } from '../service/api';
+import { useSelector } from "react-redux";
+import { selectAllUser } from '../features/userSlice.js'
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
         backgroundColor: '#44b700',
@@ -46,16 +48,19 @@ const SmallAvatar = styled(Avatar)(({ theme }) => ({
 function Profile() {
     const params = useParams();
     const { username } = params
-    const [user, setUser] = useState({});
+    let [user, setUser] = useState({});
     const getallDetail = async () => {
-        const user = JSON.parse(localStorage.getItem('user'));
+        // const user = JSON.parse(localStorage.getItem('user'));
+
         // const data = await getUsers(username);
         // console.log(data.data[0])
         setUser(user);
 
     }
+    user = useSelector(selectAllUser);
     React.useEffect(() => {
-        getallDetail();
+        // getallDetail();
+        setUser(user);
         // console.log(user.email)
     }, [])
 
