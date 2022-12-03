@@ -9,6 +9,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Tapestry&display=swap");
+
+:root{
+  --success: rgb(88, 243, 85);
+}
+
 #navbar {
   position: fixed;
   width: 100%;
@@ -465,7 +470,7 @@
   justify-content: center;
   align-items: center;
 }
-.slot {
+.slot,.slot-disabled,.selected-slot{
   font-size: 1.5vw;
   border-radius: 5px;
   border: 1px solid #0d84ec;
@@ -481,24 +486,40 @@
   transition-duration: 0.1s;
   --selected: 0;
 }
+.slot-disabled{
+  background-color: rgb(203, 203, 203);
+  border: 2px solid #a1a1a1;
+  pointer-events: none;
+  color: whitesmoke;
+}
 .slot:hover {
   background-color: rgb(73, 167, 255);
   color: #ffffff;
 }
 
+
+.selected-slot,.selected-slot:hover{
+  background-color: var(--success);
+  color: whitesmoke;
+  border: 2px solid rgb(5, 149, 0);
+}
+
 #closeModalBtn {
-  font-size: 4vw;
+  /* font-size: 4vw; */
   font-weight: 500;
   position: absolute;
-  top: 8vh;
+  top: 8.3vh;
   right: 27vw;
   cursor: pointer;
   transition-property: all;
   transition-timing-function: linear;
   transition-duration: 0.2s;
-  width: 3vw;
-  height: 3vw;
+  width: 3vmax;
+  height: 3vmax;
+  font-size: 3vmax;
+  /* padding: 0.5vmax; */
   border-radius: 50%;
+  padding-bottom: 0.6vmax;
   border: none;
   display: flex;
   justify-content: center;
@@ -511,6 +532,25 @@
   animation-timing-function: ease-in-out;
   background-color: rgb(220, 220, 220);
 }
+
+#modalBtns{
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  gap: 2vmax;
+  justify-content: center;
+  
+}
+
+/* @keyframes rotate{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+} */
+
 #dateDisplay {
   z-index: 10000;
   width: fit-content;
@@ -536,4 +576,32 @@
 }
 #hireBtn:hover {
   box-shadow: 0 0 10px #008aff;
+}
+
+
+
+@media screen and (max-width:768px){
+  #searchHead{
+    padding: 30px;
+  }
+  #searchResults h3{
+  font-size: 80%;
+  }
+  #filterHead{
+    font-size: 55%;
+  }
+  .ques{
+    font-size: 110%;
+   
+  }
+  .ans{
+    font-size: 110%;
+  }
+  .userName{
+    font-size: 1.2rem;
+   
+  }
+  .profession{
+    font-size: 1rem;
+  }
 }

@@ -1,3 +1,4 @@
+import { cleanup } from '@testing-library/react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
@@ -5,19 +6,19 @@ import '../App.css';
 
 function Modal({ setModalIsOpen }) {
     let navigate = useNavigate();
-    const [time, setDate] = useState((new Date()).toLocaleString());
+    const [time, setDate] = useState((new Date()));
     const [addClass, setAddClass] = useState(false)
+    const [slotSelected, setSlotSelected] = useState(0)
+    
+    let slots=[9,11,13,15,17,19,21];
 
-
-    function handleClick() {
-        setAddClass(addClass => !addClass);
-    }
-
-    let adding = addClass ? ' disable' : null;
 
     useEffect(() => {
 
-        var timer = setInterval(() => setDate((new Date()).toLocaleString()), 1000)
+        var timer = setInterval(() => {
+            setDate((new Date()));
+
+        }, 1000)
 
 
         return function cleanup() {
@@ -25,6 +26,8 @@ function Modal({ setModalIsOpen }) {
         }
 
     });
+
+    
 
     // useEffect(() => {
     //     let d = new Date();
@@ -38,7 +41,16 @@ function Modal({ setModalIsOpen }) {
         navigate('/payment')
     }
 
-
+    function selectSlot(e){
+        setSlotSelected(e.target.value)
+        let slotBox=e.target.parentElement;
+        Array.from(slotBox.children).forEach((child)=>{
+            child.classList.add('.slot');
+            child.classList.remove('selected-slot');
+        })
+        e.target.classList.remove('.slot');
+        e.target.classList.add('selected-slot');
+    }
 
 
     return (
@@ -50,28 +62,37 @@ function Modal({ setModalIsOpen }) {
 
                     onClick={() => {
                         setModalIsOpen(false);
-
+                        cleanup()
                     }
                     }>&times;</span>
 
-                <span id="dateDisplay">{time}</span>
+                <span id="dateDisplay">{time.toLocaleString()}</span>
                 <h3 id="bookHead">Please Select a Booking Slot Time:</h3>
                 <div id="slots">
-                    <button className="slot" value="11">9:00 AM-11:00 AM</button>
-                    <button className="slot" value="13">11:00 AM-1:00 PM</button>
-                    <button className="slot" value="15">1:00 PM -3:00 PM</button>
-                    <button className="slot" value="17">3:00 PM-5:00 PM</button>
-                    <button className="slot" value="19">5:00 PM-7:00 PM</button>
-                    <button className="slot" value="21">7:00 PM-9:00 PM</button>
-                    <button className="slot" value="24">9:00 PM-11:00 PM</button>
-
+                   {slots.map((e)=>{
+                    let hour=time.getHours();
+                    let startTime=e;
+                    let endTime=startTime+2;
+                    if(startTime>hour){
+                        return  <button className="slot" value={startTime} key={startTime} onClick={selectSlot}>{`${startTime}:00-${endTime}:00`}</button>
+                    }
+                    else{
+                        return  <button className="slot-disabled" value={startTime} key={startTime} onClick={selectSlot}>{`${startTime}:00-${endTime}:00`}</button>
+                    }
+                    
+                   })}
                 </div>
                 {/* <button id="hireBtn"  >Cancel</button> */}
-                <button id="hireBtn" onClick={hireHandler} >Hire</button>
-                <button id="hireBtn" onClick={() => {
-                    setModalIsOpen(false);
+                <div id="modalBtns">
+                    { 
+                    slotSelected>0 && <button id="hireBtn" onClick={hireHandler} >Hire</button>
+                    
+                    }   
+                    <button id="hireBtn" onClick={() => {
+                        setModalIsOpen(false);
 
-                }} >Cancel</button>
+                    }} >Cancel</button>
+                </div>
 
 
             </div>
