@@ -22,13 +22,6 @@ function Search(props) {
 
     const seachhandler = async () => {
         const d = await getSearch(pincode, skill);
-        // try {
-        //     const data = await axios.get("http://127.0.0.1:3003/user/");
-        //     console.log(data.data);
-
-        // } catch (err) {
-        //     console.log(err);
-        // }
         console.log(d.data);
         setUser(d.data);
     }
@@ -54,12 +47,6 @@ function Search(props) {
                         <input className="searchInput" type="text" value={skill} onChange={(e) => setSkill(e.target.value)} /></span>
                     <button onClick={seachhandler} id="searchBtn">Search</button>
                 </div>
-
-
-
-
-
-
 
                 <div id="content">
 

@@ -37,7 +37,11 @@
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Male",
       "dob": "2022-10-12",
-      "pincode": ["517541", "517541", "517541"],
+      "pincode": [
+        "517541",
+        "517541",
+        "517541"
+      ],
       "exp": "1 year",
       "phone": "07976976909",
       "password": "234343",
@@ -52,7 +56,11 @@
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Male",
       "dob": "",
-      "pincode": ["517541", "517543", "517541"],
+      "pincode": [
+        "517541",
+        "517543",
+        "517541"
+      ],
       "skills": "3243",
       "exp": "2343",
       "phone": "07976976909",
@@ -68,7 +76,11 @@
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Male",
       "dob": "",
-      "pincode": ["517541", "517541", "517541"],
+      "pincode": [
+        "517541",
+        "517541",
+        "517541"
+      ],
       "skills": "1212",
       "exp": "123",
       "phone": "07976976909",
@@ -84,7 +96,11 @@
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Male",
       "dob": "",
-      "pincode": ["517541", "517541", "517541"],
+      "pincode": [
+        "517541",
+        "517541",
+        "517541"
+      ],
       "skills": "plmmmmer",
       "exp": "",
       "phone": "07976976909",
@@ -100,7 +116,11 @@
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Female",
       "dob": "",
-      "pincode": ["517541", "517541", "517541"],
+      "pincode": [
+        "517541",
+        "517541",
+        "517541"
+      ],
       "skills": "carpenter",
       "exp": "1 year",
       "phone": "07976976909",
@@ -116,7 +136,11 @@
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Female",
       "dob": "",
-      "pincode": ["517541", "517541", "517541"],
+      "pincode": [
+        "517541",
+        "517541",
+        "517541"
+      ],
       "skills": "carpenter",
       "exp": "1 year",
       "phone": "07976976909",
@@ -132,7 +156,11 @@
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Female",
       "dob": "",
-      "pincode": ["517541", "517541", "517541"],
+      "pincode": [
+        "517541",
+        "517541",
+        "517541"
+      ],
       "skills": "carpenter",
       "exp": "1 year",
       "phone": "07976976909",
@@ -148,7 +176,11 @@
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Female",
       "dob": "",
-      "pincode": ["517541", "517541", "517541"],
+      "pincode": [
+        "517541",
+        "517541",
+        "517541"
+      ],
       "skills": "carpenter",
       "exp": "1 year",
       "phone": "07976976909",
@@ -164,7 +196,11 @@
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Male",
       "dob": "1984-01-17",
-      "pincode": ["517541", "517541", "517541"],
+      "pincode": [
+        "517541",
+        "517541",
+        "517541"
+      ],
       "skills": "plumber",
       "exp": "1 year",
       "phone": "7976976909",
@@ -181,7 +217,11 @@
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Male",
       "dob": "2000-01-30",
-      "pincode": ["517541", "", ""],
+      "pincode": [
+        "517541",
+        "",
+        ""
+      ],
       "skills": "plumber",
       "exp": "1 year",
       "phone": "7976976909",
@@ -208,7 +248,11 @@
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Male",
       "dob": "2000-01-12",
-      "pincode": ["517541", "234343", "234344"],
+      "pincode": [
+        "517541",
+        "234343",
+        "234344"
+      ],
       "skills": "plumber",
       "exp": "1 year",
       "phone": "7976976909",
@@ -245,9 +289,74 @@
       "password": "asdfasdf",
       "confirmPassword": "asdfasdf",
       "id": 16
+    },
+    {
+      "username": "hamzaq",
+      "email": "hamzahadis2002@gmail.com",
+      "fname": "HAMZA",
+      "lname": "KHAN",
+      "level": "Employee",
+      "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
+      "gender": "Male",
+      "dob": "2000-01-10",
+      "pincode": [
+        "517541",
+        "517541",
+        "517541"
+      ],
+      "skills": "plumber",
+      "exp": "1 year",
+      "phone": "7976976909",
+      "password": "$2a$10$UG2XElg74iMnQOgZs1doT.j7r3MowvOTGlEua6m5oErcr3ldYJaEu",
+      "confirmPassword": "asdfasdf",
+      "id": 17
+    },
+    {
+      "username": "hamza2",
+      "email": "hamzahadis2002@gmail.com",
+      "fname": "HAMZA",
+      "lname": "KHAN",
+      "level": "Employer",
+      "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
+      "gender": "Male",
+      "dob": "2001-01-04",
+      "pincode": "517541",
+      "phone": "7976976909",
+      "password": "$2a$10$KiK49wjM9NiGZyFB/3qRvOUJAMuuihs2QPLAS/DyjwxkSBcA9b9Y6",
+      "confirmPassword": "$2a$10$KiK49wjM9NiGZyFB/3qRvOUJAMuuihs2QPLAS/DyjwxkSBcA9b9Y6",
+      "id": 18
+    },
+    {
+      "username": "hamza3",
+      "email": "hamzahadis2002@gmail.com",
+      "fname": "HAMZA",
+      "lname": "KHAN",
+      "level": "Employer",
+      "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
+      "gender": "Male",
+      "dob": "2022-12-23",
+      "pincode": "517540",
+      "phone": "7976976909",
+      "password": "$2a$10$R7UBhyjTmhV00/f60dGMJeRr9HaCunuofTNZuHfwxVOrqf1TGSSAG",
+      "confirmPassword": "$2a$10$R7UBhyjTmhV00/f60dGMJeRr9HaCunuofTNZuHfwxVOrqf1TGSSAG",
+      "id": 19
+    },
+    {
+      "username": "hamza3",
+      "email": "hamzahadis2002@gmail.com",
+      "fname": "HAMZA",
+      "lname": "KHAN",
+      "level": "Employer",
+      "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
+      "gender": "Male",
+      "dob": "1998-01-04",
+      "pincode": "517541",
+      "phone": "7976976909",
+      "password": "$2a$10$7dKnAnOlrOTNzj7oEV2rf.erdmsHapvPaG.wJ9u4hivDIoHh2z7GG",
+      "confirmPassword": "$2a$10$7dKnAnOlrOTNzj7oEV2rf.erdmsHapvPaG.wJ9u4hivDIoHh2z7GG",
+      "id": 20
     }
   ],
-
   "order": [
     {
       "customer": "ABI",
@@ -257,7 +366,6 @@
       "status": "pending"
     }
   ],
-
   "reviews": [
     {
       "name": "Harsh",

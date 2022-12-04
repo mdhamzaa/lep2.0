@@ -6,7 +6,8 @@ import { fetchUsers } from "../features/userSlice";
 import loginImg from '../Images/login.svg'
 import { getOrders, getUsers } from "../service/api";
 import { SetLogin } from "../features/userSlice";
-
+import { toast } from "react-toastify";
+import bcrypt from 'bcryptjs';
 
 
 
@@ -24,10 +25,10 @@ function Login() {
 
     useEffect(() => {
 
-        console.log("ok")
+        // console.log("ok")
         validateCheck();
 
-    }, [isSubmit])
+    }, [formErrors])
 
     const validate = (values) => {
         const errors = {};
@@ -53,24 +54,40 @@ function Login() {
 
     const validateCheck = async () => {
         if (Object.keys(formErrors).length === 0 && isSubmit) {
+
+
             const d = await getUsers(username);
-            // console.log((d.data)[0]);
-            // console.log((d));
-            // store.dispatch(fetchUsers(username));
-
+            const order = await getOrders(username);
             if ((d.data)[0]) {
-                const order = await getOrders(username);
-                dispatch(
-                    SetLogin({
-                        user: d.data[0],
-                        order: order.data
 
-                    })
-                );
-                // localStorage.setItem('user', JSON.stringify((d.data)[0]))
-                navigate(`/dashboard`);
-            }
-            else {
+                bcrypt.compare(password, (d.data)[0].password, (err, isMatch) => {
+                    if (err) {
+                        throw err
+                    } else if (!isMatch) {
+                        toast.error("username or password is wrong")
+                        setUsername("")
+                        setPassword("")
+                    } else {
+                        // console.log("matcing")
+
+                        dispatch(
+                            SetLogin({
+                                user: d.data[0],
+                                order: order.data
+
+                            })
+                        );
+                        // localStorage.setItem('user', JSON.stringify((d.data)[0]))
+                        toast.success("User has been login")
+
+                        navigate(`/dashboard`);
+                    }
+                });
+
+            } else {
+                toast.error("Username or Password is wrong")
+                setUsername("")
+                setPassword("")
                 navigate('/login')
             }
         }

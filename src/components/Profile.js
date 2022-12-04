@@ -46,8 +46,6 @@ const SmallAvatar = styled(Avatar)(({ theme }) => ({
 }));
 
 function Profile() {
-    const params = useParams();
-    const { username } = params
     let [user, setUser] = useState({});
     const getallDetail = async () => {
         // const user = JSON.parse(localStorage.getItem('user'));
@@ -292,45 +290,51 @@ function Profile() {
 
 
 
+                            {user.level === "Employee" && <>
+                                <div>
+                                    <label
+                                        htmlFor="skills"
+                                        className="block mb-2 text-sm font-medium text-gray-900"
+                                    >
+                                        Skills
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="skills"
+                                        id="skills"
+                                        value={user.skills}
 
-                            <div>
-                                <label
-                                    htmlFor="skills"
-                                    className="block mb-2 text-sm font-medium text-gray-900"
-                                >
-                                    Skills
-                                </label>
-                                <input
-                                    type="text"
-                                    name="skills"
-                                    id="skills"
-                                    value={user.skills}
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeHolder="Carpenter"
+                                        disabled
+                                    />
+                                </div>
 
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    placeHolder="Carpenter"
-                                    disabled
-                                />
-                            </div>
+                                <div>
+                                    <label
+                                        htmlFor="exp"
+                                        className="block mb-2 text-sm font-medium text-gray-900"
+                                    >
+                                        Experiance
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="exp"
+                                        id="exp"
+                                        value={user.exp}
+
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeHolder="like 1 Year"
+                                        disabled
+                                    />
+                                </div>
 
 
-                            <div>
-                                <label
-                                    htmlFor="exp"
-                                    className="block mb-2 text-sm font-medium text-gray-900"
-                                >
-                                    Experiance
-                                </label>
-                                <input
-                                    type="text"
-                                    name="exp"
-                                    id="exp"
-                                    value={user.exp}
+                            </>
+                            }
 
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    placeHolder="like 1 Year"
-                                    disabled
-                                />
-                            </div>
+
+
                         </form>
                     </div >
                 </div >
