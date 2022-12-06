@@ -1,20 +1,4 @@
-// import React, { Component } from 'react';
-// import Header from './Header';
-// import SideBar from './Sidebar';
-// import Content from './Content';
 
-// class Admin extends Component {
-
-//   render() {
-//     return (
-//       <div>
-
-//       </div>
-//     );
-//   }
-// }
-
-// export default Admin;
 
 import { Sidebar, Menu, MenuItem, useProSidebar } from 'react-pro-sidebar';
 import { Link, Outlet } from 'react-router-dom'

@@ -39,7 +39,7 @@ export default function ReviewBox() {
     let currEle = 1;
 
     slideBtn2.addEventListener("click", () => {
-      if (cnt1 != length) {
+      if (cnt1 !== length) {
         cnt1++;
         cnt2--;
         currEle++;
@@ -55,7 +55,7 @@ export default function ReviewBox() {
     });
 
     slideBtn1.addEventListener("click", () => {
-      if (cnt2 != length) {
+      if (cnt2 !== length) {
         cnt2++;
         cnt1--;
         currEle--;
@@ -68,7 +68,7 @@ export default function ReviewBox() {
       if (currEle < length) {
         slideBtn2.style.display = "inline";
       }
-      if (currEle == 1) {
+      if (currEle === 1) {
         slideBtn1.style.display = "none";
       }
     });
@@ -80,7 +80,7 @@ export default function ReviewBox() {
       <div id="reviewCards">
         {
           reviews.map((e) => {
-            return <ReviewCard name={e.name} profession={e.profession} stars={e.stars} comment={e.comment} image={e.gender == "male" ? maleImg : femaleImg} />
+            return <ReviewCard name={e.name} profession={e.profession} stars={e.stars} comment={e.comment} image={e.gender === "male" ? maleImg : femaleImg} />
           })
         }
       </div>

@@ -1,8 +1,8 @@
 
 
-import { useState } from 'react';
+// import { useState } from 'react';
 // import Modal from 'react-modal';
-import Modal from './Modal';
+// import Modal from './Modal';
 import '../App.css';
 import profile from '../Images/dummyImg.png'
 function SearchResult(props) {

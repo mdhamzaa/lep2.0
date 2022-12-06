@@ -36,25 +36,6 @@
       "level": "Employee",
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Male",
-      "dob": "2022-10-12",
-      "pincode": [
-        "517541",
-        "517541",
-        "517541"
-      ],
-      "exp": "1 year",
-      "phone": "07976976909",
-      "password": "234343",
-      "id": 3
-    },
-    {
-      "username": "hamzahadis2002@gmail.com",
-      "email": "hamzahadis2002@gmail.com",
-      "fname": "HAMZA",
-      "lname": "KHAN",
-      "level": "Employee",
-      "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
-      "gender": "Male",
       "dob": "",
       "pincode": [
         "517541",
@@ -389,7 +370,8 @@
       "employee": "ABA",
       "data": "2022-04-25T18:30:00.000+00:00",
       "timeslot": "1:00 PM-3:00 PM",
-      "status": "pending"
+      "status": "pending",
+      "id": 1
     }
   ],
   "reviews": [

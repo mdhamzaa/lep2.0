@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addUser } from "../service/api";
-import bcrypt from 'bcryptjs';
+import bcrypt from "bcryptjs-react";
 
 
 function RegisterEmployee() {
