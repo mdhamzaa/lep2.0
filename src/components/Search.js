@@ -17,7 +17,8 @@ function Search(props) {
     const [pincode, setPincode] = useState("");
     const [skill, setSkill] = useState("");
     const [user, setUser] = useState([]);
-    const [modalIsOpen, setModalIsOpen] = useState(false)
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [currEmployee,setCurrEmployee]= useState("");
 
 
     const seachhandler = async () => {
@@ -72,7 +73,7 @@ function Search(props) {
                             {
 
                                 user.map((data, i) => (
-                                    <SearchResult data={data} setModalIsOpen={setModalIsOpen} key={i} />
+                                    <SearchResult data={data} setModalIsOpen={setModalIsOpen} key={i} setCurrEmployee={setCurrEmployee} />
                                 ))
                             }
                             {user.length === 0 &&
@@ -90,7 +91,7 @@ function Search(props) {
             </div>
 
             <div id="ModelContair">
-                {modalIsOpen && <Modal setModalIsOpen={setModalIsOpen} />}
+                {modalIsOpen && <Modal setModalIsOpen={setModalIsOpen} name = {currEmployee} />}
             </div>
 
 

@@ -12,6 +12,8 @@
 
 :root{
   --success: rgb(88, 243, 85);
+  --filled-bg: rgba(255, 96, 96, 0.929);
+  --filled-border: rgba(255, 35, 35, 0.929);
 }
 
 #navbar {
@@ -470,7 +472,7 @@
   justify-content: center;
   align-items: center;
 }
-.slot,.slot-disabled,.selected-slot{
+.slot,.slot-disabled,.selected-slot,.slot-filled{
   font-size: 1.5vw;
   border-radius: 5px;
   border: 1px solid #0d84ec;
@@ -488,9 +490,16 @@
 }
 .slot-disabled{
   background-color: rgb(203, 203, 203);
-  border: 2px solid #a1a1a1;
+  border: 1.5px solid #a1a1a1;
   pointer-events: none;
   color: whitesmoke;
+}
+.slot-filled{
+  background-color: var(--filled-bg);
+  border: 1.5px solid var(--filled-border);
+  pointer-events: none;
+  color: whitesmoke;
+  
 }
 .slot:hover {
   background-color: rgb(73, 167, 255);
@@ -501,7 +510,7 @@
 .selected-slot,.selected-slot:hover{
   background-color: var(--success);
   color: whitesmoke;
-  border: 2px solid rgb(5, 149, 0);
+  border: 1.5px solid rgb(5, 149, 0);
 }
 
 #closeModalBtn {

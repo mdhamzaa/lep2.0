@@ -14,6 +14,12 @@ export const getOrders = async (username) => {
     return await axios.get(`http://127.0.0.1:3003/order?employee=${username}`);
 }
 
+export const postOrder = async (data)=>{
+    return await axios.post("http://127.0.0.1:3003/order",data);
+}
+
+
+
 export const getSearch = async (pincode, skills) => {
     if (skills) {
         return await axios.get(`${url}?pincode_like=${pincode}&&skills=${skills}`);

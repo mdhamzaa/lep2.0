@@ -304,15 +304,71 @@
       "password": "12345678",
       "confirmPassword": "12345678",
       "id": 17
+    },
+    {
+      "username": "ahmxa",
+      "email": "falanadimkana@gmail.com",
+      "fname": "hamza",
+      "lname": "khan",
+      "level": "Employee",
+      "address": "mumbai",
+      "gender": "Male",
+      "dob": "1995-01-05",
+      "pincode": "400611",
+      "phone": "6655654656",
+      "password": "asdfasdf",
+      "confirmPassword": "asdfasdf",
+      "id": 18
     }
   ],
   "order": [
     {
-      "customer": "ABI",
-      "employee": "ABA",
-      "data": "2022-04-25T18:30:00.000+00:00",
-      "timeslot": "1:00 PM-3:00 PM",
-      "status": "pending"
+      "customer": "abi2",
+      "employee": "ABC",
+      "date": "Mon Dec 05 2022 21:11:14 GMT+0530 (India Standard Time)",
+      "timeslot": "21:00-23:00",
+      "status": "pending",
+      "id": 4
+    },
+    {
+      "customer": "abi2",
+      "employee": "ABF",
+      "date": "Mon Dec 05 2022 21:11:14 GMT+0530 (India Standard Time)",
+      "timeslot": "19:00-21:00",
+      "status": "pending",
+      "id": 5
+    },
+    {
+      "customer": "abi2",
+      "employee": "ABB",
+      "date": "Mon Dec 05 2022 21:11:14 GMT+0530 (India Standard Time)",
+      "timeslot": "19:00-21:00",
+      "status": "pending",
+      "id": 5
+    },
+    {
+      "customer": "abi2",
+      "employee": "ABC",
+      "date": "Mon Dec 05 2022 21:11:14 GMT+0530 (India Standard Time)",
+      "timeslot": "19:00-21:00",
+      "status": "pending",
+      "id": 4
+    },
+    {
+      "customer": "abi2",
+      "employee": "ABC",
+      "date": "Tue Dec 06 2022 23:17:23 GMT+0530 (India Standard Time)",
+      "timeslot": "17:00-19:00",
+      "status": "pending",
+      "id": 6
+    },
+    {
+      "customer": "abi2",
+      "employee": "ABI",
+      "date": "Tue Dec 06 2022 23:21:13 GMT+0530 (India Standard Time)",
+      "timeslot": "21:00-23:00",
+      "status": "pending",
+      "id": 7
     }
   ],
   "reviews": [

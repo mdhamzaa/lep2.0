@@ -1,15 +1,23 @@
 import { cleanup } from '@testing-library/react';
+import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
+import {getOrders, postOrder} from "../service/api"
 
 
-function Modal({ setModalIsOpen }) {
+
+function Modal({ setModalIsOpen,name }) {
+    
+    const user=useSelector(state=> state.user.user);
     let navigate = useNavigate();
     const [time, setDate] = useState((new Date()));
-    const [addClass, setAddClass] = useState(false)
-    const [slotSelected, setSlotSelected] = useState(0)
     
+    const [slotSelected, setSlotSelected] = useState(0)
+    const [order, setOrder] = useState([]);
+    const [filledSlots, setfilledSlots] = useState(new Set())
+
     let slots=[9,11,13,15,17,19,21];
 
 
@@ -27,6 +35,36 @@ function Modal({ setModalIsOpen }) {
 
     });
 
+
+    const Orders = async()=>{
+        const d = await getOrders(name);
+        console.log(d.data)
+        setOrder(d.data);
+         
+    }
+
+    function filledSlotsConfig(){
+        slots=new Set()
+        order.forEach((ord)=>{
+            slots.add(ord.timeslot)
+        })
+        // console.log("my orders",order)
+        setfilledSlots(slots);
+        // console.log(filledSlots)
+    }
+
+    // async function setOrderAndSlots(){
+    //     await Orders(); 
+    //     filledSlotsConfig();
+    // }
+    useEffect(()=>{
+        Orders()
+    },[])
+
+    useEffect(()=>{
+       filledSlotsConfig()
+    },[order])
+
     
 
     // useEffect(() => {
@@ -34,10 +72,20 @@ function Modal({ setModalIsOpen }) {
     //     if (e.value <= d.getHours()) {
     //         add('disable');
     //     }
-    // }, [])
+    // }, []
 
-
-    const hireHandler = () => {
+    const hireHandler = async() => {
+        // console.log(user)
+        const obj={
+                customer: user.username,
+                employee: name,
+                date: `${new Date()}`,
+                timeslot: `${slotSelected}:00-${Number(slotSelected)+2}:00`,
+                status: "pending"
+        }
+      
+    //    console.log(obj);
+    await postOrder(obj);
         navigate('/payment')
     }
 
@@ -73,11 +121,15 @@ function Modal({ setModalIsOpen }) {
                     let hour=time.getHours();
                     let startTime=e;
                     let endTime=startTime+2;
-                    if(startTime>hour){
-                        return  <button className="slot" value={startTime} key={startTime} onClick={selectSlot}>{`${startTime}:00-${endTime}:00`}</button>
+                    let currSlot=`${startTime}:00-${endTime}:00`
+                    if(startTime+10>hour){
+                        if(filledSlots.has(currSlot)){
+                            return  <button className="slot-filled" value={startTime} key={startTime} onClick={selectSlot}>{currSlot}</button>
+                        }
+                        return  <button className="slot" value={startTime} key={startTime} onClick={selectSlot}>{currSlot}</button>
                     }
                     else{
-                        return  <button className="slot-disabled" value={startTime} key={startTime} onClick={selectSlot}>{`${startTime}:00-${endTime}:00`}</button>
+                        return  <button className="slot-disabled" value={startTime} key={startTime} onClick={selectSlot}>{currSlot}</button>
                     }
                     
                    })}
@@ -90,7 +142,6 @@ function Modal({ setModalIsOpen }) {
                     }   
                     <button id="hireBtn" onClick={() => {
                         setModalIsOpen(false);
-
                     }} >Cancel</button>
                 </div>
 
