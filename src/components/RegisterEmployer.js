@@ -1,29 +1,39 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addUser } from "../service/api";
+import bcrypt from 'bcryptjs';
+
 function RegisterEmployer() {
+    let navigate = useNavigate();
+
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("");
-    const [level, setLevel] = useState("Employee");
+    const [level] = useState("Employer");
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
     const [gender, setGender] = useState("");
     const [dob, setDob] = useState("");
     const [pincode, setPincode] = useState("");
     const [phone, setPhone] = useState("");
-    // const [skills, setSkills] = useState("");
-    // const [Exp, setExp] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [address, setAddress] = useState("");
-    let navigate = useNavigate();
     const [formErrors, setFormErrors] = useState({});
-    const [isSubmit, setIsSubmit] = useState(false);
+    const [user, setUser] = useState({});
 
+    const register = async () => {
+        if (Object.keys(formErrors).length === 0) {
+            const hashedpassword = bcrypt.hashSync(user.password, 10);
+            await addUser({ ...user, password: hashedpassword, confirmPassword: hashedpassword });
+            navigate("/");
+        }
+    }
 
-
-
+    useEffect(
+        () => {
+            register();
+        }, [user]);
 
 
     const validate = (values) => {
@@ -118,12 +128,11 @@ function RegisterEmployer() {
             confirmPassword: confirmPassword
 
         }
+        setUser(user);
         setFormErrors(validate(user));
-        setIsSubmit(true);
-        if (Object.keys(formErrors).length === 0 && isSubmit) {
-            await addUser(user);
-            navigate("/");
-        }
+
+
+
 
     }
     return (
@@ -131,7 +140,7 @@ function RegisterEmployer() {
         <div className="bg-slate-200">
 
             <div className="flex  justify-center">
-                <div className="w-5/12 p-10 mt-10 h-full bg-white rounded-lg border border-gray-200 shadow-md">
+                <div className="w-5/12 p-10 mt-[9.5rem] mb-5 h-full bg-white rounded-lg border border-gray-200 shadow-md">
                     <div className="space-y-4">
                         <h5 className="text-xl font-medium text-gray-900" >
                             Register Employer

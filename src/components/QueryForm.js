@@ -1,45 +1,15 @@
 import React from 'react'
 // import "../CSS/Contact.css";
-
+import {useState} from 'react'
+import { addAction } from '../service/api';
 export default function QueryForm() {
-    // function sendmail(){
-    //     let name=document.getElementById('name');
-    //     let email=document.getElementById('email');
-    //     let mobile=document.getElementById('mobile');
-    //     let message=document.getElementById('area');
-
-    //     var fullname = name.value;
-    //     var emailVal = email.value;
-    //     var mobileVal = mobile.value;
-    //     var messageVal = message.value;
-
-    //     var Body='name: '+fullname+'<br>email: '+emailVal+'<br>mobile: '+mobileVal+'<br>message: '+messageVal;
-
-    //     email.send({
-    //         Host:"smtp.gmail.com",
-    //         To: 'khanwarish483@gmail.com',
-    //         From: emailVal,
-    //         mobile: mobileVal,
-    //         Body: Body
-    //     }).then(
-    //         message =>{
-    //             //console.log (message);
-    //             if(message==='OK'){
-    //             alert('Your mail has been send. Thank you for connecting.');
-    //             }
-    //             else{
-    //                 console.error (message);
-    //                 alert('There is error at sending message. ')
-
-    //             }
-
-    //         }
-    //     );
-
-
-
-
-    // }
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("");
+    const [phn, setPhn] = useState("");
+    const [msg, setMsg] = useState("");
+    const handle = async () => {
+        await addAction({FirstName:name,Email:email,Phone:phn,Message:msg,Status:"Active"});
+    }
     return (
         <>
             <div className="contact-details">
@@ -48,21 +18,21 @@ export default function QueryForm() {
                     <form>
                         <div className="inputBox">
                             <label htmlFor="name">Full Name</label>
-                            <input type="text" id="name" name="" required="required" />
+                            <input type="text" id="name" name="" required="required" onChange={(e) => setName(e.target.value)}/>
                         </div>
                         <div className="inputBox">
                             <label htmlFor="email">Email</label>
-                            <input type="email" id="email" name="" required="required" />
+                            <input type="email" id="email" name="" required="required" onChange={(e) => setEmail(e.target.value)}/>
                         </div>
                         <div className="inputBox">
                             <label htmlFor="mobile">Mobile Number</label>
-                            <input type="text" id="mobile" name="" required="required" maxlength="10" />
+                            <input type="text" id="mobile" name="" required="required" maxlength="10" onChange={(e) => setPhn(e.target.value)}/>
                         </div>
                         <div className="inputBox">
                             <label htmlFor="area">Write your Message here.....</label>
-                            <textarea name="" id="area" cols="30" rows="10" required="required"></textarea>
+                            <textarea name="" id="area" cols="30" rows="10" required="required" onChange={(e) => setMsg(e.target.value)}></textarea>
                             <div className="inputBox">
-                                <input type="submit" className="OrderBtn" name="" required="required" value="Send Message" />
+                                <input type="submit" className="OrderBtn" name="" required="required" value="Send Message" onClick={handle} />
                             </div>
                         </div>
                     </form>

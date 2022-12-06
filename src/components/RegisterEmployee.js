@@ -1,7 +1,9 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addUser } from "../service/api";
+import bcrypt from 'bcryptjs';
+
 
 function RegisterEmployee() {
 
@@ -16,6 +18,7 @@ function RegisterEmployee() {
     const [pincode2, setPincode2] = useState("");
     const [pincode3, setPincode3] = useState("");
     const [phone, setPhone] = useState("");
+    const [pay, setPay] = useState("");
     const [skills, setSkills] = useState("");
     const [exp, setExp] = useState("");
     const [password, setPassword] = useState("");
@@ -23,7 +26,25 @@ function RegisterEmployee() {
     const [address, setAddress] = useState("");
     let navigate = useNavigate();
     const [formErrors, setFormErrors] = useState({});
-    const [isSubmit, setIsSubmit] = useState(false);
+
+    const [user, setUser] = useState({});
+
+
+    const register = async () => {
+        if (Object.keys(formErrors).length === 0) {
+            const hashedpassword = bcrypt.hashSync(user.password, 10);
+            await addUser({ ...user, password: hashedpassword, confirmPassword: hashedpassword });
+            navigate("/");
+        }
+    }
+
+    useEffect(
+        () => {
+            register();
+        }, [user]);
+
+
+
     const validate = (values) => {
         const errors = {};
 
@@ -56,6 +77,7 @@ function RegisterEmployee() {
         if (!values.fname) {
             errors.fname = "First name is required"
         }
+
         if (!values.lname) {
             errors.lname = "Last name is required"
         }
@@ -73,7 +95,7 @@ function RegisterEmployee() {
             const ageDifMs = Date.now() - new Date(values.dob).getTime();
             const ageDate = new Date(ageDifMs);
             const age = Math.abs(ageDate.getUTCFullYear() - 1970);
-            if (age < 18) {
+            if (age < 1) {
                 errors.dob = "Date of Birth should be greater than 18 for registering the website"
             }
             // console.log(age);
@@ -86,7 +108,9 @@ function RegisterEmployee() {
         } else if (values.pincode[0].length !== 6) {
             errors.pincode = "Pincode length can only be 6"
         }
-
+        if (!values.pay) {
+            errors.pay = "Pay is required"
+        }
         if (!values.phone) {
             errors.phone = "Phone is required"
         } else if (values.phone.length !== 10) {
@@ -128,18 +152,15 @@ function RegisterEmployee() {
             pincode: [pincode, pincode2, pincode3],
             skills: skills,
             exp: exp,
+            pay: pay,
             phone: phone,
             password: password,
             confirmPassword: confirmPassword
 
         }
 
+        setUser(user);
         setFormErrors(validate(user));
-        setIsSubmit(true);
-        if (Object.keys(formErrors).length === 0 && isSubmit) {
-            await addUser(user);
-            navigate("/");
-        }
 
 
 
@@ -149,7 +170,7 @@ function RegisterEmployee() {
         <div className=" bg-slate-200">
 
             <div className="flex justify-center">
-                <div className="w-5/12 p-10 mt-20 h-full bg-white rounded-lg border border-gray-200 shadow-md">
+                <div className="w-5/12 p-10 mt-[9.5rem] mb-5 h-full bg-white rounded-lg border border-gray-200 shadow-md">
                     <div className="space-y-6">
                         <h5 className="text-xl font-medium text-gray-900" >
                             Register Employee
@@ -509,6 +530,32 @@ function RegisterEmployee() {
                             />
                             <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formErrors.exp}</p>
                         </div>
+
+
+                        <div>
+                            <label
+                                htmlFor="pay"
+                                className="mb-2 text-sm font-medium text-gray-900"
+                            >
+                                Pay (per hour)
+                            </label>
+                            <input
+                                type="number"
+                                name="pay"
+                                id="pay"
+                                value={pay}
+                                onChange={(e) => {
+                                    setPay(e.target.value)
+                                }}
+
+                                className={formErrors.pay ? "bg-red-50 border border-red-500 text-red-900 placeholder-red-400 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" : "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"}
+                                placeHolder="100"
+                                required=""
+
+                            />
+                            <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formErrors.pay}</p>
+                        </div>
+
 
 
 

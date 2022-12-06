@@ -9,29 +9,41 @@ import SearchResult from './SearchResult';
 import noData from '../Images/noDataImg.png'
 import Modal from './Modal';
 import { useEffect } from 'react';
-
+import { DelSearchDetails, selectAllDetails } from '../features/userSlice';
+import { useDispatch, useSelector } from "react-redux";
 
 
 function Search(props) {
-
+    const [isSearch, setIsSearch] = useState(false)
     const [pincode, setPincode] = useState("");
     const [skill, setSkill] = useState("");
     const [user, setUser] = useState([]);
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [currEmployee,setCurrEmployee]= useState("");
-
-
+    const [modalIsOpen, setModalIsOpen] = useState(false)
+    const [currEmployee, setCurrEmployee] = useState('')
+    const search = useSelector(selectAllDetails);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        if (search) {
+            setPincode(search.pincode)
+            setSkill(search.skill)
+            seachhandlers(search.pincode, search.skill);
+            dispatch(DelSearchDetails());
+        }
+    }, [search])
     const seachhandler = async () => {
         const d = await getSearch(pincode, skill);
-        // try {
-        //     const data = await axios.get("http://127.0.0.1:3003/user/");
-        //     console.log(data.data);
-
-        // } catch (err) {
-        //     console.log(err);
-        // }
         console.log(d.data);
         setUser(d.data);
+        setIsSearch(true);
+
+    }
+    const seachhandlers = async (pincode, skill) => {
+        const d = await getSearch(pincode, skill);
+        console.log(d.data);
+        setUser(d.data);
+        setIsSearch(true);
+
+
     }
     return (
         <>
@@ -39,7 +51,7 @@ function Search(props) {
             <div id="searchImgBox">
                 <span id="searchImgBoxHead">
                     <h2>Showing Search Results for&#160;&#160;&#160;</h2>
-                    <h1> "&#160;{skill}&#160;"</h1>
+                    <h1> "&#160; {skill} &#160;{pincode}  &#160;"</h1>
                 </span>
             </div>
             {/* <img src={searchImg} id='wave' /> */}
@@ -50,17 +62,11 @@ function Search(props) {
 
                 <div id="searchHead">
                     <span className="searchBox"><span className="searchText">Pincode: </span>
-                        <input className="searchInput" type="text" value={pincode} onChange={(e) => setPincode(e.target.value)} /></span>
+                        <input className="searchInput" type="number" value={pincode} onChange={(e) => setPincode(e.target.value)} /></span>
                     <span className="searchBox"><span className="searchText">Service: </span>
                         <input className="searchInput" type="text" value={skill} onChange={(e) => setSkill(e.target.value)} /></span>
                     <button onClick={seachhandler} id="searchBtn">Search</button>
                 </div>
-
-
-
-
-
-
 
                 <div id="content">
 
@@ -76,7 +82,8 @@ function Search(props) {
                                     <SearchResult data={data} setModalIsOpen={setModalIsOpen} key={i} setCurrEmployee={setCurrEmployee} />
                                 ))
                             }
-                            {user.length === 0 &&
+
+                            {user.length === 0 && isSearch &&
                                 <div id="notFound">
                                     <h4 id="noDataHead">No Data Found</h4>
 

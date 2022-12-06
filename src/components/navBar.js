@@ -5,6 +5,7 @@ import '../CSS/home.css'
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { Logout, selectAllUser } from '../features/userSlice';
+import { toast } from 'react-toastify';
 
 export default function Navbar() {
     // const user = JSON.parse(localStorage.getItem('user'));
@@ -14,6 +15,7 @@ export default function Navbar() {
     const logOutHandler = () => {
         // localStorage.removeItem("user");
         dispatch(Logout())
+        toast.success("You have been Log Out")
         // console.log("hamza")
         navigate("/")
 
@@ -38,7 +40,7 @@ export default function Navbar() {
 
                 <li className="navitem"><NavLink to="/" className="navlinks disappear">Home</NavLink></li>
                 <li className="navitem"><NavLink to="/contact" className="navlinks disappear">Contact Us</NavLink></li>
-                <li className="navitem"><NavLink to="/login" className="navlinks">{user.username}</NavLink></li>
+                <li className="navitem"><NavLink to={user.level === "Admin" ? "/Admin" : "/dashboard"} className="navlinks">{user.username}</NavLink></li>
                 <li className="navitem">
 
                     <button className="navlinks"
@@ -51,7 +53,7 @@ export default function Navbar() {
 
                     <li className="navitem"><NavLink to="/" className="navlinks disappear">Home</NavLink></li>
                     <li className="navitem"><NavLink to="/contact" className="navlinks disappear">Contact Us</NavLink></li>
-                    <li className="navitem"><NavLink to="/login" className="navlinks">SignIn/SingUP</NavLink></li>
+                    <li className="navitem"><NavLink to="/login" className="navlinks">SignIn/SignUP</NavLink></li>
 
 
                 </ul>

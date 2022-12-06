@@ -23,6 +23,8 @@ import { SiSimpleanalytics } from 'react-icons/si'
 import { GrUserWorker } from 'react-icons/gr'
 import { BsFillArrowRightSquareFill, BsArrowLeftSquareFill } from "react-icons/bs"
 import { useState } from "react"
+// import { SiSimpleanalytics } from 'react-icons/si';
+import PendingActionsIcon from '@mui/icons-material/PendingActions';
 
 function Admin() {
   const [icon, setIcon] = useState("right");
@@ -46,7 +48,8 @@ function Admin() {
             <MenuItem icon={<GrUserWorker />} routerLink={<Link to="Employees" />}> Employees</MenuItem>
             <MenuItem icon={<FaUser />} routerLink={<Link to="Employers" />}> Employers</MenuItem>
             <MenuItem icon={<FaHistory />} routerLink={<Link to="Workhistory" />}> Work History</MenuItem>
-            <MenuItem routerLink={<Link to="Logout" />}> </MenuItem>
+            <MenuItem icon={<PendingActionsIcon style={{ color: 'red' }} />} routerLink={<Link to="Actions" />}>Actions</MenuItem>
+            {/* <MenuItem routerLink={<Link to="Logout" />}> </MenuItem> */}
 
           </Menu>
         </Sidebar>
