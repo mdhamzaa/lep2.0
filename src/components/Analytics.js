@@ -3,8 +3,31 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import axios from 'axios';
+import { useState } from 'react';
+import {url} from '../service/api'
+import { useEffect } from 'react';
+
 
 export default function Analytics() {
+
+  async function getdata1(params) {
+    const data =await axios.get(`${url}?level=Employee`);
+    setUsers1(data.data.length);
+  }
+  
+  async function getdata2(params) {
+    const data =await axios.get(`${url}?level=Employer`);
+    setUsers2(data.data.length);
+  }
+  
+ const [users1,setUsers1] = useState(0);
+ const [users2,setUsers2] = useState(0);
+useEffect(() => {
+  getdata1();
+  getdata2();
+},[]);
+
   return (
     <>
     <h1 style={{ fontWeight: 'bold' }} >Analytics</h1>
@@ -23,7 +46,8 @@ export default function Analytics() {
           No of Employees
         </Typography>
         <Typography variant="body2" color="text.secondary" >
-          1200 users are currently giving services to our customers.
+        <Typography variant="h3" color={'black'}>{users1}</Typography>
+          users are currently giving services to our customers.
         </Typography>
       </CardContent>
       {/* <CardActions>
@@ -45,7 +69,8 @@ export default function Analytics() {
        No of employers
      </Typography>
      <Typography variant="body2" color="text.secondary">
-       5600 users are currently take services from us.
+     <Typography variant="h3" color={'black'}>{users2}</Typography>
+      users are currently take services from us.
      </Typography>
    </CardContent>
    {/* <CardActions>
@@ -67,18 +92,12 @@ export default function Analytics() {
           Number of Works done
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          9856 works are done by our employees.
+        <Typography variant="h3" color={'black'}>100+</Typography>
+          works are done by our employees.
         </Typography>
       </CardContent>
-      {/* <CardActions>
-        <Button size="small">{<MdFileDownloadDone size={23}/>}</Button>
-        <Button variant="contained" size="small">Done</Button>
-      </CardActions> */}
     </Card>
-
     </div>
-
-    
 </>
 
   );

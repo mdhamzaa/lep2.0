@@ -334,19 +334,19 @@
       "level": "Employer",
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Male",
-      "dob": "2022-12-23",
-      "pincode": "517540",
+      "dob": "1998-01-04",
+      "pincode": "517541",
       "phone": "7976976909",
-      "password": "$2a$10$R7UBhyjTmhV00/f60dGMJeRr9HaCunuofTNZuHfwxVOrqf1TGSSAG",
-      "confirmPassword": "$2a$10$R7UBhyjTmhV00/f60dGMJeRr9HaCunuofTNZuHfwxVOrqf1TGSSAG",
-      "id": 19
+      "password": "$2a$10$7dKnAnOlrOTNzj7oEV2rf.erdmsHapvPaG.wJ9u4hivDIoHh2z7GG",
+      "confirmPassword": "$2a$10$7dKnAnOlrOTNzj7oEV2rf.erdmsHapvPaG.wJ9u4hivDIoHh2z7GG",
+      "id": 20
     },
     {
-      "username": "hamza3",
+      "username": "ahamza",
       "email": "hamzahadis2002@gmail.com",
       "fname": "HAMZA",
       "lname": "KHAN",
-      "level": "Employer",
+      "level": "Admin",
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Male",
       "dob": "1998-01-04",
@@ -354,7 +354,33 @@
       "phone": "7976976909",
       "password": "$2a$10$7dKnAnOlrOTNzj7oEV2rf.erdmsHapvPaG.wJ9u4hivDIoHh2z7GG",
       "confirmPassword": "$2a$10$7dKnAnOlrOTNzj7oEV2rf.erdmsHapvPaG.wJ9u4hivDIoHh2z7GG",
-      "id": 20
+      "id": 21
+    }
+  ],
+  "actions": [
+    {
+      "FirstName": "Akhil",
+      "Email": "ponec20137@f1xm.com",
+      "Phone": "9089090989",
+      "Message": "Payment is not working\n",
+      "Status": "Active",
+      "id": 1
+    },
+    {
+      "FirstName": "Teja",
+      "Email": "wefwef@gmail.com",
+      "Phone": "9089090889",
+      "Message": "When will i get my refund ? its already 7 days after my carpenter cancelled the work please\nrefund as soon as possible",
+      "Status": "Active",
+      "id": 2
+    },
+    {
+      "FirstName": "HAMZA KHAN",
+      "Email": "hamzahadis2002@gmail.com",
+      "Phone": "7976976909",
+      "Message": "edsfsdfdfdf",
+      "Status": "Active",
+      "id": 3
     }
   ],
   "order": [

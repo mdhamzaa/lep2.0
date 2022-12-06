@@ -70,6 +70,7 @@ function Login() {
                     } else {
                         // console.log("matcing")
 
+
                         dispatch(
                             SetLogin({
                                 user: d.data[0],
@@ -80,7 +81,13 @@ function Login() {
                         // localStorage.setItem('user', JSON.stringify((d.data)[0]))
                         toast.success("User has been login")
 
-                        navigate(`/dashboard`);
+                        if ((d.data[0]).level === "Admin") {
+                            navigate(`/Admin`)
+                        } else {
+                            navigate(`/dashboard`)
+                        }
+
+                        ;
                     }
                 });
 

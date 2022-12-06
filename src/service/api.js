@@ -3,7 +3,7 @@ import axios from 'axios';
 // http://127.0.0.1:3003/user?username=ABC
 // http://127.0.0.1:3003/user?pincode_like=517541&&level=Employer
 
-const url = "http://127.0.0.1:3003/user";
+export const url = "http://127.0.0.1:3003/user";
 
 export const getallDetails = async (key, value) => {
 
@@ -31,4 +31,9 @@ export const getUsers = async (username) => {
 
 export const addUser = async (user) => {
     return await axios.post(url, user);
+}
+
+export const urlA = "http://127.0.0.1:3003/actions";
+export const addAction = async (details) => {
+    return await axios.post(urlA, details);
 }

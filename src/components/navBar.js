@@ -40,7 +40,7 @@ export default function Navbar() {
 
                 <li className="navitem"><NavLink to="/" className="navlinks disappear">Home</NavLink></li>
                 <li className="navitem"><NavLink to="/contact" className="navlinks disappear">Contact Us</NavLink></li>
-                <li className="navitem"><NavLink to="/dashboard" className="navlinks">{user.username}</NavLink></li>
+                <li className="navitem"><NavLink to={user.level === "Admin" ? "/Admin" : "/dashboard"} className="navlinks">{user.username}</NavLink></li>
                 <li className="navitem">
 
                     <button className="navlinks"
@@ -53,7 +53,7 @@ export default function Navbar() {
 
                     <li className="navitem"><NavLink to="/" className="navlinks disappear">Home</NavLink></li>
                     <li className="navitem"><NavLink to="/contact" className="navlinks disappear">Contact Us</NavLink></li>
-                    <li className="navitem"><NavLink to="/login" className="navlinks">SignIn/SingUP</NavLink></li>
+                    <li className="navitem"><NavLink to="/login" className="navlinks">SignIn/SignUP</NavLink></li>
 
 
                 </ul>

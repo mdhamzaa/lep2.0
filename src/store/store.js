@@ -1,13 +1,23 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import userReducer from '../features/userSlice';
+import {
+    persistStore,
+    persistReducer,
+    FLUSH,
+    REHYDRATE,
+    PAUSE,
+    PERSIST,
+    PURGE,
+    REGISTER,
+} from 'redux-persist'
 
-import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import thunk from 'redux-thunk';
+
 
 const persistConfig = {
     key: 'persistStorage',
+    version: 1,
     storage,
 }
 
@@ -17,8 +27,14 @@ export const store = configureStore({
     reducer: {
 
         user: persistedReducer,
-        middleware: [thunk]
-    }
+
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: {
+                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+            },
+        }),
 })
 
 

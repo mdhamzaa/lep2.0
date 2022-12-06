@@ -4,20 +4,28 @@ import "../CSS/home.css"
 import arrowImg from "../Images/arrow.svg"
 import searchImg from "../Images/search-svgrepo-com.svg"
 import allImages from '../Images/allBgImages'
-import { getSearch } from '../service/api'
+// import { getSearch } from '../service/api'
 import { useNavigate } from 'react-router-dom'
-
+import { useDispatch } from 'react-redux'
+import { SetSearchDetails } from "../features/userSlice";
 
 
 export default function ImageBg(props) {
-
+    const dispatch = useDispatch();
 
 
     let navigate = useNavigate();
-
+    const [pincode, setPincode] = useState("");
+    const [skill, setSkill] = useState("");
 
     const seachhandler = () => {
+        dispatch(
+            SetSearchDetails({
+                pincode: pincode,
+                skill: skill
 
+            })
+        );
         navigate('/search')
     }
 
@@ -67,10 +75,10 @@ export default function ImageBg(props) {
 
                 <div className="inputs">
 
-                    <input type="number" name="pincode" id="pincode" placeholder="Enter Pincode" pattern="[0-9]{6}"
+                    <input type="number" name="pincode" id="pincode" placeholder="Enter Pincode" value={pincode} onChange={(e) => setPincode(e.target.value)} pattern="[0-9]{6}"
                         maxLength="6" />
                     <div id="searchDiv"><img id="searchIcon" src={searchImg} />
-                        <input type="text" name="skills" id="search" placeholder="Search for services..." />
+                        <input type="text" name="skills" id="search" placeholder="Search for services..." value={skill} onChange={(e) => setSkill(e.target.value)} />
 
                     </div>
 

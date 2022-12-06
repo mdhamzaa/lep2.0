@@ -5,7 +5,8 @@ import axios from "axios";
 
 const initialState = {
     user: null,
-    order: null
+    order: null,
+    searchDetails: null
 }
 
 export const fetchUsers = createAsyncThunk('users/fetchUsers', async (username) => {
@@ -24,6 +25,12 @@ const usersSlice = createSlice({
         Logout: (state) => {
             state.user = null;
             state.order = null;
+        },
+        SetSearchDetails: (state, action) => {
+            state.searchDetails = action.payload;
+        },
+        DelSearchDetails: (state) => {
+            state.searchDetails = null;
         }
     },
     extraReducers(builder) {
@@ -34,5 +41,7 @@ const usersSlice = createSlice({
 })
 
 export const selectAllUser = (state) => state.user.user;
-export const { SetLogin, Logout } = usersSlice.actions;
+export const selectAllOrder = (state) => state.user.order;
+export const selectAllDetails = (state) => state.user.searchDetails;
+export const { SetLogin, Logout, SetSearchDetails, DelSearchDetails } = usersSlice.actions;
 export default usersSlice.reducer

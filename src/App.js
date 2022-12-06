@@ -22,7 +22,7 @@ import Workhistory from "./components/Workhistory"
 import Payment from "./components/payment_det";
 import RegistrationChoice from "./components/RegistrationChoice";
 import NoPage from "./components/NoPage";
-
+import Actions from "./components/Actions";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { selectAllUser } from "./features/userSlice";
@@ -71,13 +71,11 @@ function App() {
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/search" element={<Search />} />
             <Route path="/dashboard" element={<ProSidebarProvider> <Dashboard /> </ProSidebarProvider>} >
-              <Route path="/dashboard/Profile/" element={<Profile />}  >
 
-              </Route>
-              <Route path="/dashboard/History" element={<History />} />
-              <Route path="/dashboard/Booking" element={<Bookings />} />
-
-              <Route path="/dashboard/Logout" element={<></>} />
+              <Route path="Profile" element={<Profile />} />
+              <Route path="History" element={<History />} />
+              <Route path="Booking" element={<Bookings />} />
+              <Route path="Logout" element={<></>} />
             </Route>
             <Route path="/payment" element={<Payment />} />
             <Route path="*" element={<NoPage />} />
@@ -98,6 +96,7 @@ function App() {
               <Route path="Employers" element={<Employers />} />
               <Route path="Employees" element={<Employees />} />
               <Route path="Workhistory" element={<Workhistory />} />
+              <Route path="Actions" element={<Actions />} />
             </Route>
             <Route path="*" element={<NoPage />} />
           </Routes>
