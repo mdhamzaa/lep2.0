@@ -81,9 +81,9 @@ function Login() {
                         toast.success("User has been login")
 
                         if ((d.data[0]).level === "Admin") {
-                            navigate(`/Admin`)
+                            navigate(`/Admin/Analytics`)
                         } else {
-                            navigate(`/dashboard`)
+                            navigate(`/dashboard/profile`)
                         }
 
                         ;

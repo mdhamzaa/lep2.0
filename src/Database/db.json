@@ -36,6 +36,25 @@
       "level": "Employee",
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Male",
+      "dob": "2022-10-12",
+      "pincode": [
+        "517541",
+        "517541",
+        "517541"
+      ],
+      "exp": "1 year",
+      "phone": "07976976909",
+      "password": "234343",
+      "id": 3
+    },
+    {
+      "username": "hamzahadis2002@gmail.com",
+      "email": "hamzahadis2002@gmail.com",
+      "fname": "HAMZA",
+      "lname": "KHAN",
+      "level": "Employee",
+      "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
+      "gender": "Male",
       "dob": "",
       "pincode": [
         "517541",
@@ -336,6 +355,21 @@
       "password": "$2a$10$7dKnAnOlrOTNzj7oEV2rf.erdmsHapvPaG.wJ9u4hivDIoHh2z7GG",
       "confirmPassword": "$2a$10$7dKnAnOlrOTNzj7oEV2rf.erdmsHapvPaG.wJ9u4hivDIoHh2z7GG",
       "id": 21
+    },
+    {
+      "username": "abi2",
+      "email": "tulsaniyogi@gmail.com",
+      "fname": "ssfdd",
+      "lname": "sdsfdfs",
+      "level": "Employer",
+      "address": "ressddg",
+      "gender": "Male",
+      "dob": "2000-02-02",
+      "pincode": "400611",
+      "phone": "4534534533",
+      "password": "$2a$10$7bPP.bTgpFYmKEo8rw7.suK5ALJdQDJeGdyGI12aajhoPijZtDnDW",
+      "confirmPassword": "$2a$10$7bPP.bTgpFYmKEo8rw7.suK5ALJdQDJeGdyGI12aajhoPijZtDnDW",
+      "id": 22
     }
   ],
   "actions": [
@@ -362,16 +396,118 @@
       "Message": "edsfsdfdfdf",
       "Status": "Active",
       "id": 3
+    },
+    {
+      "FirstName": "yash tulsani",
+      "Email": "warish.w20@iiits.in",
+      "Subject": "arey bhai",
+      "Message": "sadadasd",
+      "Status": "Active",
+      "id": 4
+    },
+    {
+      "FirstName": "yash tulsani",
+      "Email": "yash.t20@iiits.in",
+      "Subject": "arey bhai",
+      "Message": "",
+      "Status": "Active",
+      "id": 5
+    },
+    {
+      "FirstName": "yash tulsani",
+      "Email": "yash.t20@iiits.in",
+      "Subject": "arey bhai",
+      "Message": "sefesfdfsdfdfdfdf",
+      "Status": "Active",
+      "id": 6
+    },
+    {
+      "FirstName": "yash tulsani",
+      "Email": "yash.t20@iiits.in",
+      "Subject": "sfdfdfsdfsd",
+      "Message": "dsfdfsfsffsdf",
+      "Status": "Active",
+      "id": 7
     }
   ],
   "order": [
     {
-      "customer": "ABI",
-      "employee": "ABA",
-      "data": "2022-04-25T18:30:00.000+00:00",
-      "timeslot": "1:00 PM-3:00 PM",
+      "customer": "hamza3",
+      "employee": "hamzahadis2002@gmail.com",
+      "pincode": "517541",
+      "date": "Wed Dec 07 2022 14:58:48 GMT+0530 (India Standard Time)",
+      "timeslot": "17:00-19:00",
       "status": "pending",
-      "id": 1
+      "id": 5
+    },
+    {
+      "customer": "hamza3",
+      "employee": "wasd",
+      "profession": "plumber",
+      "pincode": "517541",
+      "date": "Wed Dec 07 2022 14:59:04 GMT+0530 (India Standard Time)",
+      "timeslot": "15:00-17:00",
+      "status": "pending",
+      "id": 6
+    },
+    {
+      "customer": "hamza3",
+      "employee": "asdf",
+      "profession": "plumber",
+      "pincode": "517541",
+      "date": "Wed Dec 07 2022 14:59:33 GMT+0530 (India Standard Time)",
+      "timeslot": "21:00-23:00",
+      "status": "completed",
+      "id": 7
+    },
+    {
+      "customer": "hamza3",
+      "employee": "ABF",
+      "profession": "carpenter",
+      "pincode": "517541",
+      "date": "Wed Dec 07 2022 21:01:59 GMT+0530 (India Standard Time)",
+      "timeslot": "17:00-19:00",
+      "status": "pending",
+      "id": 8
+    },
+    {
+      "customer": "ahamza",
+      "employee": "ABF",
+      "profession": "carpenter",
+      "pincode": "517541",
+      "date": "Wed Dec 07 2022 21:59:44 GMT+0530 (India Standard Time)",
+      "timeslot": "21:00-23:00",
+      "status": "pending",
+      "id": 9
+    },
+    {
+      "customer": "ahamza",
+      "employee": "aasds",
+      "pincode": "517541",
+      "date": "Wed Dec 07 2022 22:01:22 GMT+0530 (India Standard Time)",
+      "timeslot": "17:00-19:00",
+      "status": "pending",
+      "id": 10
+    },
+    {
+      "customer": "hamza3",
+      "employee": "asdf",
+      "profession": "plumber",
+      "pincode": "517541",
+      "date": "Wed Dec 07 2022 22:02:20 GMT+0530 (India Standard Time)",
+      "timeslot": "19:00-21:00",
+      "status": "pending",
+      "id": 11
+    },
+    {
+      "customer": "hamza3",
+      "employee": "ABcd",
+      "profession": "plumber",
+      "pincode": "517541",
+      "date": "Wed Dec 07 2022 22:04:01 GMT+0530 (India Standard Time)",
+      "timeslot": "13:00-15:00",
+      "status": "pending",
+      "id": 12
     }
   ],
   "reviews": [

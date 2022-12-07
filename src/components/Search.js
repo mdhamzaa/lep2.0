@@ -19,11 +19,15 @@ function Search(props) {
     const [skill, setSkill] = useState("");
     const [user, setUser] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false)
+    const [currEmployee, setCurrEmployee] = useState('')
+    // const [currPincode,setCurrPincode]= useState('');
     const search = useSelector(selectAllDetails);
+    // console.log(search.pincode)
     const dispatch = useDispatch();
     useEffect(() => {
         if (search) {
             setPincode(search.pincode)
+            
             setSkill(search.skill)
             seachhandlers(search.pincode, search.skill);
             dispatch(DelSearchDetails());
@@ -78,7 +82,7 @@ function Search(props) {
                             {
 
                                 user.map((data, i) => (
-                                    <SearchResult data={data} setModalIsOpen={setModalIsOpen} key={i} />
+                                    <SearchResult data={data} setModalIsOpen={setModalIsOpen} key={i} setCurrEmployee={setCurrEmployee} />
                                 ))
                             }
 
@@ -97,7 +101,7 @@ function Search(props) {
             </div>
 
             <div id="ModelContair">
-                {modalIsOpen && <Modal setModalIsOpen={setModalIsOpen} />}
+                {modalIsOpen && <Modal setModalIsOpen={setModalIsOpen} employee= {currEmployee} pincode={pincode} />}
             </div>
 
 

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addUser } from "../service/api";
 import bcrypt from "bcryptjs-react";
+import { toast } from "react-toastify";
 
 
 function RegisterEmployee() {
@@ -34,6 +35,7 @@ function RegisterEmployee() {
         if (Object.keys(formErrors).length === 0) {
             const hashedpassword = bcrypt.hashSync(user.password, 10);
             await addUser({ ...user, password: hashedpassword, confirmPassword: hashedpassword });
+            toast.success("User Registered Successfully");
             navigate("/");
         }
     }

@@ -19,7 +19,7 @@ import Analytics from "./components/Analytics";
 import Employees from "./components/Employees";
 import Employers from "./components/Employers";
 import Workhistory from "./components/Workhistory"
-import Payment from "./components/payment_det";
+import PaymentPage from "./components/PaymentPage";
 import RegistrationChoice from "./components/RegistrationChoice";
 import NoPage from "./components/NoPage";
 import Actions from "./components/Actions";
@@ -27,6 +27,10 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { selectAllUser } from "./features/userSlice";
 import { useSelector } from "react-redux";
+import Checkout from "./components/Checkout";
+import Success from "./components/Success";
+import Cancel from "./components/Cancel";
+import AboutUs from "./components/About";
 
 function App() {
   const user = useSelector(selectAllUser);
@@ -53,6 +57,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/contact" element={<ContactUs />} />
+            <Route path="/about" element={<AboutUs />} />
             <Route path="/employee-register" element={<RegisterEmployee />} />
             <Route path="/employer-register" element={<RegisterEmployer />} />
             <Route path="registration-choice" element={<RegistrationChoice />} />
@@ -69,6 +74,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<ContactUs />} />
+            <Route path="/about" element={<AboutUs />} />
             <Route path="/search" element={<Search />} />
             <Route path="/dashboard" element={<ProSidebarProvider> <Dashboard /> </ProSidebarProvider>} >
 
@@ -77,7 +83,9 @@ function App() {
               <Route path="Booking" element={<Bookings />} />
               <Route path="Logout" element={<></>} />
             </Route>
-            <Route path="/payment" element={<Payment />} />
+            <Route path="/payment" element={<PaymentPage/>} />
+            <Route path="/success" element={<Success/>} />
+            <Route path="/cancel" element={<Cancel/>} />
             <Route path="*" element={<NoPage />} />
           </Routes>
         }
@@ -88,6 +96,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<ContactUs />} />
+            <Route path="/about" element={<AboutUs />} />
             <Route path="/search" element={<Search />} />
             <Route path="/admin" element={<ProSidebarProvider style={{}}>
               <Admin />

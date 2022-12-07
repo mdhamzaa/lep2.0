@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 
@@ -11,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 //     }
 // }
 
-function Paymentdetails() {
+function PaymentPage() {
     const [name, setName] = useState("");
     const [nameonc, setNameonc] = useState("");
     // const [email, setEmail] = useState("");
@@ -41,6 +42,7 @@ function Paymentdetails() {
         //     amount: amount
         // }
         // await addUser(pay_det);
+        toast.success("Payment Successful");
         navigate("/");
     }
 
@@ -302,4 +304,4 @@ function Paymentdetails() {
     )
 }
 
-export default Paymentdetails;
+export default PaymentPage;
