@@ -5,12 +5,13 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import {getOrders, postOrder} from "../service/api"
+import { DelSearchDetails, selectAllDetails } from '../features/userSlice';
 
 
-
-function Modal({ setModalIsOpen,name }) {
+function Modal({ setModalIsOpen,employee,pincode}) {
     
     const user=useSelector(state=> state.user.user);
+    const search = useSelector(selectAllDetails);
     let navigate = useNavigate();
     const [time, setDate] = useState((new Date()));
     
@@ -37,7 +38,7 @@ function Modal({ setModalIsOpen,name }) {
 
 
     const Orders = async()=>{
-        const d = await getOrders(name);
+        const d = await getOrders(employee.username);
         console.log(d.data)
         setOrder(d.data);
          
@@ -53,10 +54,7 @@ function Modal({ setModalIsOpen,name }) {
         // console.log(filledSlots)
     }
 
-    // async function setOrderAndSlots(){
-    //     await Orders(); 
-    //     filledSlotsConfig();
-    // }
+    
     useEffect(()=>{
         Orders()
     },[])
@@ -67,25 +65,21 @@ function Modal({ setModalIsOpen,name }) {
 
     
 
-    // useEffect(() => {
-    //     let d = new Date();
-    //     if (e.value <= d.getHours()) {
-    //         add('disable');
-    //     }
-    // }, []
 
     const hireHandler = async() => {
         // console.log(user)
         const obj={
                 customer: user.username,
-                employee: name,
+                employee: employee.username,
+                profession: employee.skills,
+                pincode: pincode,
                 date: `${new Date()}`,
                 timeslot: `${slotSelected}:00-${Number(slotSelected)+2}:00`,
                 status: "pending"
         }
       
-    //    console.log(obj);
-    await postOrder(obj);
+  
+        await postOrder(obj);
         navigate('/payment')
     }
 

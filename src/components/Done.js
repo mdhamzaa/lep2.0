@@ -6,7 +6,25 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import {MdFileDownloadDone} from 'react-icons/md';
+
+import { getCompletedCustomerOrders } from '../service/api';
+import { useEffect,useState } from 'react';
+import { useSelector } from 'react-redux';
+
+
 export default function Done() {
+  const user=useSelector(state=> state.user.user);
+  const [completedOrders, setcompletedOrders] = useState([]);
+
+  async function completedOrdesrsConfig(){
+    const res=await getCompletedCustomerOrders(user.username);
+    setcompletedOrders(res.data);
+  }
+
+  useEffect(() => {
+   completedOrdesrsConfig();
+  }, [])
+  
   return (
     <>
    <div style={{display:'flex',gap:'1vw',flexWrap:'wrap'}}>
@@ -47,7 +65,7 @@ export default function Done() {
    />
    <CardContent>
      <Typography gutterBottom variant="h5" component="div">
-       Carpenter
+       
      </Typography>
      <Typography variant="body2" color="text.secondary">
      Needed a Carpenter for House interiors

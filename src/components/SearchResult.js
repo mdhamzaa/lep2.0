@@ -27,7 +27,7 @@ function SearchResult(props) {
                     {/* <button className="bookBtn">Hire</button> */}
                     <button onClick={() => {
                          props.setModalIsOpen(true)
-                         props.setCurrEmployee(props.data.username)
+                         props.setCurrEmployee(props.data)
                          }} className="bookBtn">Hire</button>
 
                 </div>

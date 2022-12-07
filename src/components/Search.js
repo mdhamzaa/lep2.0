@@ -20,11 +20,14 @@ function Search(props) {
     const [user, setUser] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const [currEmployee, setCurrEmployee] = useState('')
+    // const [currPincode,setCurrPincode]= useState('');
     const search = useSelector(selectAllDetails);
+    // console.log(search.pincode)
     const dispatch = useDispatch();
     useEffect(() => {
         if (search) {
             setPincode(search.pincode)
+            
             setSkill(search.skill)
             seachhandlers(search.pincode, search.skill);
             dispatch(DelSearchDetails());
@@ -98,7 +101,7 @@ function Search(props) {
             </div>
 
             <div id="ModelContair">
-                {modalIsOpen && <Modal setModalIsOpen={setModalIsOpen} name = {currEmployee} />}
+                {modalIsOpen && <Modal setModalIsOpen={setModalIsOpen} employee= {currEmployee} pincode={pincode} />}
             </div>
 
 

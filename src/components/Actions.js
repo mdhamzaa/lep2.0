@@ -22,7 +22,7 @@ const [actions, setActions] = React.useState([])
     }, [])
 
   return (
-        <div >
+        <div style={{display:"flex",flexDirection:"row",gap:"2vw",flexWrap:"wrap",alignItems:"center"}}>
            {actions.map((item) => (
                   <>
                     <div>
@@ -35,9 +35,9 @@ const [actions, setActions] = React.useState([])
                        Email: {item.Email}
                       </Typography>
                       <Typography variant="h6" color="text.primary">
-                        Ph no: {item.Phone}
+                        Subject: {item.Subject}
                       </Typography>
-                      <Typography  variant="h7" color="text.primary" style={{display:'flex',gap:'1vw',flexWrap:'wrap',width:'18vw'}}>
+                      <Typography  variant="h7" color="text.primary" style={{display:'flex',gap:'1vw',flexWrap:'wrap',width:'22vw',height:'12vh'}}>
                        {
                         item.Message
                        }

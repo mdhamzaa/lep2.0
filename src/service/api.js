@@ -14,11 +14,28 @@ export const getOrders = async (username) => {
     return await axios.get(`http://127.0.0.1:3003/order?employee=${username}`);
 }
 
+export const getPendingCustomerOrders= async(customer)=>{
+    return await axios.get(`http://127.0.0.1:3003/order?customer=${customer}&status=pending`)
+}
+
+export const getCompletedCustomerOrders= async(customer)=>{
+    return await axios.get(`http://127.0.0.1:3003/order?customer=${customer}&status=completed`)
+}
+
 export const postOrder = async (data)=>{
     return await axios.post("http://127.0.0.1:3003/order",data);
 }
 
-
+export const putCompletedOrder= async(id)=>{
+    const res=await axios.get(`http://127.0.0.1:3003/order/${id}`);
+    const order=res.data;
+    console.log(order);
+    const newOrder={
+        ...order,
+        status: "completed"
+    }
+    return await axios.put(`http://127.0.0.1:3003/order/${id}`,newOrder);
+}
 
 export const getSearch = async (pincode, skills) => {
     if (skills) {
