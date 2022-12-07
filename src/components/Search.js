@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import '../App.css';
-import profile from '../Images/dummyImg.png'
-import searchImg from '../Images/search.svg'
+// import profile from '../Images/dummyImg.png'
+// import searchImg from '../Images/search.svg'
 import { getSearch } from "../service/api";
 import SearchResult from './SearchResult';
 import noData from '../Images/noDataImg.png'

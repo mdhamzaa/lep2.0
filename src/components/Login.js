@@ -2,12 +2,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { fetchUsers } from "../features/userSlice";
 import loginImg from '../Images/login.svg'
 import { getOrders, getUsers } from "../service/api";
 import { SetLogin } from "../features/userSlice";
 import { toast } from "react-toastify";
-import bcrypt from 'bcryptjs';
+import bcrypt from "bcryptjs-react";
 
 
 
