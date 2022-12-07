@@ -12,6 +12,7 @@
       "pincode": "517541",
       "phone": "07976976909",
       "password": "sdfggfdfsd",
+      "pay": 600,
       "id": 1
     },
     {
@@ -25,6 +26,7 @@
       "dob": "2022-10-20",
       "pincode": "517541",
       "phone": "07976976909",
+      "pay": 600,
       "password": "sdfggfdfsd",
       "id": 2
     },
@@ -37,35 +39,12 @@
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Male",
       "dob": "2022-10-12",
-      "pincode": [
-        "517541",
-        "517541",
-        "517541"
-      ],
+      "pay": 600,
+      "pincode": ["517541", "517541", "517541"],
       "exp": "1 year",
       "phone": "07976976909",
       "password": "234343",
       "id": 3
-    },
-    {
-      "username": "hamzahadis2002@gmail.com",
-      "email": "hamzahadis2002@gmail.com",
-      "fname": "HAMZA",
-      "lname": "KHAN",
-      "level": "Employee",
-      "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
-      "gender": "Male",
-      "dob": "",
-      "pincode": [
-        "517541",
-        "517543",
-        "517541"
-      ],
-      "skills": "3243",
-      "exp": "2343",
-      "phone": "07976976909",
-      "password": "2343",
-      "id": 4
     },
     {
       "username": "ABB",
@@ -76,37 +55,15 @@
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Male",
       "dob": "",
-      "pincode": [
-        "517541",
-        "517541",
-        "517541"
-      ],
+      "pincode": ["517541", "517541", "517541"],
       "skills": "1212",
       "exp": "123",
       "phone": "07976976909",
       "password": "123232",
+      "pay": 600,
       "id": 5
     },
-    {
-      "username": "hamzahadis2002@gmail.com",
-      "email": "hamzahadis2002@gmail.com",
-      "fname": "HAMZA",
-      "lname": "KHAN",
-      "level": "Employee",
-      "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
-      "gender": "Male",
-      "dob": "",
-      "pincode": [
-        "517541",
-        "517541",
-        "517541"
-      ],
-      "skills": "plmmmmer",
-      "exp": "",
-      "phone": "07976976909",
-      "password": "",
-      "id": 6
-    },
+
     {
       "username": "ABC",
       "email": "hamzahadis2002@gmail.com",
@@ -116,15 +73,12 @@
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Female",
       "dob": "",
-      "pincode": [
-        "517541",
-        "517541",
-        "517541"
-      ],
+      "pincode": ["517541", "517541", "517541"],
       "skills": "carpenter",
       "exp": "1 year",
       "phone": "07976976909",
       "password": "Hamza",
+      "pay": 600,
       "id": 7
     },
     {
@@ -136,14 +90,11 @@
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Female",
       "dob": "",
-      "pincode": [
-        "517541",
-        "517541",
-        "517541"
-      ],
+      "pincode": ["517541", "517541", "517541"],
       "skills": "carpenter",
       "exp": "1 year",
       "phone": "07976976909",
+      "pay": 600,
       "password": "Hamza",
       "id": 8
     },
@@ -156,14 +107,11 @@
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Female",
       "dob": "",
-      "pincode": [
-        "517541",
-        "517541",
-        "517541"
-      ],
+      "pincode": ["517541", "517541", "517541"],
       "skills": "carpenter",
       "exp": "1 year",
       "phone": "07976976909",
+      "pay": 600,
       "password": "Hamza",
       "id": 9
     },
@@ -176,15 +124,12 @@
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Female",
       "dob": "",
-      "pincode": [
-        "517541",
-        "517541",
-        "517541"
-      ],
+      "pincode": ["517541", "517541", "517541"],
       "skills": "carpenter",
       "exp": "1 year",
       "phone": "07976976909",
       "password": "Hamza",
+      "pay": 600,
       "id": 10
     },
     {
@@ -196,16 +141,13 @@
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Male",
       "dob": "1984-01-17",
-      "pincode": [
-        "517541",
-        "517541",
-        "517541"
-      ],
+      "pincode": ["517541", "517541", "517541"],
       "skills": "plumber",
       "exp": "1 year",
       "phone": "7976976909",
       "password": "hamza1234",
       "confirmPassword": "hamza1234",
+      "pay": 600,
       "id": 11
     },
     {
@@ -217,27 +159,14 @@
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Male",
       "dob": "2000-01-30",
-      "pincode": [
-        "517541",
-        "",
-        ""
-      ],
+      "pincode": ["517541", "", ""],
       "skills": "plumber",
       "exp": "1 year",
       "phone": "7976976909",
       "password": "hamza1234",
+      "pay": 600,
       "confirmPassword": "hamza1234",
       "id": 12
-    },
-    {
-      "name": "",
-      "nameonc": "",
-      "cardno": "",
-      "cvc": "",
-      "expmonth": "",
-      "expyear": "",
-      "amount": "",
-      "id": 13
     },
     {
       "username": "asdf",
@@ -248,15 +177,12 @@
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Male",
       "dob": "2000-01-12",
-      "pincode": [
-        "517541",
-        "234343",
-        "234344"
-      ],
+      "pincode": ["517541", "234343", "234344"],
       "skills": "plumber",
       "exp": "1 year",
       "phone": "7976976909",
       "password": "asdf12345",
+      "pay": 600,
       "confirmPassword": "asdf12345",
       "id": 14
     },
@@ -272,6 +198,7 @@
       "pincode": "517541",
       "phone": "7976976909",
       "password": "asdf1234",
+      "pay": 600,
       "confirmPassword": "asdf1234",
       "id": 15
     },
@@ -286,6 +213,7 @@
       "dob": "2002-01-01",
       "pincode": "517541",
       "phone": "7976976909",
+      "pay": 600,
       "password": "asdfasdf",
       "confirmPassword": "asdfasdf",
       "id": 16
@@ -299,14 +227,11 @@
       "address": "IIIT SRI CITY BOYS HOSTEL BH1  630 ,GNAN MARG",
       "gender": "Male",
       "dob": "2000-01-10",
-      "pincode": [
-        "517541",
-        "517541",
-        "517541"
-      ],
+      "pincode": ["517541", "517541", "517541"],
       "skills": "plumber",
       "exp": "1 year",
       "phone": "7976976909",
+      "pay": 600,
       "password": "$2a$10$UG2XElg74iMnQOgZs1doT.j7r3MowvOTGlEua6m5oErcr3ldYJaEu",
       "confirmPassword": "asdfasdf",
       "id": 17
@@ -322,6 +247,7 @@
       "dob": "2001-01-04",
       "pincode": "517541",
       "phone": "7976976909",
+      "pay": 600,
       "password": "$2a$10$KiK49wjM9NiGZyFB/3qRvOUJAMuuihs2QPLAS/DyjwxkSBcA9b9Y6",
       "confirmPassword": "$2a$10$KiK49wjM9NiGZyFB/3qRvOUJAMuuihs2QPLAS/DyjwxkSBcA9b9Y6",
       "id": 18
@@ -337,6 +263,7 @@
       "dob": "1998-01-04",
       "pincode": "517541",
       "phone": "7976976909",
+      "pay": 600,
       "password": "$2a$10$7dKnAnOlrOTNzj7oEV2rf.erdmsHapvPaG.wJ9u4hivDIoHh2z7GG",
       "confirmPassword": "$2a$10$7dKnAnOlrOTNzj7oEV2rf.erdmsHapvPaG.wJ9u4hivDIoHh2z7GG",
       "id": 20
@@ -352,6 +279,7 @@
       "dob": "1998-01-04",
       "pincode": "517541",
       "phone": "7976976909",
+      "pay": 600,
       "password": "$2a$10$7dKnAnOlrOTNzj7oEV2rf.erdmsHapvPaG.wJ9u4hivDIoHh2z7GG",
       "confirmPassword": "$2a$10$7dKnAnOlrOTNzj7oEV2rf.erdmsHapvPaG.wJ9u4hivDIoHh2z7GG",
       "id": 21
@@ -367,6 +295,7 @@
       "dob": "2000-02-02",
       "pincode": "400611",
       "phone": "4534534533",
+      "pay": 600,
       "password": "$2a$10$7bPP.bTgpFYmKEo8rw7.suK5ALJdQDJeGdyGI12aajhoPijZtDnDW",
       "confirmPassword": "$2a$10$7bPP.bTgpFYmKEo8rw7.suK5ALJdQDJeGdyGI12aajhoPijZtDnDW",
       "id": 22

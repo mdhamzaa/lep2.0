@@ -10,7 +10,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Tapestry&display=swap");
 
-:root{
+:root {
   --success: rgb(88, 243, 85);
   --filled-bg: rgba(255, 96, 96, 0.929);
   --filled-border: rgba(255, 35, 35, 0.929);
@@ -18,7 +18,7 @@
 
 #navbar {
   position: fixed;
-  width: 100%;
+  width: 100vw;
   height: 5.5vw;
   z-index: 1000;
   top: 0;
@@ -167,7 +167,7 @@
 }
 
 #searchResults {
-  width: 100%;
+  width: 100vw;
   /* min-height: 100vh; */
   height: fit-content;
   display: flex;
@@ -339,7 +339,7 @@
 }
 
 #searchHead {
-  width: 100%;
+  width: 100vw;
   height: fit-content;
   padding: 2vw;
   border-top: 1px solid rgb(212, 212, 212);
@@ -397,7 +397,7 @@
 #searchImgBox {
   position: absolute;
   top: 0vw;
-  width: 102vw;
+  width: 100vw;
   height: 22.5vw;
   overflow: hidden;
   background: url(./Images/searchBg.jpg);
@@ -472,7 +472,10 @@
   justify-content: center;
   align-items: center;
 }
-.slot,.slot-disabled,.selected-slot,.slot-filled{
+.slot,
+.slot-disabled,
+.selected-slot,
+.slot-filled {
   font-size: 1.5vw;
   border-radius: 5px;
   border: 1px solid #0d84ec;
@@ -488,26 +491,25 @@
   transition-duration: 0.1s;
   --selected: 0;
 }
-.slot-disabled{
+.slot-disabled {
   background-color: rgb(203, 203, 203);
   border: 1.5px solid #a1a1a1;
   pointer-events: none;
   color: whitesmoke;
 }
-.slot-filled{
+.slot-filled {
   background-color: var(--filled-bg);
   border: 1.5px solid var(--filled-border);
   pointer-events: none;
   color: whitesmoke;
-  
 }
 .slot:hover {
   background-color: rgb(73, 167, 255);
   color: #ffffff;
 }
 
-
-.selected-slot,.selected-slot:hover{
+.selected-slot,
+.selected-slot:hover {
   background-color: var(--success);
   color: whitesmoke;
   border: 1.5px solid rgb(5, 149, 0);
@@ -542,13 +544,12 @@
   background-color: rgb(220, 220, 220);
 }
 
-#modalBtns{
+#modalBtns {
   display: flex;
   width: 100%;
   height: fit-content;
   gap: 2vmax;
   justify-content: center;
-  
 }
 
 /* @keyframes rotate{
@@ -587,30 +588,26 @@
   box-shadow: 0 0 10px #008aff;
 }
 
-
-
-@media screen and (max-width:768px){
-  #searchHead{
+@media screen and (max-width: 768px) {
+  #searchHead {
     padding: 30px;
   }
-  #searchResults h3{
-  font-size: 80%;
+  #searchResults h3 {
+    font-size: 80%;
   }
-  #filterHead{
+  #filterHead {
     font-size: 55%;
   }
-  .ques{
-    font-size: 110%;
-   
-  }
-  .ans{
+  .ques {
     font-size: 110%;
   }
-  .userName{
+  .ans {
+    font-size: 110%;
+  }
+  .userName {
     font-size: 1.2rem;
-   
   }
-  .profession{
+  .profession {
     font-size: 1rem;
   }
 }

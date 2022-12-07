@@ -1,18 +1,18 @@
 .AboutBody {
-    background: #eee;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    font-family: Arial, Helvetica, sans-serif;
-    min-height: 100vh;
-    flex-direction: column;
-    margin: auto;
-    gap:2.5vh;
- }
- .CardContainer{
-    display: flex;
-    flex-direction: row;
- }
+  background: #eee;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: auto;
+  gap: 2.5vh;
+}
+.CardContainer {
+  display: flex;
+  flex-direction: row;
+}
 /* .Head{
     text-align: center;
     font-size: large;
@@ -21,143 +21,145 @@
     text-decoration: underline;
 } */
 .Head {
-    margin-top: 50px;
-    font-family: "Lobster", cursive;
-    letter-spacing: 2px;
-    word-spacing: 4px;
-    font-size: 3vw;
-    cursor: pointer;
-    position: relative;
-  }
-  
+  margin-top: 50px;
+  font-family: "Lobster", cursive;
+  letter-spacing: 2px;
+  word-spacing: 4px;
+  font-size: 3vw;
+  cursor: pointer;
+  position: relative;
+}
+
 .Head::before {
-    content: "";
-    position: absolute;
-    top: -5px;
-    height: 5px;
-    width: 0px;
-    right: 0%;
-    background-color: rgb(0, 0, 0);
-    transition-property: all;
-    transition-duration: 0.3s;
-    transition-timing-function: linear;
-    z-index: 10;
-  }
-  
+  content: "";
+  position: absolute;
+  top: -5px;
+  height: 5px;
+  width: 0px;
+  right: 0%;
+  background-color: rgb(0, 0, 0);
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: linear;
+  z-index: 10;
+}
+
 .Head::after {
-    content: "";
-    position: absolute;
-    bottom: -5px;
-    height: 5px;
-    width: 0px;
-    left: 0%;
-    background-color: rgb(0, 0, 0);
-    transition-property: all;
-    transition-duration: 0.3s;
-    transition-timing-function: linear;
-  }
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  height: 5px;
+  width: 0px;
+  left: 0%;
+  background-color: rgb(0, 0, 0);
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: linear;
+}
 
 .Head:hover:after {
-    /* text-decoration: underline; */
-    width: 100%;
+  /* text-decoration: underline; */
+  width: 100%;
 }
 .Head:hover:before {
-    /* text-decoration: underline; */
-    width: 100%;
-  }
-.InnerCard{
-    padding: 20px;text-align: center;font-size:12px;  
+  /* text-decoration: underline; */
+  width: 100%;
 }
-.cardHead{
-    font-size: 2vmax;
-    margin-bottom: 1.5vmax;
+.InnerCard {
+  padding: 20px;
+  text-align: center;
+  font-size: 12px;
 }
- .AboutCard {
-    position: relative;
-    width: 200px;
-    height: 300px;
-    border-radius: 0px 10px 10px 0px;
-    background: #f4f4f4;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    perspective: 100em;
-    margin: 25px;
-    box-shadow: 30px 40px 40px rgba(0, 0, 0, 0.2);
- }
+.cardHead {
+  font-size: 2vmax;
+  margin-bottom: 1.5vmax;
+}
+.AboutCard {
+  position: relative;
+  width: 200px;
+  height: 300px;
+  border-radius: 0px 10px 10px 0px;
+  background: #f4f4f4;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  perspective: 100em;
+  margin: 25px;
+  box-shadow: 30px 40px 40px rgba(0, 0, 0, 0.2);
+}
 
- .CardCover {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    background: dodgerblue;
-    transform-style: preserve-3d;
-    transform-origin: left;
-    transition: transform 1s;
-    border-radius: 0px 10px 10px 0px;
-    font-size: 30px;
-    font-weight: bold;
- }
+.CardCover {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: dodgerblue;
+  transform-style: preserve-3d;
+  transform-origin: left;
+  transition: transform 1s;
+  border-radius: 0px 10px 10px 0px;
+  font-size: 30px;
+  font-weight: bold;
+}
 
- .AboutCard:hover .CardCover {
-    transform: rotateY(-120deg);
- }
+.AboutCard:hover .CardCover {
+  transform: rotateY(-120deg);
+}
 
- .AboutCard:hover .front_content {
-    transform: rotateY(-120deg);
-    /* z-index: 0; */
-    /* display: none; */
-    opacity: 0;
-    position: fixed;
-    top: 40px;
-    left: 40px;
- }
+.AboutCard:hover .front_content {
+  transform: rotateY(-120deg);
+  /* z-index: 0; */
+  /* display: none; */
+  opacity: 0;
+  position: fixed;
+  top: 40px;
+  left: 40px;
+}
 
- .CardCoverFront,
- .CardCoverBack {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    overflow: hidden;
- }
+.CardCoverFront,
+.CardCoverBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  overflow: hidden;
+}
 
- .CardCoverFront {
-    background: #f4f4f4;
-    text-align: center;
-    border-radius: 0px 10px 10px 0px;
-    color: #333;
- }
+.CardCoverFront {
+  background: #f4f4f4;
+  text-align: center;
+  border-radius: 0px 10px 10px 0px;
+  color: #333;
+}
 
- .CardCoverBack {
-    background: #ddd;
-    border-radius: 10px 0px 0px 10px;
-    transform: rotateY(180deg);
-    overflow: hidden;
- }
+.CardCoverBack {
+  background: #ddd;
+  border-radius: 10px 0px 0px 10px;
+  transform: rotateY(180deg);
+  overflow: hidden;
+}
 
- .Aboutimg {
-    width: 100px;
- }
+.Aboutimg {
+  width: 100px;
+}
 
- .front_content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 3;
-    transition: all 0.5s;
- }
+.front_content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  transition: all 0.5s;
+}
 
- .Aboutbtn {
-    border: 0px;
-    background: dodgerblue;
-    border-radius: 5px;
-    padding: 10px 20px;
-    color: #fff;
-    margin-top: 10px;
- }
+.Aboutbtn {
+  border: 0px;
+  background: dodgerblue;
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: #fff;
+  margin-top: 10px;
+}

@@ -19,16 +19,16 @@ function SearchResult(props) {
                 </div>
                 <div className="employeeDetails">
                     <span className="experience"><span className="ques">Experience : </span><span className="ans">{props.data.exp}</span></span>
-
+                    <span className="experience"><span className="ques">Pay : </span><span className="ans">{props.data.pay}</span></span>
                     <span className="pincodes"><span className="ques">Available in areas(Pincodes) : </span><span
                         className="ans">{`${props.data.pincode[0]},${props.data.pincode[1]},${props.data.pincode[2]}`}</span></span>
                 </div>
                 <div className="book">
                     {/* <button className="bookBtn">Hire</button> */}
                     <button onClick={() => {
-                         props.setModalIsOpen(true)
-                         props.setCurrEmployee(props.data)
-                         }} className="bookBtn">Hire</button>
+                        props.setModalIsOpen(true)
+                        props.setCurrEmployee(props.data)
+                    }} className="bookBtn">Hire</button>
 
                 </div>
             </div>

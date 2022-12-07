@@ -15,7 +15,9 @@ export default function AboutUs() {
                     <div className="InnerCard" >
                         <h1 className="cardHead">Vision</h1>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultrices in iaculis nunc sed augue.
+                            LOCAL EMPLOYMENT PORTAL (LEP) is all about providing an online platform for local
+                            jobs such as taylors, carpenters, cleaners, labor, plumbers, electricians and
+                            many.
                         </p>
                         <button className="Aboutbtn">Go to Home</button>
                     </div>
@@ -34,7 +36,11 @@ export default function AboutUs() {
                     <div className="InnerCard" >
                         <h1 className="cardHead">Mission</h1>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultrices in iaculis nunc sed augue.
+                            our project
+                            local employment portal which is based on hiring people of user interest. Users
+                            can hire a person for some kind of manual work in a nearby area i.e., carpenter,
+                            Electrician, labor work, taylor etc..,
+
                         </p>
                         <button className="Aboutbtn">Go to Home</button>
                     </div>
@@ -53,7 +59,12 @@ export default function AboutUs() {
                     <div className="InnerCard" >
                         <h1 className="cardHead">Lep Team</h1>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ultrices in iaculis nunc sed augue.
+                            • T. ANKA CHANDRAHAS
+                            • MOHD HAMZA
+                            • K.AKHIL TEJ
+                            • WARISH
+                            • YASH TULSANI
+
                         </p>
                         <button className="Aboutbtn">Go to Home</button>
                     </div>
