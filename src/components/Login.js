@@ -123,7 +123,7 @@ function Login() {
 
 
 
-        <div className=" bg-slate-200" style={{ position: "position", top: "6vw", padding: "6vw 0", justifyContent: "center", alignItem: "center" }}>
+        <div className="h-screen bg-slate-200" style={{ position: "position", top: "6vw", padding: "6vw 0", justifyContent: "center", alignItem: "center" }}>
             <div className="mt-20 lg:flex justify-evenly sm:block">
                 <div className="w-1/2">
                     <img src={loginImg} className="h-full" />
