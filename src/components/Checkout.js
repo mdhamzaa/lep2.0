@@ -2,7 +2,7 @@ import { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 
 import CardIcon from "../Images/credit-card.svg";
-import ProductImage from "../Images/card_pic.png";
+import ProductImage from "../Images/axiscard.png";
 
 import "../CSS/Checkout.css"
 
@@ -10,7 +10,7 @@ let stripePromise;
 
 const getStripe = () => {
   if (!stripePromise) {
-    stripePromise = loadStripe("pk_test_51MC7CxSIQ8OHUQZzy030DcD6bkHE9vqmu36vP7SNRHj9qHcMGd4yF8YCXaarjhZBjv2Jm1Rt8i2AkzTc9OogVU4g00UpM6nKGx");
+    stripePromise = loadStripe("pk_test_51MAu9jSHqCPqJqeTeyq2JrGkkj1KBLUI6ZZK2xUlUNoEdZfaVjC3HOPWLr07QJcNqKMQtF8Lz8bZLY5uJWd8Jkev00Msz1z1nu");
   }
 
   return stripePromise;
@@ -20,7 +20,7 @@ const Checkout = () => {
   const [stripeError, setStripeError] = useState(null);
   const [isLoading, setLoading] = useState(false);
   const item = {
-    price: "price_1MC7YwSIQ8OHUQZzzHLGZK6R",
+    price: "price_1MCXFfSHqCPqJqeTbkxRMKlp",
     quantity: 1
   };
 
@@ -47,31 +47,35 @@ const Checkout = () => {
 
   return (
     <div className="checkout">
-      <h1>your booking price</h1>
-      <p className="checkout-title">proceed for the checkout</p>
-      <p className="checkout-description">
-       you have booked a carpenter
-      </p>
-      <h1 className="checkout-price">$500</h1>
-      <img
-        className="checkout-product-image"
-        src={ProductImage}
-        alt="Product"
-      />
-      <button
-        className="checkout-button"
-        onClick={redirectToCheckout}
-        // disabled={isLoading}
-      >
-        <div className="grey-circle">
-          <div className="purple-circle">
-            <img className="icon" src={CardIcon} alt="credit-card-icon" />
+      <div className="CheckoutContainer">
+        <h1 className="CardHead">Your Booking Price</h1>
+        <p className="checkout-title CardHead">Proceed Ror The Checkout Form</p>
+        <p className="checkout-description CardHead">
+          You Are One Step Away
+        </p>
+        <h1 className="checkout-price">Rs.600</h1>
+        <img
+          className="checkout-product-image"
+          src={ProductImage}
+          alt="Product"
+        />
+        <button
+          className="w-30 mt-6 text-white bg-red-900 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-8 py-2.5 text-center "
+          onClick={redirectToCheckout}
+          // disabled={isLoading}
+        >
+              
+                               
+          {/* <div className="grey-circle">
+            <div className="purple-circle">
+              <img className="icon" src={CardIcon} alt="credit-card-icon" />
+            </div>
+          </div> */}
+          <div className="text-container">
+            <p className="text">{isLoading ? "Loading..." : "Book Now"}</p>
           </div>
-        </div>
-        <div className="text-container">
-          <p className="text">{isLoading ? "Loading..." : "Buy"}</p>
-        </div>
-      </button>
+        </button>
+      </div>
     </div>
   );
 };

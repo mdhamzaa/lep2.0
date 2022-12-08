@@ -116,7 +116,7 @@ function Modal({ setModalIsOpen, employee, pincode }) {
                         let startTime = e;
                         let endTime = startTime + 2;
                         let currSlot = `${startTime}:00-${endTime}:00`
-                        if (startTime > hour + 10) {
+                        if (startTime > hour) {
                             if (filledSlots.has(currSlot)) {
                                 return <button className="slot-filled" value={startTime} key={startTime} onClick={selectSlot}>{currSlot}</button>
                             }

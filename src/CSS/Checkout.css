@@ -4,7 +4,30 @@ code {
   }
   
   .checkout {
-    padding-top: 10px;
+    padding: 50px;
+    padding-top:106px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .CheckoutContainer{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 30px;
+    margin: 40px;
+    box-shadow: 0px 0px 5px black;
+    border: 1px solid black;
+    width: fit-content;
+  }
+  .CardHead{
+    margin: auto;
+    text-align: center;
+    font-size: 32px;
+    font-weight: bolder;
   }
   
   .checkout-title {
@@ -20,12 +43,63 @@ code {
   .checkout-price {
     font-style: normal;
     font-weight: 600;
-    font-size: 60px;
+    font-size: 50px;
     line-height: 95px;
     margin: 0;
     color: rgba(0, 0, 0, 1);
   }
-  
+
+  /* cancel succcess css  */
+
+  .CoverContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    justify-self: center;
+    width: 100vw;
+    padding: 50px;
+    padding-top: 106px;
+  }
+.ThankYouCancel{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    margin: 40px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    right: 9%;
+}
+.ContaintCancel{
+ 
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  padding: 30px;
+  margin: 40px;
+  box-shadow: 0px 0px 5px black;
+  border: 1px solid black;
+  width: 40%;
+}
+.ThankYouSuccess{
+ 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  margin: 40px;
+  width: 80%;
+  height: 60%;
+  position: relative;
+  right: 9%;
+}
   .checkout-description {
     font-style: normal;
     font-weight: 500;
@@ -38,7 +112,8 @@ code {
   }
   
   .checkout-product-image {
-    width: 400px;
+    width: 340px;
+    height: 180px;
   }
   
   .checkout-button {
@@ -55,7 +130,7 @@ code {
     width: 169px;
     cursor: pointer;
     margin: 0 auto;
-    margin-top: 20px;
+    margin-top: 30px;
   
     transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
@@ -116,3 +191,4 @@ code {
     color: rgba(0, 0, 0, 1);
     margin: 0;
   }
+  

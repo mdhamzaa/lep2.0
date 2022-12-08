@@ -83,9 +83,9 @@ function App() {
               <Route path="Booking" element={<Bookings />} />
               <Route path="Logout" element={<></>} />
             </Route>
-            <Route path="/payment" element={<PaymentPage/>} />
-            <Route path="/success" element={<Success/>} />
-            <Route path="/cancel" element={<Cancel/>} />
+            <Route path="/payment" element={<Checkout />} />
+            <Route path="/success" element={<Success />} />
+            <Route path="/cancel" element={<Cancel />} />
             <Route path="*" element={<NoPage />} />
           </Routes>
         }

@@ -1,10 +1,15 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import '../CSS/AboutUs.css'
 import Mission from '../Images/mission.png'
 import Team from '../Images/team.png'
 import Vision from '../Images/vision.png'
 
 export default function AboutUs() {
+    const navigate = useNavigate();
+    const clickHandler = () => {
+        navigate("/")
+    }
     return (
         <div className='AboutBody'>
             <div className="AboutHead">
@@ -19,7 +24,7 @@ export default function AboutUs() {
                             jobs such as taylors, carpenters, cleaners, labor, plumbers, electricians and
                             many.
                         </p>
-                        <button className="Aboutbtn">Go to Home</button>
+                        <button className="Aboutbtn" onClick={clickHandler}>Go to Home</button>
                     </div>
                     <div className="CardCover">
                         <div className="CardCoverFront">
@@ -42,7 +47,7 @@ export default function AboutUs() {
                             Electrician, labor work, taylor etc..,
 
                         </p>
-                        <button className="Aboutbtn">Go to Home</button>
+                        <button className="Aboutbtn" onClick={clickHandler}>Go to Home</button>
                     </div>
                     <div className="CardCover">
                         <div className="CardCoverFront">
@@ -66,7 +71,7 @@ export default function AboutUs() {
                             • YASH TULSANI
 
                         </p>
-                        <button className="Aboutbtn">Go to Home</button>
+                        <button className="Aboutbtn" onClick={clickHandler}>Go to Home</button>
                     </div>
                     <div className="CardCover">
                         <div className="CardCoverFront">
