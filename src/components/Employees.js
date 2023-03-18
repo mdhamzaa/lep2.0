@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import {url} from '../service/api'
+import { url } from '../service/api'
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useState } from 'react';
@@ -31,12 +31,12 @@ const columns = [
     renderCell: (params) => {
       return (
         <div>
-           <Button variant="contained" onClick={()=>{
-              axios.delete(`${url}/${params.row.id}`).then((response)=>{
-                console.log(response.data);
-                 window.location.reload();
-              })
-           }}>Delete</Button>
+          <Button variant="contained" onClick={() => {
+            axios.delete(`${url}/${params.row.id}`).then((response) => {
+              console.log(response.data);
+              window.location.reload();
+            })
+          }}>Delete</Button>
         </div>
 
       );
@@ -49,32 +49,32 @@ export default function Employees() {
 
 
   async function getdata() {
-    const data =await axios.get(`${url}?level=Employee`);
+    const data = await axios.get(`${url}?level=Employee`);
     setUsers(data.data);
   }
-  
 
 
- const [users,setUsers] = useState([]);
-useEffect(() => {
-  getdata();
-},[]);
- const pp=[];
 
- 
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    getdata();
+  }, []);
+  const pp = [];
+
+
   return (
     <>
-    <h1 style={{ fontWeight: 'bold' }} >Employees data</h1>
-    <br/>
-    <div style={{ height: 400, width: '90vw' }}>
-      <DataGrid
-        rows={users}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-        checkboxSelection
-      />
-    </div>
+      <h1 style={{ fontWeight: 'bold' }} >Employees data</h1>
+      <br />
+      <div style={{ height: 400, width: '86vw' }}>
+        <DataGrid
+          rows={users}
+          columns={columns}
+          pageSize={5}
+          rowsPerPageOptions={[5]}
+          checkboxSelection
+        />
+      </div>
     </>
   );
 }

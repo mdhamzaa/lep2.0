@@ -4,7 +4,6 @@ import "../CSS/home.css"
 import arrowImg from "../Images/arrow.svg"
 import searchImg from "../Images/search-svgrepo-com.svg"
 import allImages from '../Images/allBgImages'
-// import { getSearch } from '../service/api'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { SetSearchDetails } from "../features/userSlice";

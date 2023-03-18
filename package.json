@@ -70,5 +70,5 @@
   "browser": {
     "crypto": false
   },
-  "proxy": "http://127.0.0.1:3003"
+  "proxy": "http://localhost:5000/"
 }

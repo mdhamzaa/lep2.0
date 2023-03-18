@@ -5,58 +5,88 @@ import axios from 'axios';
 
 export const url = "http://127.0.0.1:3003/user";
 
-export const getallDetails = async (key, value) => {
+export const url2 = "http://localhost:5000";
 
-    return await axios.get(`${url}?${key}=${value}`);
-}
+
+
+
+
 
 export const getOrders = async (username) => {
-    return await axios.get(`http://127.0.0.1:3003/order?employee=${username}`);
+    return await axios.post('/api/orders/allorder', { username });
 }
 
-export const getPendingCustomerOrders= async(customer)=>{
-    return await axios.get(`http://127.0.0.1:3003/order?customer=${customer}&status=pending`)
+
+export const getPendingCustomerOrders = async (customer) => {
+    return await axios.post('/api/orders/orderbystatus', { customer, status: "pending" })
 }
 
-export const getCompletedCustomerOrders= async(customer)=>{
-    return await axios.get(`http://127.0.0.1:3003/order?customer=${customer}&status=completed`)
+export const getCompletedCustomerOrders = async (customer) => {
+    return await axios.post('/api/orders/orderbystatus', { customer, status: "completed" })
 }
 
-export const postOrder = async (data)=>{
-    return await axios.post("http://127.0.0.1:3003/order",data);
+export const postOrder = async (data) => {
+    return await axios.post("/api/orders/booking", data);
 }
 
-export const putCompletedOrder= async(id)=>{
-    const res=await axios.get(`http://127.0.0.1:3003/order/${id}`);
-    const order=res.data;
-    console.log(order);
-    const newOrder={
-        ...order,
-        status: "completed"
-    }
-    return await axios.put(`http://127.0.0.1:3003/order/${id}`,newOrder);
+export const putCompletedOrder = async (order) => {
+    return await axios.post("/api/orders/changestatus", order);
 }
+
 
 export const getSearch = async (pincode, skills) => {
-    if (skills) {
-        return await axios.get(`${url}?pincode_like=${pincode}&&skills=${skills}`);
-    } else {
-        return await axios.get(`${url}?pincode_like=${pincode}&&level=Employee`);
-    }
+
+    return await axios.post('/api/find/search', { pincode, skills });
+
 }
+
+
 
 export const getUsers = async (username) => {
 
-    return await axios.get(`${url}?username=${username}`);
+    return await axios.post(`/api/users/login`, { username });
 }
 
 
 
 export const addUser = async (user) => {
-    return await axios.post(url, user);
+    return await axios.post("/api/users/employee-registration", user);
 }
 
 export const urlA = "http://127.0.0.1:3003/actions";
 export const addAction = async (details) => {
     return await axios.post(urlA, details);
 }
+
+
+
+
+// export const postOrder = async (data) => {
+//     return await axios.post("http://127.0.0.1:3003/order", data);
+// }
+
+// export const getSearch = async (pincode, skills) => {
+//     if (skills) {
+//         return await axios.get(`${url}?pincode_like=${pincode}&&skills=${skills}`);
+//     } else {
+//         return await axios.get(`${url}?pincode_like=${pincode}&&level=Employee`);
+//     }
+// }
+
+// export const getUsers = async (username) => {
+
+//     return await axios.get(`${url}?username=${username}`);
+// }
+
+// export const getOrders = async (username) => {
+//     return await axios.get(`http://127.0.0.1:3003/order?employee=${username}`);
+// }
+
+
+// export const getPendingCustomerOrders = async (customer) => {
+//     return await axios.get(`http://127.0.0.1:3003/order?customer=${customer}&status=pending`)
+// }
+
+// export const getCompletedCustomerOrders = async (customer) => {
+//     return await axios.get(`http://127.0.0.1:3003/order?customer=${customer}&status=completed`)
+// }

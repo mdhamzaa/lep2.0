@@ -34,7 +34,8 @@ function RegisterEmployee() {
     const register = async () => {
         if (Object.keys(formErrors).length === 0) {
             const hashedpassword = bcrypt.hashSync(user.password, 10);
-            await addUser({ ...user, password: hashedpassword, confirmPassword: hashedpassword });
+            let newdata = await addUser({ ...user, password: hashedpassword, confirmPassword: hashedpassword });
+            console.log(newdata)
             toast.success("User Registered Successfully");
             navigate("/");
         }

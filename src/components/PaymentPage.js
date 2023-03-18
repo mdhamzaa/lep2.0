@@ -28,20 +28,7 @@ function PaymentPage() {
 
     const handleSubmit = async () => {
 
-        // console.log(name, nameonc,cardno,cvc,expmonth,expyear,amount);
-        // const pay_det = {
-        //     name : name,
-        //     nameonc : nameonc,
-        //     // address : address,
-        //     // dob : dob,
-        //     // gender: gender,
-        //     cardno: cardno,
-        //     cvc: cvc,
-        //     expmonth: expmonth,
-        //     expyear: expyear,
-        //     amount: amount
-        // }
-        // await addUser(pay_det);
+
         toast.success("Payment Successful");
         navigate("/");
     }
