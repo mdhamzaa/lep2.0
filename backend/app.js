@@ -3,6 +3,7 @@
 import userRoutes from "./Routes/userRoutes.js"
 import orderRoutes from "./Routes/orderRoutes.js"
 import searchRoutes from "./Routes/searchRoutes.js"
+import otherRoutes from "./Routes/otherRoutes.js"
 
 import path from 'path';
 import express from "express";
@@ -31,7 +32,8 @@ app.use(express.json());
 
 app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
-app.use('/api/find', searchRoutes)
+app.use('/api/find', searchRoutes);
+app.use('/api/other', otherRoutes)
 
 
 app.listen(5000, () => {

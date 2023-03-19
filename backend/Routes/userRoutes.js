@@ -34,39 +34,74 @@ router.route('/employee-registration').post(async (req, res) => {
     }
 
     if (obj1 == null && obj2 == null) {
-        try {
-            const registerEmployee = new Employee({
-                username,
-                level,
-                email,
-                fname,
-                lname,
-                gender,
-                dob,
-                address,
-                pincode,
-                phone,
-                skills,
-                exp,
-                password,
-                pay,
-                confirmPassword
-            })
+        if (level == Employee) {
+            try {
+                const registerEmployee = new Employee({
+                    username,
+                    level,
+                    email,
+                    fname,
+                    lname,
+                    gender,
+                    dob,
+                    address,
+                    pincode,
+                    phone,
+                    skills,
+                    exp,
+                    password,
+                    pay
+                })
 
-            console.log(registerEmployee);
+                console.log(registerEmployee);
 
-            const registered = await registerEmployee.save();
-            console.log(registered);
-            return res
-                .status(200)
-                .send({ message: "User created successfully", success: true })
+                const registered = await registerEmployee.save();
+                console.log(registered);
+                return res
+                    .status(200)
+                    .send({ message: "User created successfully", success: true })
+            }
+            catch (error) {
+                console.log(error)
+
+                return res
+                    .status(500)
+                    .send({ message: "Error creating user", success: false, error })
+            }
         }
-        catch (error) {
-            console.log(error)
+        else {
+            try {
+                const registerEmployer = new Employer({
+                    username,
+                    level,
+                    email,
+                    fname,
+                    lname,
+                    gender,
+                    dob,
+                    address,
+                    pincode,
+                    phone,
+                    password,
 
-            return res
-                .status(500)
-                .send({ message: "Error creating user", success: false, error })
+
+                })
+
+                console.log(registerEmployer);
+
+                const registered = await registerEmployer.save();
+                console.log(registered);
+                return res
+                    .status(200)
+                    .send({ message: "User created successfully", success: true })
+            }
+            catch (error) {
+                console.log(error)
+
+                return res
+                    .status(500)
+                    .send({ message: "Error creating user", success: false, error })
+            }
         }
 
     }
