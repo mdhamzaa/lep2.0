@@ -14,5 +14,7 @@ const connectDB = () => {
 
 }
 
+// this is also done bt akhil
+
 
 export default connectDB;
