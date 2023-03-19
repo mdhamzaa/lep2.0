@@ -14,5 +14,6 @@ const connectDB = () => {
 
 }
 
+// Practic commit added
 
 export default connectDB;
