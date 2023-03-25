@@ -54,7 +54,9 @@ router.route('/employee-registration').post(async (req, res) => {
                 skills,
                 exp,
                 password,
-                pay
+                pay,
+                verify: false,
+                otp: 9999999
 
             })
 

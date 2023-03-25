@@ -34,7 +34,6 @@ import Checkout from "./components/Checkout";
 import Success from "./components/Success";
 import Cancel from "./components/Cancel";
 import AboutUs from "./components/About";
-import EmailVerification from "./components/EmailVerification";
 
 function App() {
   const user = useSelector(selectAllUser);
