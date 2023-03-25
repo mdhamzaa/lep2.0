@@ -4,10 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { addUser } from "../service/api";
 import bcrypt from "bcryptjs-react";
 import { toast } from "react-toastify";
-
+import { verifyEmployee } from "../service/api";
 
 function RegisterEmployee() {
-
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("");
     const [level, setLevel] = useState("Employee");
@@ -29,23 +28,35 @@ function RegisterEmployee() {
     const [formErrors, setFormErrors] = useState({});
 
     const [user, setUser] = useState({});
+    const [verifyemail, setVerifyemail] = useState(false);
 
+
+
+ const getOtp = async () => {
+    let otp= prompt("Enter OTP");
+     return  otp;
+  }
 
     const register = async () => {
         if (Object.keys(formErrors).length === 0) {
             const hashedpassword = bcrypt.hashSync(user.password, 10);
             let newdata = await addUser({ ...user, password: hashedpassword, confirmPassword: hashedpassword });
-            console.log(newdata)
-            toast.success("User Registered Successfully");
-            navigate("/");
-        }
+            const otp = await getOtp();
+            verifyEmployee({ username:username, otp:otp}).then((res) => {
+               if (res.data.success === true) {
+                   toast.success("User Registered Successfully");
+                   navigate("/login");
+               } else {
+                   toast.error("Wrong OTP");
+               }
+           });
     }
+}
 
     useEffect(
         () => {
             register();
         }, [user]);
-
 
 
     const validate = (values) => {
@@ -158,15 +169,12 @@ function RegisterEmployee() {
             pay: pay,
             phone: phone,
             password: password,
-            confirmPassword: confirmPassword
-
+            confirmPassword: confirmPassword,
+            otp:999999,
+            verify:false
         }
-
         setUser(user);
         setFormErrors(validate(user));
-
-
-
     }
     return (
 
