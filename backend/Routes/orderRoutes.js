@@ -7,6 +7,79 @@ import Booking from '../public/models/order.js';
 
 const router = express.Router();
 
+/**
+ * @swagger
+ *  components:
+ *      schemas:
+ *          Booking:
+ *                  type: object
+ *                  properties:
+ *                      employee:
+ *                          type: string
+ *                      customer:
+ *                          type: string
+ *                      date:
+ *                          type: string
+ *                          format: date
+ *                      timeslot:
+ *                          type: string
+ *                      status:
+ *                          type: string
+ *          Employee:
+ *                  type: object
+ *                  properties:
+ *                      username:
+ *                          type: string
+ *                      level:
+ *                          type: string
+ *                      email:
+ *                          type: string
+ *                      fname:
+ *                          type: string
+ *                      lname:
+ *                          type: string
+ *                      gender:
+ *                          type: string
+ *                      dob:
+ *                          type: string
+ *                      address:
+ *                          type: string
+ *                      pincode:
+ *                          type: array
+ *                      phone:
+ *                          type: number
+ *                      skills:
+ *                          type: string
+ *                      exp:
+ *                          type: string
+ *                      password:
+ *                          type: string
+ *                      confirmPassword:
+ *                          type: string
+ *                      pay:
+ *                          type: string
+ */
+
+/**
+ * @swagger
+ * /api/orders/booking:
+ *   post:
+ *      summary: To send booking details
+ *      tags: [Booking]
+ *      description: This api is to send booking details
+ *      requestBody:
+ *          required: true
+ *          content: 
+ *              application/json:
+ *                  schema:
+ *                      $ref: '#/components/schemas/Booking'
+ *                  
+ *      responses:
+ *          200:
+ *              description: Added successfully
+ * 
+ */
+
 router.route('/booking').post(async (req, res) => {
 
     const {
@@ -30,6 +103,33 @@ router.route('/booking').post(async (req, res) => {
         .send({ success: true })
 });
 
+/**
+ * @swagger
+ * /api/orders/allorder:
+ *   post:
+ *      summary: Retrieve all bookings of an employee
+ *      tags: [Booking]
+ *      description: This api is to retrieve all bookings of an employee
+ *      requestBody:
+ *          required: true
+ *          content: 
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          username:
+ *                              type: string
+ *                  
+ *      responses:
+ *          200:
+ *              description: Retrieved all booking of the empoyee
+ *              content:
+ *                  schema:
+ *                      type: array
+ *                      items:
+ *                          $ref: '#/components/schemas/Booking'
+ * 
+ */
 
 router.route('/allorder').post(async (req, res) => {
     console.log(req.body)
@@ -39,6 +139,38 @@ router.route('/allorder').post(async (req, res) => {
         .send(book)
 
 })
+
+/**
+ * @swagger
+ * /api/orders/changestatus:
+ *   post:
+ *      summary: Update booking status
+ *      tags: [Booking]
+ *      description: This api is to Update booking status
+ *      requestBody:
+ *          required: true
+ *          content: 
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          employee:
+ *                              type: string
+ *                          timeslot:
+ *                              type: string
+ *                  
+ *      responses:
+ *          200:
+ *              description: Updated booking status
+ *              content:
+ *                  schema:
+ *                      type: array
+ *                      items:
+ *                          $ref: '#/components/schemas/Booking'
+ *          404:
+ *              description: Booking not found
+ * 
+ */
 
 router.route('/changestatus').post(async (req, res) => {
     console.log(req.body)
@@ -58,6 +190,37 @@ router.route('/changestatus').post(async (req, res) => {
 
 })
 
+/**
+ * @swagger
+ * /api/orders/orderbystatus:
+ *   post:
+ *      summary: Get bookings by status and customer
+ *      tags: [Booking]
+ *      description: This api is to Get bookings by status and customer
+ *      requestBody:
+ *          required: true
+ *          content: 
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          customer:
+ *                              type: string
+ *                          status:
+ *                              type: string
+ *                  
+ *      responses:
+ *          200:
+ *              description: Fetched successfully
+ *              content:
+ *                  schema:
+ *                      type: array
+ *                      items:
+ *                          $ref: '#/components/schemas/Booking'
+ *          404:
+ *              description: Booking not found
+ * 
+ */
 
 router.route('/orderbystatus').post(async (req, res) => {
     // console.log(req.body)
@@ -67,6 +230,36 @@ router.route('/orderbystatus').post(async (req, res) => {
         .send(book)
 
 })
+
+/**
+ * @swagger
+ * /api/orders/getUser:
+ *   post:
+ *      summary: Get bookings by status and customer
+ *      tags: [Employee]
+ *      description: This api is to Get bookings by status and customer
+ *      requestBody:
+ *          required: true
+ *          content: 
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          id:
+ *                              type: string
+ *                  
+ *      responses:
+ *          200:
+ *              description: Fetched successfully
+ *              content:
+ *                  schema:
+ *                      type: array
+ *                      items:
+ *                          $ref: '#/components/schemas/Employee'
+ *          404:
+ *              description: Employee not found
+ * 
+ */
 
 router.route('/getUser').post(async (req, res) => {
 

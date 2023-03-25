@@ -14,6 +14,8 @@ import Employee from './public/models/employee.js';
 import Employer from './public/models/employer.js';
 import Booking from './public/models/order.js';
 import Admin from './public/models/admin.js';
+import swaggerJsdoc from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express";
 
 
 database();
@@ -35,6 +37,29 @@ app.use(cors());
 // This change is made by akhil
 
 // another change
+const options = {
+    definition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'LEP SWAGGER API',
+            version: '1.0.0'
+        },
+        servers: [
+            {
+                url: 'http://localhost:5001'
+            }
+        ]
+    },
+    apis: ['./Routes/*.js']
+}
+
+const swaggerSpecs = swaggerJsdoc(options)
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs))
+
+app.use('/api/users', userRoutes);
+app.use('/api/orders', orderRoutes);
+app.use('/api/find', searchRoutes);
+app.use('/api/other', otherRoutes)
 
 
 app.use('/api/users', userRoutes);

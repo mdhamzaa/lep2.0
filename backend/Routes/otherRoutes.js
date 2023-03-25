@@ -10,6 +10,58 @@ import Review from '../public/models/review.js'
 
 const router = express.Router();
 
+/**
+ * @swagger
+ *  components:
+ *      schemas:
+ *          review:
+ *                  type: object
+ *                  properties:
+ *                      name:
+ *                          type: string
+ *                      profession:
+ *                          type: string
+ *                      gender:
+ *                          type: string
+ *                      comment:
+ *                          type: string
+ *                      stars:
+ *                          type: number
+ *          query:
+ *                  type: object
+ *                  properties:
+ *                      FirstName:
+ *                          type: string
+ *                      Email:
+ *                          type: string
+ *                      Subject:
+ *                          type: string
+ *                      Message:
+ *                          type: string
+ *                      Status:
+ *                          type: string
+ *                  
+ */
+
+/**
+ * @swagger
+ * /api/other/allReview:
+ *  get:
+ *      summary: To get all the reviews
+ *      tags: [Review]
+ *      description: This api is to fetch data from reviews model from mongoDB
+ *      responses:
+ *          200:
+ *              description: This api is to fetch data from reviews model from mongoDB
+ *              content: 
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *                          items: 
+ *                              $ref: '#/components/schemas/review'
+ * 
+ */
+
 
 router.route('/allReview').get(async (req, res) => {
     console.log(req.body)
@@ -20,6 +72,24 @@ router.route('/allReview').get(async (req, res) => {
 
 });
 
+/**
+ * @swagger
+ * /api/other/allQuery:
+ *  get:
+ *      summary: To get all the queries
+ *      tags: [Query]
+ *      description: This api is to fetch data from query model from mongoDB
+ *      responses:
+ *          200:
+ *              description: This api is to fetch data from query model from mongoDB
+ *              content: 
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *                          items: 
+ *                              $ref: '#/components/schemas/query'
+ * 
+ */
 
 router.route('/allQuery').get(async (req, res) => {
 
@@ -29,6 +99,36 @@ router.route('/allQuery').get(async (req, res) => {
         .send(allQuery)
 
 });
+
+/**
+ * @swagger
+ * /api/other/query:
+ *  post:
+ *      summary: To send a query
+ *      tags: [Query]
+ *      description: This api is to send a query 
+ *      requestBody:
+ *          required: true
+ *          content: 
+ *              application/json:
+ *                  schema:
+ *                      $ref: '#/components/schemas/query'
+ *                  
+ *      responses:
+ *          200:
+ *              description: Added successfully
+ *              content:
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: object
+ *                              properties:
+ *                                  success:
+ *                                      type: boolean
+ *          400:
+ *              description: Bad request
+ * 
+ */
 
 router.route('/query').post(async (req, res) => {
 
