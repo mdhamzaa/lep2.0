@@ -46,7 +46,6 @@ function Search(props) {
         setUser(d.data);
         setIsSearch(true);
 
-
     }
     return (
         <>

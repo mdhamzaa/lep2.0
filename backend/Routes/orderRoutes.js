@@ -5,13 +5,7 @@ import Admin from '../public/models/admin.js';
 import Booking from '../public/models/order.js';
 
 
-
-
 const router = express.Router();
-
-
-
-
 
 router.route('/booking').post(async (req, res) => {
 
