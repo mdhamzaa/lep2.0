@@ -15,10 +15,10 @@ import Booking from './public/models/order.js';
 import Admin from './public/models/admin.js';
 
 
-
 database();
 
 const app = express();
+
 
 
 app.use(express.urlencoded({ extended: false }));

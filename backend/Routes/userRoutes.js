@@ -4,6 +4,11 @@ import Employer from '../public/models/employer.js';
 import Admin from '../public/models/admin.js';
 const router = express.Router();
 
+
+
+
+
+
 router.route('/employee-registration').post(async (req, res) => {
     // console.log(req.body)
     const {
@@ -34,7 +39,7 @@ router.route('/employee-registration').post(async (req, res) => {
     }
 
     if (obj1 == null && obj2 == null) {
-        if (level == Employee) {
+        if (level == 'Employee') {
             try {
                 const registerEmployee = new Employee({
                     username,
@@ -163,6 +168,118 @@ router.post("/login", async (req, res) => {
 
 
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+router.post("/employee-update", async (req, res) => {
+
+    const {
+        username,
+        level,
+        email,
+        fname,
+        lname,
+        gender,
+        dob,
+        address,
+        pincode,
+        phone,
+        skills,
+        exp,
+        password
+    } = req.body;
+
+    var newvalues = {
+        $set: {
+
+            fname,
+            lname,
+            gender,
+            dob,
+            address,
+            pincode,
+            phone,
+            skills,
+            exp,
+            password
+
+        }
+    };
+    const employee = await Employee.updateOne({ username: req.body.username }, newvalues);
+    return res
+        .status(200)
+        .send(employee)
+
+    // console.log(employee);
+
+
+})
+
+
+
+
+
+
+
+
+
+router.post("/employer-update", async (req, res) => {
+
+    const {
+        username,
+        level,
+        email,
+        fname,
+        lname,
+        gender,
+        dob,
+        address,
+        pincode,
+        phone,
+        password
+    } = req.body;
+
+    var newvalues = {
+        $set: {
+
+            fname,
+            lname,
+            gender,
+            dob,
+            address,
+            pincode,
+            phone,
+            password
+
+        }
+    };
+    const employer = await Employer.updateOne({ username: req.body.username }, newvalues);
+    return res
+        .status(200)
+        .send(employer)
+
+    // console.log(employee);
+
+
+})
+
+
+
 
 export default router;
 

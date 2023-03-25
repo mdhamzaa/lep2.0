@@ -53,6 +53,19 @@ export const addUser = async (user) => {
     return await axios.post("/api/users/employee-registration", user);
 }
 
+
+export const UpdateEmployee = async (user) => {
+    return await axios.post("/api/users/employee-update", user);
+}
+
+
+
+export const UpdateEmployer = async (user) => {
+    return await axios.post("/api/users/employer-update", user);
+}
+
+
+
 export const urlA = "http://127.0.0.1:3003/actions";
 export const addAction = async (details) => {
     console.log(details)

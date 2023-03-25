@@ -18,6 +18,9 @@ import Admin from "./components/Admin";
 import Analytics from "./components/Analytics";
 import Employees from "./components/Employees";
 import Employers from "./components/Employers";
+import UpdateEmployer from "./components/UpdateEmployee";
+import UpdateEmployee from "./components/UpdateEmployee";
+
 import Workhistory from "./components/Workhistory"
 import PaymentPage from "./components/PaymentPage";
 import RegistrationChoice from "./components/RegistrationChoice";
@@ -79,6 +82,8 @@ function App() {
             <Route path="/dashboard" element={<ProSidebarProvider> <Dashboard /> </ProSidebarProvider>} >
 
               <Route path="Profile" element={<Profile />} />
+              <Route path="UpdateEmployee" element={<UpdateEmployee />} />
+              <Route path="UpdateEmployer" element={<UpdateEmployer />} />
               <Route path="History" element={<History />} />
               <Route path="Booking" element={<Bookings />} />
               <Route path="Logout" element={<></>} />
