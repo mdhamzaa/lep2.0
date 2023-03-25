@@ -71,8 +71,8 @@
   font-size: 12px;
 }
 .cardHead {
-  font-size: 2vmax;
-  margin-bottom: 1.5vmax;
+  font-size: 30px;
+  font-weight: bold;
 }
 .AboutCard {
   position: relative;

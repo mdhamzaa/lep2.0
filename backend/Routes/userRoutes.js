@@ -3,14 +3,40 @@ import Employee from '../public/models/employee.js';
 import Employer from '../public/models/employer.js';
 import Admin from '../public/models/admin.js';
 import nodemailer from 'nodemailer';
+import multer from "multer";
 const router = express.Router();
 
 
 
+// multer 
+const storage = multer.diskStorage({
+    destination: function (req, file, callback) {
+        callback(null, "../shared/uploads/images");
+    },
+    filename: (req, file, callback) => {
+        callback(
+            null,
+            `${new Date().toISOString().replace(/:/g, "_")}-${file.originalname}`
+        );
+    }
+})
+
+const fileFilter = (req, file, callback) => {
+    if (
+        file.mimetype === "image/png" ||
+        file.mimetype === "image/jpg" ||
+        file.mimetype === "image/jpeg"
+    ) {
+        callback(null, true);
+    } else {
+        callback(null, false);
+    }
+};
+
+const upload = multer({ storage: storage, fileFilter: fileFilter })
 
 
-
-router.route('/employee-registration').post(async (req, res) => {
+router.post('/employee-registration', upload.single('pic'), async (req, res) =>{
     console.log(req.body)
     const {
         username,
@@ -37,6 +63,13 @@ router.route('/employee-registration').post(async (req, res) => {
             .status(200)
             .send({ message: "User already exists", success: false, obj1, obj2 })
     }
+    let pic = (req.file) ? "imageUpload".concat(req.file?.path
+        .toString()
+        .replace(/\\/g, "/")
+        .split("uploads")
+        .slice(1)
+        .join("")) : null
+
 
     if (obj1 == null && obj2 == null) {
         try {
@@ -53,6 +86,7 @@ router.route('/employee-registration').post(async (req, res) => {
                 phone,
                 skills,
                 exp,
+                pic,
                 password,
                 pay,
                 verify: false,
@@ -112,7 +146,7 @@ router.route('/employee-registration').post(async (req, res) => {
     }
 })
 
-router.route('/employer-registration').post(async (req, res) => {
+router.post('/employee-registration', upload.single('pic'), async (req, res) =>{
     console.log(req.body)
     const {
         username,
@@ -137,6 +171,12 @@ router.route('/employer-registration').post(async (req, res) => {
             .status(200)
             .send({ message: "User already exists", success: false, obj1, obj2 })
     }
+    let pic = (req.file) ? "imageUpload".concat(req.file?.path
+        .toString()
+        .replace(/\\/g, "/")
+        .split("uploads")
+        .slice(1)
+        .join("")) : null
 
     if (obj1 == null && obj2 == null) {
         try {
@@ -151,6 +191,7 @@ router.route('/employer-registration').post(async (req, res) => {
                 address,
                 pincode,
                 phone,
+                pic,
                 password,
                 verify: false,
                 otp: 9999999
