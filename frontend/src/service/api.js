@@ -50,11 +50,19 @@ export const getUsers = async (username) => {
     console.log(username);
 }
 
+// new change by warmish
+
 export const addUser = async (user) => {
+    const formData = new FormData();
+    for (const key in user) {
+        formData.append(key.toString(), user[key])
+        console.log(key.toString(), user[key])
+    }
+
     if(user.level === 'Employer'){
-    return await axios.post("/api/users/employer-registration", user)}
+    return await axios.post("/api/users/employer-registration", formData)}
     else{
-        return await axios.post("/api/users/employee-registration", user)
+        return await axios.post("/api/users/employee-registration", formData)
     }
 }
 

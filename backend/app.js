@@ -5,7 +5,7 @@ import orderRoutes from "./Routes/orderRoutes.js"
 import searchRoutes from "./Routes/searchRoutes.js"
 
 import otherRoutes from "./Routes/otherRoutes.js"
-
+import { fileURLToPath } from 'url';
 import path from 'path';
 import express from "express";
 import cors from "cors";
@@ -20,13 +20,18 @@ database();
 
 const app = express();
 
+// this change made by warmish
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use("/imageUpload", express.static(path.join(__dirname, "../shared/uploads")));
 
 
 app.use(express.urlencoded({ extended: false }));
 
-
 app.use(express.json());
+app.use("/imageUpload", express.static(path.join(__dirname, "../shared/uploads")));
 app.use(cors());
+
 // This change is made by akhil
 
 // another change

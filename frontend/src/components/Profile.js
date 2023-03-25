@@ -10,6 +10,9 @@ import { useNavigate, useParams } from "react-router-dom";
 // import { getUsers } from '../service/api';
 import { useSelector } from "react-redux";
 import { selectAllUser } from '../features/userSlice.js'
+import { REACT_APP_IMAGE_PATH } from '../const.js';
+
+
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
         backgroundColor: '#44b700',
@@ -47,12 +50,14 @@ const SmallAvatar = styled(Avatar)(({ theme }) => ({
 
 function Profile() {
     let [user, setUser] = useState({});
+    const [image, setImage] = useState('');
     const getallDetail = async () => {
         // const user = JSON.parse(localStorage.getItem('user'));
 
         // const data = await getUsers(username);
         // console.log(data.data[0])
         setUser(user);
+        setImage(user.pic);
 
     }
     user = useSelector(selectAllUser);
@@ -64,7 +69,7 @@ function Profile() {
 
 
     let navigate = useNavigate();
-
+    console.log(REACT_APP_IMAGE_PATH + image)
 
     return (
         <div style={{ position: 'absolute', top: "6vw" }}>
@@ -75,7 +80,7 @@ function Profile() {
                         anchorOrigin={{ vertical: 'bottom', horizontal: 'right', }}
                         variant="dot"
                     >
-                        <Avatar style={{ marginTop: '6vh' }} alt="Aemy Sharp" src="https://i.ibb.co/6BcDTmn/dp.jpg" />
+                        <Avatar style={{ marginTop: '6vh' }} alt={user.fname} src={user.pic ? `${REACT_APP_IMAGE_PATH}${user.pic}` : "https://i.ibb.co/6BcDTmn/dp.jpg"}/>
                     </StyledBadge>
                 </Stack>
                 <Rating name="read-only" value={3} readOnly style={{ marginLeft: '36vw', marginTop: '15vh', scale: '1.5' }} />

@@ -39,7 +39,9 @@ const employerSchema = new mongoose.Schema({
     phone: {
         type: Number
     },
-
+    pic:{
+        type : String
+    },
     password: {
         type: String
     }

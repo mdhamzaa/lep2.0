@@ -8,7 +8,7 @@ const connectDB = () => {
         useUnifiedTopology: true
     }).then(() => {
         console.log('DB connection is successful');
-    }).catch((eror) => {
+    }).catch((e) => {
         console.log(e);
     });
 }

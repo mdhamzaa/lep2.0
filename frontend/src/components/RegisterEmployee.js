@@ -21,6 +21,7 @@ function RegisterEmployee() {
     const [pay, setPay] = useState("");
     const [skills, setSkills] = useState("");
     const [exp, setExp] = useState("");
+    const [pic, setPic] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [address, setAddress] = useState("");
@@ -41,6 +42,7 @@ function RegisterEmployee() {
         if (Object.keys(formErrors).length === 0) {
             const hashedpassword = bcrypt.hashSync(user.password, 10);
             let newdata = await addUser({ ...user, password: hashedpassword, confirmPassword: hashedpassword });
+            console.log(newdata);
             const otp = await getOtp();
             verifyEmployee({ username:username, otp:otp}).then((res) => {
                if (res.data.success === true) {
@@ -148,11 +150,14 @@ function RegisterEmployee() {
 
 
 
-
-
+// handler for image by warmish
+    const imageUpload = (e) =>{
+        setPic(e.target.files[0])
+        console.log(e.target.files);
+    }
     const handleSubmit = async () => {
 
-        console.log(username, email, fname, lname, level, address, gender, dob, pincode, pincode2, pincode3, skills, exp, phone, password, confirmPassword);
+        console.log(username, email, fname, lname, level, address, gender, dob, pincode, pincode2, pincode3, skills, exp, phone, password, confirmPassword,pic);
         // skills = skills.toLowerCase();
         const user = {
             username: username,
@@ -168,6 +173,7 @@ function RegisterEmployee() {
             exp: exp,
             pay: pay,
             phone: phone,
+            pic,
             password: password,
             confirmPassword: confirmPassword,
             otp:999999,
@@ -566,6 +572,31 @@ function RegisterEmployee() {
                             />
                             <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formErrors.pay}</p>
                         </div>
+{/* field by warmish */}
+
+                        <div>
+                            <label
+                                htmlFor="profile"
+                                className="mb-2 text-sm font-medium text-gray-900"
+                            >
+                                Profile Pic
+                            </label>
+                            <input
+                                type="file"
+                                name="pic"
+                                id="profile"
+                                onChange ={
+                                    imageUpload
+                                }
+
+                                className={formErrors.pic ? "bg-red-50 border border-red-500 text-red-900 placeholder-red-400 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" : "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"}
+                                placeHolder="100"
+                                // // required=""
+
+                            />
+                            {/* <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formErrors.pay}</p> */}
+                        </div>
+
 
 
 

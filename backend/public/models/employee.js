@@ -49,7 +49,9 @@ const employeeSchema = new mongoose.Schema({
     exp: {
         type: String
     },
-
+    pic:{
+        type : String
+    },
     password: {
         type: String
     },

@@ -18,10 +18,10 @@ export default function AboutUs() {
             <div className='CardContainer'>
                 <div className="AboutCard">
                     <div className="InnerCard" >
-                        <h1 className="cardHead">Vision</h1>
+                        <h1 className="cardHead">vision</h1>
                         <p>
                             LOCAL EMPLOYMENT PORTAL (LEP) is all about providing an online platform for local
-                            jobs such as taylors, carpenters, cleaners, labor, plumbers, electricians and
+                            jobs such as tailors, carpenters, cleaners, labor, plumbers, electricians and
                             many.
                         </p>
                         <button className="Aboutbtn" onClick={clickHandler}>Go to Home</button>
@@ -39,7 +39,7 @@ export default function AboutUs() {
 
                 <div className="AboutCard">
                     <div className="InnerCard" >
-                        <h1 className="cardHead">Mission</h1>
+                        <h1 className="cardHead">mission</h1>
                         <p>
                             our project
                             local employment portal which is based on hiring people of user interest. Users
@@ -62,7 +62,7 @@ export default function AboutUs() {
 
                 <div className="AboutCard">
                     <div className="InnerCard" >
-                        <h1 className="cardHead">Lep Team</h1>
+                        <h1 className="cardHead">lep team</h1>
                         <p>
                             • T. ANKA CHANDRAHAS
                             • MOHD HAMZA
@@ -76,7 +76,7 @@ export default function AboutUs() {
                     <div className="CardCover">
                         <div className="CardCoverFront">
                             <div className="front_content">
-                                <h5>Lep Team</h5>
+                                <h5>Team</h5>
                                 <img src={Team} alt="" className="Aboutimg" />
                             </div>
                         </div>
