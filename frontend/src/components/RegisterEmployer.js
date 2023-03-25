@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { addUser } from "../service/api";
 import bcrypt from "bcryptjs-react";
 import { toast } from "react-toastify";
+import { verifyEmployer } from "../service/api";
 
 function RegisterEmployer() {
     let navigate = useNavigate();
@@ -22,16 +23,27 @@ function RegisterEmployer() {
     const [address, setAddress] = useState("");
     const [formErrors, setFormErrors] = useState({});
     const [user, setUser] = useState({});
+    const [verify, setVerify] = useState(false);
 
+ const getOtp = async () => {
+   let otp= prompt("Enter OTP");
+    return  otp;
+ }
+  
     const register = async () => {
         if (Object.keys(formErrors).length === 0) {
             const hashedpassword = bcrypt.hashSync(user.password, 10);
             await addUser({ ...user, password: hashedpassword, confirmPassword: hashedpassword });
-            toast.success("User Registered Successfully");
-
-            navigate("/");
+            const otp = await getOtp();
+             verifyEmployer({ username:username, otp:otp}).then((res) => {
+                if (res.data.success === true) {
+                    toast.success("User Registered Successfully");
+                    navigate("/login");
+                } else {
+                    toast.error("User Registration Failed");
+                }
+            });}
         }
-    }
 
     useEffect(
         () => {
@@ -128,15 +140,12 @@ function RegisterEmployer() {
             pincode: pincode,
             phone: phone,
             password: password,
-            confirmPassword: confirmPassword
-
+            confirmPassword: confirmPassword,
+            verify: false,
+            otp:999999
         }
         setUser(user);
         setFormErrors(validate(user));
-
-
-
-
     }
     return (
 
@@ -233,12 +242,6 @@ function RegisterEmployer() {
                                 />
                                 <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formErrors.lname}</p>
                             </div>
-
-
-
-
-
-
 
                         </div>
 

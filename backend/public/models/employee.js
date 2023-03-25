@@ -58,6 +58,12 @@ const employeeSchema = new mongoose.Schema({
     },
     pay: {
         type: String
+    },
+    verify: {
+        type: Boolean
+    },
+     otp:{
+        type: Number
     }
 })
 

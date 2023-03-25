@@ -11,9 +11,7 @@ const connectDB = () => {
     }).catch((eror) => {
         console.log(e);
     });
-
 }
-
 
 // this is also done bt akhil
 
