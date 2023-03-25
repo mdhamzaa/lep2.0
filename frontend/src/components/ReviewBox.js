@@ -8,12 +8,12 @@ export default function ReviewBox() {
 
 
   useEffect(() => {
-    fetch("http://localhost:3003/reviews").then((res) => {
+    fetch("/api/other/allReview").then((res) => {
       return res.json()
     }).then((data) => {
-      console.log(data)
+      // console.log(data)
       setlength(data.length)
-      console.log(length)
+      // console.log(length)
       setreviews(data);
     })
   }, [mountedCheck])

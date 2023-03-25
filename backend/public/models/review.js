@@ -6,12 +6,21 @@ import mongoose from 'mongoose';
 const reviewScema = new mongoose.Schema(
     {
 
-        username: {
+        name: {
             type: String
 
         },
-        password: {
+        profession: {
             type: String
+        },
+        gender: {
+            type: String
+        },
+        comment: {
+            type: String
+        },
+        stars: {
+            type: Number
         }
 
     },

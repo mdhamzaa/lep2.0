@@ -35,7 +35,7 @@ router.route('/employee-registration').post(async (req, res) => {
     }
 
     if (obj1 == null && obj2 == null) {
-      
+
             try {
                 const registerEmployee = new Employee({
                     username,
@@ -58,6 +58,7 @@ router.route('/employee-registration').post(async (req, res) => {
                 console.log(registerEmployee);
 
                 const registered = await registerEmployee.save();
+
                
                 const transporter = nodemailer.createTransport({
                     host: "smtp.gmail.com",
@@ -87,6 +88,7 @@ router.route('/employee-registration').post(async (req, res) => {
                     }
                   });
 
+
                 console.log(registered);
                 return res
                     .status(200)
@@ -99,6 +101,7 @@ router.route('/employee-registration').post(async (req, res) => {
                     .status(500)
                     .send({ message: "Error creating user", success: false, error })
             }
+
         
        
 
@@ -222,6 +225,42 @@ router.route('/verify-otp/employer').post(async (req, res) => {
             return res
                 .status(200)
                 .send({ message: "User not found", success: false })
+
+        }
+        else {
+            try {
+                const registerEmployer = new Employer({
+                    username,
+                    level,
+                    email,
+                    fname,
+                    lname,
+                    gender,
+                    dob,
+                    address,
+                    pincode,
+                    phone,
+                    password,
+
+
+                })
+
+                console.log(registerEmployer);
+
+                const registered = await registerEmployer.save();
+                console.log(registered);
+                return res
+                    .status(200)
+                    .send({ message: "User created successfully", success: true })
+            }
+            catch (error) {
+                console.log(error)
+
+                return res
+                    .status(500)
+                    .send({ message: "Error creating user", success: false, error })
+            }
+
         }
     }
     catch (err) {

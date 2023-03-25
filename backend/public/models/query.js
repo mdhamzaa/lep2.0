@@ -6,13 +6,23 @@ import mongoose from 'mongoose';
 const queryScema = new mongoose.Schema(
     {
 
-        username: {
+        FirstName: {
             type: String
 
         },
-        password: {
+        Email: {
             type: String
-        }
+        },
+        Subject: {
+            type: String
+        },
+        Messege: {
+            type: String
+        },
+        Status: {
+            type: String
+        },
+
 
     },
 
