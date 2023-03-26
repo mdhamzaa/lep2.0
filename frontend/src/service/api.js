@@ -17,15 +17,23 @@ export const getPendingCustomerOrders = async (customer) => {
 }
 
 export const getCompletedCustomerOrders = async (customer) => {
-    return await axios.post('/api/orders/orderbystatus', { customer, status: "completed" })
+    return await axios.post('/api/orders/orderbystatus', { customer, status: "complete" })
+}
+
+export const getCancelledCustomerOrders= async (customer)=>{
+    return await axios.post('/api/orders/orderbystatus',{customer,status:"rejected"});
 }
 
 export const postOrder = async (data) => {
     return await axios.post("/api/orders/booking", data);
 }
 
-export const putCompletedOrder = async (order) => {
-    return await axios.post("/api/orders/changestatus", order);
+export const putCompletedOrder = async (order,status) => {
+    return await axios.post("/api/orders/changestatus", {order,status});
+}
+
+export const putCancelledOrder= async (order,status)=>{
+    return await axios.post('/api/orders/changestatus',{order,status});
 }
 
 

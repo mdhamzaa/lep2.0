@@ -588,6 +588,29 @@
   box-shadow: 0 0 10px #008aff;
 }
 
+.cardDetailBox{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 5%;
+  gap: 4%;
+  font-size: max(15px,1vmax);
+}
+
+.cardDetailHeading{
+  font-family: "Days One", sans-serif;
+}
+
+#bookingContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  min-height: 50vh;
+  /* background-color: #008aff; */
+}
+
 @media screen and (max-width: 768px) {
   #searchHead {
     padding: 30px;

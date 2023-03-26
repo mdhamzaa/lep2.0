@@ -173,15 +173,15 @@ router.route('/allorder').post(async (req, res) => {
  */
 
 router.route('/changestatus').post(async (req, res) => {
-    console.log(req.body)
-    const status = 'complete';
+    const order=req.body.order;
+    const status = req.body.status;
     var newvalues = {
         $set: {
             status
         }
     }
 
-    const book = await Booking.updateOne({ employee: req.body.employee, timeslot: req.body.timeslot }, newvalues);
+    const book = await Booking.updateOne({ employee: order.employee, timeslot: order.timeslot }, newvalues);
     console.log(book)
 
     return res
