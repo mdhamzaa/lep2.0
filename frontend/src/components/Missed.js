@@ -6,57 +6,74 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import {MdDoNotTouch} from 'react-icons/md'
+import { SpinnerCircular } from 'spinners-react';
+import {useState,useEffect} from 'react';
+import { getCancelledCustomerOrders } from '../service/api';
+import {useSelector} from "react-redux"
+
+function Capitalize(word){
+  return word[0].toUpperCase()+word.slice(1).toLowerCase();
+}
+
+
 export default function Missed() {
-  return (
+  const user = useSelector(state => state.user.user);
+  const [loading,setLoading]=useState(true);
+  const [customerOrders, setcustomerOrders] = useState([])
+
+  async function customerOrdersConfig() {
+    const res = await getCancelledCustomerOrders(user.username);
+    setcustomerOrders(res.data);
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    customerOrdersConfig()
+  }, [])
+  // useEffect(() => {
+  //   customerOrdersConfig()
+  // }, [customerOrders])
+
+  return loading?(<SpinnerCircular size="10vmax" speed="110"/>):(
     <>
-   <div style={{display:'flex',gap:'1vw',flexWrap:'wrap'}}>
-    <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        alt="green iguana"
-        height="140"
-        image="https://i.ibb.co/GFm8kTk/misseed-1.jpg"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Carpenter
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-         Needed a Carpentar to add wooden-cuboards
-        </Typography>
-      </CardContent>
-      <CardActions>
-      <Button size="small" >{<MdDoNotTouch size={23} style={{color:'red'}} />}</Button>
-     <Button size="small" variant="contained" style={{backgroundColor:'red'}}>Cancelled</Button>
-      </CardActions>
-    </Card>
-   <br />
+      <div style={{ display: 'flex', gap: '1vw', flexWrap: 'wrap' }}>
 
-   <Card sx={{ maxWidth: 345 }}>
-   <CardMedia
-     component="img"
-     alt="green iguana"
-     height="140"
-     image="https://i.ibb.co/NL8PFzp/missed-2.jpg"
-   />
-   <CardContent>
-     <Typography gutterBottom variant="h5" component="div">
-       Carpenter
-     </Typography>
-     <Typography variant="body2" color="text.secondary">
-       Need a Carpenter for wood carving
-      
-     </Typography>
-   </CardContent>
-   <CardActions>
-     <Button size="small" >{<MdDoNotTouch size={23} style={{color:'red'}} />}</Button>
-     <Button size="small" variant="contained" style={{backgroundColor:'red'}}>Cancelled</Button>
-   </CardActions>
- </Card>
-   <br/>
+        {
+          customerOrders.map((order) => {
+            return <Card sx={{ maxWidth: "20vw" , height:"fit-content", minHeight:"15vh !important"}} key={order._id}>
+              <CardMedia
+                component="img"
+                alt="green iguana"
+                height="140"
+                image="https://i.ibb.co/KmGCKfz/pending1.jpg"
+              />
+              <CardContent sx={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+                <div className='cardDetailBox'>
+                  <h2 className='cardDetailHeading'>Employee Name:</h2><span>{order.employee}</span>
+                </div>
+                <div className='cardDetailBox'>
+                  <h2 className='cardDetailHeading'>Date:</h2><span>{new Date(order.date).toDateString()}</span>
+                </div> 
+                <div className='cardDetailBox'>
+                  <h2 className='cardDetailHeading'>Time-Slot:</h2><span>{order.timeslot}</span>
+                </div> 
+                <div className='cardDetailBox'>
+                  <h2 className='cardDetailHeading'>Status:</h2><span>{Capitalize(order.status)}</span>
+                </div>  
 
-    </div>
-</>
+              </CardContent>
+              <CardActions sx={{width:"100%",display:"flex",justifyContent:"space-evenly",}}>
+                {/* <Button size="small">{<MdLocalFireDepartment size={25} style={{ color: 'rgb(50,205,50' }} />}</Button> */}
+                {/* <Button variant="contained" onClick={() => { completeOrder(order) }} style={{ backgroundColor: 'rgb(50,205,50)' }} size="small">Complete</Button> */}
+                {/* <Button variant="contained" onClick={() => { cancelOrder(order) }} style={{ backgroundColor: '#ff3333' }} size="small">Cancel</Button> */}
+              </CardActions>
+            </Card>
+          })
+        }
+
+      </div>
+    </>
+
 
   );
 }

@@ -6,14 +6,17 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { MdLocalFireDepartment } from 'react-icons/md'
+import { SpinnerCircular } from 'spinners-react';
 
 
 import { getPendingCustomerOrders } from '../service/api';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { putCompletedOrder } from '../service/api';
+import { putCompletedOrder,putCancelledOrder } from '../service/api';
 
-
+function Capitalize(word){
+  return word[0].toUpperCase()+word.slice(1).toLowerCase();
+}
 
 
 export default function Urgent() {
@@ -21,17 +24,20 @@ export default function Urgent() {
 
 
   const [customerOrders, setcustomerOrders] = useState([])
+  const [loading,setLoading]=useState(true);
 
   async function customerOrdersConfig() {
     const res = await getPendingCustomerOrders(user.username);
 
     setcustomerOrders(res.data);
-
+    setLoading(false);
   }
-
   useEffect(() => {
     customerOrdersConfig()
   }, [])
+  useEffect(() => {
+    customerOrdersConfig()
+  }, [customerOrders])
 
   function toCamelCase(word) {
     return word[0].toUpperCase() + word.slice(1).toLowerCase();
@@ -39,40 +45,45 @@ export default function Urgent() {
 
   async function completeOrder(order) {
     // console.log(id._id)
-    await putCompletedOrder(order)
+    await putCompletedOrder(order,"complete")
   }
 
-  return (
+  async function cancelOrder(order){
+    await putCancelledOrder(order,"rejected")
+  }
+
+  return loading?(<SpinnerCircular size="10vmax" speed="110"/>):(
     <>
       <div style={{ display: 'flex', gap: '1vw', flexWrap: 'wrap' }}>
 
         {
           customerOrders.map((order) => {
-            return <Card sx={{ maxWidth: 345 }} key={order.id}>
+            return <Card sx={{ maxWidth: "20vw" , height:"fit-content", minHeight:"15vh !important"}} key={order._id}>
               <CardMedia
                 component="img"
                 alt="green iguana"
                 height="140"
                 image="https://i.ibb.co/KmGCKfz/pending1.jpg"
               />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  {order.employee}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {order.profession}
-                </Typography>
-                <Typography gutterBottom variant="h6" component="div">
-                  {order.pincode}
-                </Typography>
-                <Typography gutterBottom variant="h6" component="div">
-                  {order.timeslot}
-                </Typography>
+              <CardContent sx={{display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"}}>
+                <div className='cardDetailBox'>
+                  <h2 className='cardDetailHeading'>Employee Name:</h2><span>{order.employee}</span>
+                </div>
+                <div className='cardDetailBox'>
+                  <h2 className='cardDetailHeading'>Date:</h2><span>{new Date(order.date).toDateString()}</span>
+                </div> 
+                <div className='cardDetailBox'>
+                  <h2 className='cardDetailHeading'>Time-Slot:</h2><span>{order.timeslot}</span>
+                </div> 
+                <div className='cardDetailBox'>
+                  <h2 className='cardDetailHeading'>Status:</h2><span>{Capitalize(order.status)}</span>
+                </div>  
 
               </CardContent>
-              <CardActions>
-                <Button size="small">{<MdLocalFireDepartment size={25} style={{ color: 'rgb(50,205,50' }} />}</Button>
-                <Button variant="contained" onClick={() => { completeOrder(order) }} style={{ backgroundColor: 'rgb(50,205,50' }} size="small">Pending</Button>
+              <CardActions sx={{width:"100%",display:"flex",justifyContent:"space-evenly",}}>
+                {/* <Button size="small">{<MdLocalFireDepartment size={25} style={{ color: 'rgb(50,205,50' }} />}</Button> */}
+                <Button variant="contained" onClick={() => { completeOrder(order) }} style={{ backgroundColor: 'rgb(50,205,50)' }} size="small">Complete</Button>
+                <Button variant="contained" onClick={() => { cancelOrder(order) }} style={{ backgroundColor: '#ff3333' }} size="small">Cancel</Button>
               </CardActions>
             </Card>
           })

@@ -16,7 +16,8 @@ export default function Bookings() {
   };
 
   return (
-    <Box sx={{ width: '92vw', typography: 'body1' }}>
+    <Box sx={{ width: '92vw', typography: 'body1',minHeight:"60vh", height:"fir-content",
+    }}>
       <TabContext value={value} >
         <Box sx={{ borderBottom: 2, borderColor: 'divider' }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
@@ -25,9 +26,12 @@ export default function Bookings() {
             <Tab sx={{ marginLeft: '20vw' }} label="Cancelled" value="3" />
           </TabList>
         </Box>
-        <TabPanel value="1">{<Done />}</TabPanel>
-        <TabPanel value="2" >{<Urgent />}</TabPanel>
-        <TabPanel value="3">{<Missed />}</TabPanel>
+        
+        <div id="bookingContainer">
+          <TabPanel value="1">{<Done />}</TabPanel>
+          <TabPanel value="2" >{<Urgent />}</TabPanel>
+          <TabPanel value="3">{<Missed />}</TabPanel>
+        </div>
       </TabContext>
     </Box>
   );
