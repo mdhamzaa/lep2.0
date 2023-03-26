@@ -6,6 +6,72 @@ import nodemailer from 'nodemailer';
 import multer from "multer";
 const router = express.Router();
 
+/**
+ * @swagger
+ *  components:
+ *      schemas:
+ *          Employee:
+ *                  type: object
+ *                  properties:
+ *                      username:
+ *                          type: string
+ *                      level:
+ *                          type: string
+ *                      email:
+ *                          type: string
+ *                      fname:
+ *                          type: string
+ *                      lname:
+ *                          type: string
+ *                      gender:
+ *                          type: string
+ *                      dob:
+ *                          type: string
+ *                      address:
+ *                          type: string
+ *                      pincode:
+ *                          type: array
+ *                      phone:
+ *                          type: number
+ *                      skills:
+ *                          type: string
+ *                      exp:
+ *                          type: string
+ *                      password:
+ *                          type: string
+ *                      confirmPassword:
+ *                          type: string
+ *                      pay:
+ *                          type: string
+ *          Employer:
+ *                  type: object
+ *                  properties:
+ *                      username:
+ *                          type: string
+ *                      level:
+ *                          type: string
+ *                      email:
+ *                          type: string
+ *                      fname:
+ *                          type: string
+ *                      lname:
+ *                          type: string
+ *                      gender:
+ *                          type: string
+ *                      dob:
+ *                          type: string
+ *                      address:
+ *                          type: string
+ *                      pincode:
+ *                          type: number
+ *                      phone:
+ *                          type: number
+ *                      password:
+ *                          type: string
+ *                      confirmPassword:
+ *                          type: string
+ *          
+ */
 
 
 // multer 
@@ -35,6 +101,65 @@ const fileFilter = (req, file, callback) => {
 
 const upload = multer({ storage: storage, fileFilter: fileFilter })
 
+/**
+ * @swagger
+ *  /api/users/employee-registration:
+ *      post:
+ *          summary: Register an employee
+ *          description: This api is to register an employee
+ *          tags: [Registration]
+ *          requestBody:
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: object
+ *                          properties:
+ *                              username: 
+ *                                  type: string
+ *                              level:
+ *                                  type: string
+ *                              email:
+ *                                  type: string
+ *                              fname:
+ *                                  type: string
+ *                              lname:
+ *                                  type: string
+ *                              gender:
+ *                                  type: string
+ *                              dob:
+ *                                  type: string
+ *                              address:
+ *                                  type: string
+ *                              pincode:
+ *                                  type: array
+ *                                  items:
+ *                                      type: number
+ *                              phone:
+ *                                  type: number
+ *                              skills:
+ *                                  type: string
+ *                              exp:
+ *                                  type: string
+ *                              password:
+ *                                  type: string
+ *                              pay:
+ *                                  type: string
+ *          responses:
+ *              '200':
+ *                  description: User created successfully
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: object
+ *                              properties:
+ *                                  message:
+ *                                      type: string
+ *                                  success:
+ *                                      type: boolean
+ *              '400':
+ *                  description: Bad request
+ */
 
 router.post('/employee-registration', upload.single('pic'), async (req, res) =>{
     console.log(req.body)
@@ -146,7 +271,59 @@ router.post('/employee-registration', upload.single('pic'), async (req, res) =>{
     }
 })
 
-router.post('/employee-registration', upload.single('pic'), async (req, res) =>{
+/**
+ * @swagger
+ *  /api/users/employer-registration:
+ *      post:
+ *          summary: Register an employer
+ *          description: This api is to register an employer
+ *          tags: [Registration]
+ *          requestBody:
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: object
+ *                          properties:
+ *                              username: 
+ *                                  type: string
+ *                              level:
+ *                                  type: string
+ *                              email:
+ *                                  type: string
+ *                              fname:
+ *                                  type: string
+ *                              lname:
+ *                                  type: string
+ *                              gender:
+ *                                  type: string
+ *                              dob:
+ *                                  type: string
+ *                              address:
+ *                                  type: string
+ *                              pincode:
+ *                                  type: number
+ *                              phone:
+ *                                  type: number
+ *                              password:
+ *                                  type: string
+ *          responses:
+ *              '200':
+ *                  description: User created successfully
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: object
+ *                              properties:
+ *                                  message:
+ *                                      type: string
+ *                                  success:
+ *                                      type: boolean
+ *              '400':
+ *                  description: Bad request
+ */
+
+router.post('/employer-registration', upload.single('pic'), async (req, res) =>{
     console.log(req.body)
     const {
         username,
@@ -247,6 +424,41 @@ router.post('/employee-registration', upload.single('pic'), async (req, res) =>{
 
 })
 
+/**
+ * @swagger
+ *  /api/users/verify-otp/employer:
+ *      post:
+ *          summary: Verify employer with otp
+ *          description: This api is to verify employer with otp
+ *          tags: [Verification]
+ *          requestBody:
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: object
+ *                          properties:
+ *                              username:
+ *                                  type: object
+ *                                  properties:
+ *                                      username:
+ *                                          type: string
+ *                                      otp:
+ *                                          type: number
+ *          responses:
+ *              200:
+ *                  description: User register in successfully.
+ *              400:
+ *                  description: error occured
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: object
+ *                              properties:
+ *                                  error:
+ *                                      type: string
+ */
+
 router.route('/verify-otp/employer').post(async (req, res) => {
     const username = req.body.username;
     console.log(username);
@@ -277,6 +489,42 @@ router.route('/verify-otp/employer').post(async (req, res) => {
     }
 }
 )
+
+/**
+ * @swagger
+ *  /api/users/verify-otp/employee:
+ *      post:
+ *          summary: Verify employee with otp
+ *          description: This api is to verify employee with otp
+ *          tags: [Verification]
+ *          requestBody:
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: object
+ *                          properties:
+ *                              username:
+ *                                  type: object
+ *                                  properties:
+ *                                      username: 
+ *                                          type: string
+ *                                      otp:
+ *                                          type: number
+ *          responses:
+ *              200:
+ *                  description: User registered successfully.
+ *              400:
+ *                  description: error occured
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: object
+ *                              properties:
+ *                                  error:
+ *                                      type: string
+
+ */
 
 
 router.route('/verify-otp/employee').post(async (req, res) => {
@@ -310,14 +558,36 @@ router.route('/verify-otp/employee').post(async (req, res) => {
 }
 )
 
+/**
+ * @swagger
+ *  /api/users/login:
+ *      post:
+ *          summary: Authenticate user and login
+ *          description: This api is to authenticate user and login
+ *          tags: [Login]
+ *          requestBody:
+ *              required: true
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: object
+ *                          properties:
+ *                              username:
+ *                                  type: string
+ *          responses:
+ *              200:
+ *                  description: User logged in successfully.
+ *              400:
+ *                  description: error occured
+ *                  content:
+ *                      application/json:
+ *                          schema:
+ *                              type: object
+ *                              properties:
+ *                                  error:
+ *                                      type: string
 
-
-
-
-
-
-
-
+ */
 
 router.post("/login", async (req, res) => {
     try {
