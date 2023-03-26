@@ -33,10 +33,10 @@ function RegisterEmployee() {
 
 
 
- const getOtp = async () => {
-    let otp= prompt("Enter OTP");
-     return  otp;
-  }
+    const getOtp = async () => {
+        let otp = prompt("Enter OTP");
+        return otp;
+    }
 
     const register = async () => {
         if (Object.keys(formErrors).length === 0) {
@@ -44,16 +44,16 @@ function RegisterEmployee() {
             let newdata = await addUser({ ...user, password: hashedpassword, confirmPassword: hashedpassword });
             console.log(newdata);
             const otp = await getOtp();
-            verifyEmployee({ username:username, otp:otp}).then((res) => {
-               if (res.data.success === true) {
-                   toast.success("User Registered Successfully");
-                   navigate("/login");
-               } else {
-                   toast.error("Wrong OTP");
-               }
-           });
+            verifyEmployee({ username: username, otp: otp }).then((res) => {
+                if (res.data.success === true) {
+                    toast.success("User Registered Successfully");
+                    navigate("/login");
+                } else {
+                    toast.error("Wrong OTP");
+                }
+            });
+        }
     }
-}
 
     useEffect(
         () => {
@@ -118,10 +118,10 @@ function RegisterEmployee() {
 
 
         }
-        if (!values.pincode[0]) {
+        if (!values.pincode1) {
             errors.pincode = "Atleast Pincode is required"
 
-        } else if (values.pincode[0].length !== 6) {
+        } else if (values.pincode1.length !== 6) {
             errors.pincode = "Pincode length can only be 6"
         }
         if (!values.pay) {
@@ -150,15 +150,22 @@ function RegisterEmployee() {
 
 
 
-// handler for image by warmish
-    const imageUpload = (e) =>{
+    // handler for image by warmish
+    const imageUpload = (e) => {
         setPic(e.target.files[0])
         console.log(e.target.files);
     }
     const handleSubmit = async () => {
 
-        console.log(username, email, fname, lname, level, address, gender, dob, pincode, pincode2, pincode3, skills, exp, phone, password, confirmPassword,pic);
+        console.log(username, email, fname, lname, level, address, gender, dob, pincode, pincode2, pincode3, skills, exp, phone, password, confirmPassword, pic);
         // skills = skills.toLowerCase();
+        const arr = [];
+        arr[0] = pincode;
+        arr[1] = pincode2;
+        arr[2] = pincode2;
+
+
+
         const user = {
             username: username,
             email: email,
@@ -168,7 +175,9 @@ function RegisterEmployee() {
             address: address,
             gender: gender,
             dob: dob,
-            pincode: [pincode, pincode2, pincode3],
+            pincode1: pincode,
+            pincode2: pincode2,
+            pincode3: pincode3,
             skills: skills,
             exp: exp,
             pay: pay,
@@ -176,9 +185,10 @@ function RegisterEmployee() {
             pic,
             password: password,
             confirmPassword: confirmPassword,
-            otp:999999,
-            verify:false
+            otp: 999999,
+            verify: false
         }
+        console.log(user)
         setUser(user);
         setFormErrors(validate(user));
     }
@@ -572,7 +582,7 @@ function RegisterEmployee() {
                             />
                             <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formErrors.pay}</p>
                         </div>
-{/* field by warmish */}
+                        {/* field by warmish */}
 
                         <div>
                             <label
@@ -585,13 +595,13 @@ function RegisterEmployee() {
                                 type="file"
                                 name="pic"
                                 id="profile"
-                                onChange ={
+                                onChange={
                                     imageUpload
                                 }
 
                                 className={formErrors.pic ? "bg-red-50 border border-red-500 text-red-900 placeholder-red-400 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-red-100 dark:border-red-400" : "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"}
                                 placeHolder="100"
-                                // // required=""
+                            // // required=""
 
                             />
                             {/* <p className="mt-2 text-sm text-red-600 dark:text-red-500">{formErrors.pay}</p> */}

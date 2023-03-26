@@ -161,7 +161,7 @@ const upload = multer({ storage: storage, fileFilter: fileFilter })
  *                  description: Bad request
  */
 
-router.post('/employee-registration', upload.single('pic'), async (req, res) =>{
+router.post('/employee-registration', upload.single('pic'), async (req, res) => {
     console.log(req.body)
     const {
         username,
@@ -172,7 +172,9 @@ router.post('/employee-registration', upload.single('pic'), async (req, res) =>{
         gender,
         dob,
         address,
-        pincode,
+        pincode1,
+        pincode2,
+        pincode3,
         phone,
         skills,
         exp,
@@ -207,7 +209,7 @@ router.post('/employee-registration', upload.single('pic'), async (req, res) =>{
                 gender,
                 dob,
                 address,
-                pincode,
+                pincode: [pincode1, pincode2, pincode3],
                 phone,
                 skills,
                 exp,
@@ -323,7 +325,7 @@ router.post('/employee-registration', upload.single('pic'), async (req, res) =>{
  *                  description: Bad request
  */
 
-router.post('/employer-registration', upload.single('pic'), async (req, res) =>{
+router.post('/employer-registration', upload.single('pic'), async (req, res) => {
     console.log(req.body)
     const {
         username,
