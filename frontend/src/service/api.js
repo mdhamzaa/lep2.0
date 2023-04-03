@@ -20,20 +20,20 @@ export const getCompletedCustomerOrders = async (customer) => {
     return await axios.post('/api/orders/orderbystatus', { customer, status: "complete" })
 }
 
-export const getCancelledCustomerOrders= async (customer)=>{
-    return await axios.post('/api/orders/orderbystatus',{customer,status:"rejected"});
+export const getCancelledCustomerOrders = async (customer) => {
+    return await axios.post('/api/orders/orderbystatus', { customer, status: "rejected" });
 }
 
 export const postOrder = async (data) => {
     return await axios.post("/api/orders/booking", data);
 }
 
-export const putCompletedOrder = async (order,status) => {
-    return await axios.post("/api/orders/changestatus", {order,status});
+export const putCompletedOrder = async (order, status) => {
+    return await axios.post("/api/orders/changestatus", { order, status });
 }
 
-export const putCancelledOrder= async (order,status)=>{
-    return await axios.post('/api/orders/changestatus',{order,status});
+export const putCancelledOrder = async (order, status) => {
+    return await axios.post('/api/orders/changestatus', { order, status });
 }
 
 
@@ -41,14 +41,14 @@ export const getSearch = async (pincode, skills) => {
     return await axios.post('/api/find/search', { pincode, skills });
 }
 
-export const verifyEmployer = async (username,otp) => {
-    console.log(username,otp);
-    return await axios.post(`http://localhost:5001/api/users/verify-otp/employer`, {username:username,otp:otp});
+export const verifyEmployer = async (username, otp) => {
+    console.log(username, otp);
+    return await axios.post(`http://localhost:5001/api/users/verify-otp/employer`, { username: username, otp: otp });
 }
 
-export const verifyEmployee = async (username,otp) => {
-    console.log(username,otp);
-    return await axios.post(`http://localhost:5001/api/users/verify-otp/employee`, {username:username,otp:otp});
+export const verifyEmployee = async (username, otp) => {
+    console.log(username, otp);
+    return await axios.post(`http://localhost:5001/api/users/verify-otp/employee`, { username: username, otp: otp });
 }
 
 
@@ -67,9 +67,10 @@ export const addUser = async (user) => {
         console.log(key.toString(), user[key])
     }
 
-    if(user.level === 'Employer'){
-    return await axios.post("/api/users/employer-registration", formData)}
-    else{
+    if (user.level === 'Employer') {
+        return await axios.post("/api/users/employer-registration", formData)
+    }
+    else {
         return await axios.post("/api/users/employee-registration", formData)
     }
 }

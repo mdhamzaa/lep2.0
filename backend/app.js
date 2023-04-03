@@ -16,6 +16,10 @@ import Booking from './public/models/order.js';
 import Admin from './public/models/admin.js';
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
+import morgan from "morgan";
+import rfs from "rotating-file-stream"
+import rateLimit from "express-rate-limit"
+import helmet from "helmet";
 
 
 database();
@@ -53,19 +57,35 @@ const options = {
     apis: ['./Routes/*.js']
 }
 
+
+
 const swaggerSpecs = swaggerJsdoc(options)
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs))
 
+const accessLogStream = rfs.createStream("access.log", {
+    interval: "1h",
+    path: path.join(__dirname, "../logs"),
+});
+
+
+app.use(morgan("combined", { stream: accessLogStream }));
+
+
+const limiter = rateLimit({
+    windowMs: 60 * 1000, // 1 minute
+    max: 100 // limit each IP to 100 requests per minute
+});
+
+// Apply the rate limiter to all requests
+app.use(limiter);
+app.use(helmet());
+
 app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/find', searchRoutes);
 app.use('/api/other', otherRoutes)
 
 
-app.use('/api/users', userRoutes);
-app.use('/api/orders', orderRoutes);
-app.use('/api/find', searchRoutes);
-app.use('/api/other', otherRoutes)
 
 
 

@@ -72,7 +72,17 @@ const router = express.Router();
  *          content: 
  *              application/json:
  *                  schema:
- *                      $ref: '#/components/schemas/Booking'
+ *                      type: object
+ *                      properties:
+ *                          employee:
+ *                              type: string
+ *                          customer:
+ *                              type: string
+ *                          date:
+ *                              type: string
+ *                              format: date
+ *                          timeslot:
+ *                              type: string
  *                  
  *      responses:
  *          200:
@@ -154,9 +164,14 @@ router.route('/allorder').post(async (req, res) => {
  *                  schema:
  *                      type: object
  *                      properties:
- *                          employee:
- *                              type: string
- *                          timeslot:
+ *                          order:
+ *                              type: object
+ *                              properties:
+ *                                  employee:
+ *                                      type: string
+ *                                  timeslot:
+ *                                      type: string
+ *                          status:
  *                              type: string
  *                  
  *      responses:
@@ -173,7 +188,7 @@ router.route('/allorder').post(async (req, res) => {
  */
 
 router.route('/changestatus').post(async (req, res) => {
-    const order=req.body.order;
+    const order = req.body.order;
     const status = req.body.status;
     var newvalues = {
         $set: {
@@ -235,9 +250,9 @@ router.route('/orderbystatus').post(async (req, res) => {
  * @swagger
  * /api/orders/getUser:
  *   post:
- *      summary: Get bookings by status and customer
+ *      summary: Get user by id
  *      tags: [Employee]
- *      description: This api is to Get bookings by status and customer
+ *      description: This api is to get user by id
  *      requestBody:
  *          required: true
  *          content: 
