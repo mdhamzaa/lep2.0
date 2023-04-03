@@ -92,6 +92,7 @@ const router = express.Router();
 
 router.route('/booking').post(async (req, res) => {
 
+
     const {
         employee,
         customer,
@@ -142,6 +143,27 @@ router.route('/booking').post(async (req, res) => {
  */
 
 router.route('/allorder').post(async (req, res) => {
+
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    // define the condition for documents to 
+    console.log(yesterday)
+    const condition = { date: { $lt: yesterday }, status: "pending" };
+    var newvalues = {
+        $set: {
+            status: "rejected"
+        }
+    }
+    // delete documents that match the condition
+    Booking.updateMany(condition, newvalues, function (err) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Documents updated successfully.");
+        }
+    });
+
+
     console.log(req.body)
     const book = await Booking.find({ employee: req.body.username });
     return res
@@ -238,6 +260,9 @@ router.route('/changestatus').post(async (req, res) => {
  */
 
 router.route('/orderbystatus').post(async (req, res) => {
+
+
+
     // console.log(req.body)
     const book = await Booking.find({ customer: req.body.customer, status: req.body.status });
     return res

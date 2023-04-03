@@ -79,7 +79,10 @@ const router = express.Router();
 router.route('/search').post(async (req, res) => {
 
     let searchDetail = null;
+
+
     if (!req.body.skills) {
+
         searchDetail = {
             // pincode: req.body.pincode,
 
@@ -87,13 +90,24 @@ router.route('/search').post(async (req, res) => {
 
 
         }
-    } else {
+    } else if (!req.body.pincode) {
+        const regex = new RegExp(req.body.skills, 'i');
+
+        searchDetail = {
+            // pincode: req.body.pincode,
+
+
+            skills: { $regex: regex }
+        }
+    }
+    else {
+        const regex = new RegExp(req.body.skills, 'i');
         searchDetail = {
             // pincode: req.body.pincode,
 
             pincode: { $in: [req.body.pincode] },
 
-            skills: req.body.skills
+            skills: { $regex: regex }
         }
 
 

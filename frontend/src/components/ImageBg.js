@@ -5,12 +5,20 @@ import arrowImg from "../Images/arrow.svg"
 import searchImg from "../Images/search-svgrepo-com.svg"
 import allImages from '../Images/allBgImages'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { SetSearchDetails } from "../features/userSlice";
+import { useDispatch, useSelector } from 'react-redux'
+import { SetSearchDetails, selectAllUser } from "../features/userSlice";
 
 
 export default function ImageBg(props) {
     const dispatch = useDispatch();
+    let [user, setUser] = useState({});
+    user = useSelector(selectAllUser);
+    React.useEffect(() => {
+        // getallDetail();
+        setUser(user);
+        // console.log(user.email)
+    }, [])
+
 
 
     let navigate = useNavigate();
@@ -72,19 +80,23 @@ export default function ImageBg(props) {
                     <span id="rightBgChange"><img className="arrowImg" id="rightArrow" src={arrowImg} alt="" onClick={handleRightArrowClick} /></span>
                 </div>
 
-                <div className="inputs">
 
-                    <input type="number" name="pincode" id="pincode" placeholder="Enter Pincode" value={pincode} onChange={(e) => setPincode(e.target.value)} pattern="[0-9]{6}"
-                        maxLength="6" />
-                    <div id="searchDiv"><img id="searchIcon" src={searchImg} />
-                        <input type="text" name="skills" id="search" placeholder="Search for services..." value={skill} onChange={(e) => setSkill(e.target.value)} />
+                {(user?.level === "Employer" || user === null) &&
+                    <div className="inputs">
+
+                        <input type="number" name="pincode" id="pincode" placeholder="Enter Pincode" value={pincode} onChange={(e) => setPincode(e.target.value)} pattern="[0-9]{6}"
+                            maxLength="6" />
+                        <div id="searchDiv"><img id="searchIcon" src={searchImg} />
+                            <input type="text" name="skills" id="search" placeholder="Search for services..." value={skill} onChange={(e) => setSkill(e.target.value)} />
+
+                        </div>
+
+                        <input type="submit" onClick={seachhandler} value="Search" id="searchSubmit" />
+
 
                     </div>
 
-                    <input type="submit" onClick={seachhandler} value="Search" id="searchSubmit" />
-
-
-                </div>
+                }
 
             </div>
         </>

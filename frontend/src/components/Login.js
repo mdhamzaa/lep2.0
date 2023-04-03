@@ -56,10 +56,10 @@ function Login() {
 
 
             const d = await getUsers(username);
-            // const order = await getOrders(username);
+            const order = await getOrders(username);
             console.log(d)
             console.log((d.data)[0])
-            const order = []
+
             if ((d.data)[0]) {
 
                 bcrypt.compare(password, (d.data)[0].password, (err, isMatch) => {

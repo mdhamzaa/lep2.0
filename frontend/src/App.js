@@ -73,7 +73,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/about" element={<AboutUs />} />
-            <Route path="/search" element={<Search />} />
+
             <Route path="/dashboard" element={<ProSidebarProvider> <Dashboard /> </ProSidebarProvider>} >
 
               <Route path="Profile" element={<Profile />} />
@@ -88,6 +88,13 @@ function App() {
             <Route path="/cancel" element={<Cancel />} />
             <Route path="*" element={<NoPage />} />
           </Routes>
+        }
+
+        {(user?.level === "Employer") &&
+          <Routes>
+            <Route path="/search" element={<Search />} />
+          </Routes>
+
         }
 
 
