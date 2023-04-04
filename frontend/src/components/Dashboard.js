@@ -29,7 +29,7 @@ function Dashboard() {
       <Sidebar defaultCollapsed={true} overlayColor='rgba(98,198,221,255)'>
         <Menu closeOnClick={false} >
           <MenuItem icon={<FaUser />} routerLink={<Link to="Profile" />}> Profile</MenuItem>
-          <MenuItem icon={<FaHistory />} routerLink={<Link to="History" />}> History</MenuItem>
+          {/* <MenuItem icon={<FaHistory />} routerLink={<Link to="History" />}> History</MenuItem> */}
           <MenuItem icon={<BsFillStarFill />} routerLink={<Link to="Booking" />}> Booking</MenuItem>
           {/* <MenuItem icon={<MdPayment style={{color:'rgb(25,118,210'}}/>} routerLink={<Link to="Payment"/>}> Payment</MenuItem> */}
           <MenuItem icon={<IoLogOut />} routerLink={<Link to="Logout" />}> Logout</MenuItem>

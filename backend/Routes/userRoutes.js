@@ -229,11 +229,13 @@ router.post('/employee-registration', upload.single('pic'), async (req, res) => 
             const transporter = nodemailer.createTransport({
                 host: "smtp.gmail.com",
                 port: 465,
-                secure: true, // use SSL
+
                 auth: {
                     user: "rolex7113@gmail.com",
                     pass: "xsrgnuoqhgrmsejl",
-                },
+                }, tls: {
+                    rejectUnauthorized: false
+                }
             });
 
             const OTP = Math.floor(1000 + Math.random() * 9000);
@@ -383,11 +385,13 @@ router.post('/employer-registration', upload.single('pic'), async (req, res) => 
             const transporter = nodemailer.createTransport({
                 host: "smtp.gmail.com",
                 port: 465,
-                secure: true, // use SSL
+
                 auth: {
                     user: "rolex7113@gmail.com",
                     pass: "xsrgnuoqhgrmsejl",
-                },
+                }, tls: {
+                    rejectUnauthorized: false
+                }
             });
 
             const OTP = Math.floor(1000 + Math.random() * 9000);

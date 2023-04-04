@@ -21,7 +21,6 @@ import rfs from "rotating-file-stream"
 import rateLimit from "express-rate-limit"
 import helmet from "helmet";
 
-
 database();
 
 const app = express();

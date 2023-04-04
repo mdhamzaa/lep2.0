@@ -72,7 +72,7 @@ function Profile() {
     console.log(REACT_APP_IMAGE_PATH + image)
 
     return (
-        <div style={{ position: 'absolute', top: "6vw" }}>
+        <div style={{ position: 'absolute', top: "8vw" }}>
             <div style={{ backgroundColor: 'rgb(226,232,240)' }}>
                 <Stack direction="row" spacing={2} style={{ scale: '3', marginLeft: '63vw' }}>
                     <StyledBadge
@@ -80,7 +80,7 @@ function Profile() {
                         anchorOrigin={{ vertical: 'bottom', horizontal: 'right', }}
                         variant="dot"
                     >
-                        <Avatar style={{ marginTop: '6vh' }} alt={user.fname} src={user.pic ? `${REACT_APP_IMAGE_PATH}${user.pic}` : "https://i.ibb.co/6BcDTmn/dp.jpg"}/>
+                        <Avatar style={{ marginTop: '6vh' }} alt={user.fname} src={user.pic ? `${REACT_APP_IMAGE_PATH}${user.pic}` : "https://i.ibb.co/6BcDTmn/dp.jpg"} />
                     </StyledBadge>
                 </Stack>
                 <Rating name="read-only" value={3} readOnly style={{ marginLeft: '36vw', marginTop: '15vh', scale: '1.5' }} />
