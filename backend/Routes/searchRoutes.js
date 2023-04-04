@@ -97,7 +97,7 @@ router.route('/search').post(async (req, res) => {
             // pincode: req.body.pincode,
 
 
-            skills: { $regex: regex }
+            Skills: { $regex: regex }
         }
     }
     else {
