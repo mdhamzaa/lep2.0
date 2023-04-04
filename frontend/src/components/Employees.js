@@ -7,7 +7,7 @@ import { useState } from 'react';
 import Button from '@mui/material/Button';
 
 const columns = [
-  { field: 'id', headerName: 'ID', width: 70 },
+  { field: 'username', headerName: 'username', width: 200 },
   { field: 'email', headerName: 'email', width: 250 },
   { field: 'fname', headerName: 'First name', width: 180 },
   { field: 'lname', headerName: 'Last name', width: 120 },
@@ -32,10 +32,10 @@ const columns = [
       return (
         <div>
           <Button variant="contained" onClick={() => {
-            axios.delete(`${url}/${params.row.id}`).then((response) => {
-              console.log(response.data);
-              window.location.reload();
-            })
+            // axios.delete(`${url}/${params.row.id}`).then((response) => {
+            //   console.log(response.data);
+            //   window.location.reload();
+            // })
           }}>Delete</Button>
         </div>
 
@@ -49,7 +49,7 @@ export default function Employees() {
 
 
   async function getdata() {
-    const data = await axios.get(`${url}?level=Employee`);
+    const data = await axios.get('/api/users/getEmployee');
     setUsers(data.data);
   }
 
@@ -71,6 +71,7 @@ export default function Employees() {
           rows={users}
           columns={columns}
           pageSize={5}
+          getRowId={(row) => row.username}
           rowsPerPageOptions={[5]}
           checkboxSelection
         />

@@ -4,6 +4,7 @@ import Employer from '../public/models/employer.js';
 import Admin from '../public/models/admin.js';
 import nodemailer from 'nodemailer';
 import multer from "multer";
+import Booking from "../public/models/order.js";
 const router = express.Router();
 
 /**
@@ -758,6 +759,33 @@ router.post("/employer-update", async (req, res) => {
 
 })
 
+router.route('/getEmployee').get(async (req, res) => {
+    console.log(req.body)
+    const allReview = await Employee.find({});
+    return res
+        .status(200)
+        .send(allReview)
+
+});
+
+
+router.route('/getEmployer').get(async (req, res) => {
+    console.log(req.body)
+    const allReview = await Employer.find({});
+    return res
+        .status(200)
+        .send(allReview)
+
+});
+
+router.route('/order').get(async (req, res) => {
+    console.log(req.body)
+    const allReview = await Booking.find({});
+    return res
+        .status(200)
+        .send(allReview)
+
+});
 
 
 

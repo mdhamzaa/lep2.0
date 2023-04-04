@@ -72,6 +72,8 @@ router.route('/allReview').get(async (req, res) => {
 
 });
 
+
+
 /**
  * @swagger
  * /api/other/allQuery:
@@ -137,18 +139,20 @@ router.route('/query').post(async (req, res) => {
         Email,
         Phone,
         Message,
+        Subject,
         Status
     } = req.body;
 
-    const review = new Review({
+    const query = new Query({
         FirstName,
         Email,
         Phone,
         Message,
+        Subject,
         Status
     })
 
-    const registered = await review.save();
+    const registered = await query.save();
     console.log(registered);
     return res
         .status(200)
