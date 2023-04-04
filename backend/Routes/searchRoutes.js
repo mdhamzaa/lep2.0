@@ -81,7 +81,7 @@ router.route('/search').post(async (req, res) => {
     let searchDetail = null;
 
 
-    if (!req.body.skills) {
+    if (!req.body.skills || req.body.skills == '') {
 
         searchDetail = {
             // pincode: req.body.pincode,
@@ -90,7 +90,7 @@ router.route('/search').post(async (req, res) => {
 
 
         }
-    } else if (!req.body.pincode) {
+    } else if (!req.body.pincode || req.body.pincode == '') {
         const regex = new RegExp(req.body.skills, 'i');
 
         searchDetail = {

@@ -7,7 +7,7 @@ import allImages from '../Images/allBgImages'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { SetSearchDetails, selectAllUser } from "../features/userSlice";
-
+import { toast } from "react-toastify";
 
 export default function ImageBg(props) {
     const dispatch = useDispatch();
@@ -26,6 +26,10 @@ export default function ImageBg(props) {
     const [skill, setSkill] = useState("");
 
     const seachhandler = () => {
+        if(pincode=='' && skill==''){
+            toast.error('All fields are empty')
+            return;
+        }
         dispatch(
             SetSearchDetails({
                 pincode: pincode,
