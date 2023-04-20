@@ -25,6 +25,20 @@ database();
 const port = process.env.PORT || 5001
 const app = express();
 
+app.use(cors({
+
+    origin: 'https://lep2.netlify.app'
+
+}));
+
+// app.use(cors({
+
+//     origin: 'http://localhost:3000'
+
+// }));
+
+
+
 // this change made by warmish
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -36,7 +50,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.json());
 
-app.use(cors());
+
 
 // This change is made by akhil
 
