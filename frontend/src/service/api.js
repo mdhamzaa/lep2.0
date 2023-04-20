@@ -7,7 +7,7 @@ import axios from 'axios';
 
 // export const url = "http://localhost:5001";
 
-export const url = "http://localhost:5001";
+export const url = "https://lepserver.onrender.com";
 
 export const getOrders = async (username) => {
     return await axios.post(`${url}/api/orders/allorder`, { username });
