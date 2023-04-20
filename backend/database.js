@@ -1,9 +1,15 @@
 
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+dotenv.config();
 
+
+
+const url = process.env.MongodbURL;
+// console.log(process.env.MongodbURL)
 
 const connectDB = () => {
-    mongoose.connect('mongodb://localhost:27017/lep', {
+    mongoose.connect(url, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     }).then(() => {

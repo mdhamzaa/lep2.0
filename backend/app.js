@@ -10,17 +10,12 @@ import path from 'path';
 import express from "express";
 import cors from "cors";
 import database from './database.js';
-import Employee from './public/models/employee.js';
-import Employer from './public/models/employer.js';
-import Booking from './public/models/order.js';
-import Admin from './public/models/admin.js';
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 import morgan from "morgan";
 import rfs from "rotating-file-stream"
 import rateLimit from "express-rate-limit"
 import helmet from "helmet";
-
 database();
 
 const app = express();
@@ -28,13 +23,15 @@ const app = express();
 // this change made by warmish
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-app.use("/imageUpload", express.static(path.join(__dirname, "../shared/uploads")));
+app.use("/imageUpload", express.static(path.join(__dirname, "./shared/uploads")));
 
 
 app.use(express.urlencoded({ extended: false }));
+// 8dcqSkTLgSG3DZx0
+// mongodb+srv://Hamza:8dcqSkTLgSG3DZx0@cluster0.igiec7d.mongodb.net/test
 
 app.use(express.json());
-app.use("/imageUpload", express.static(path.join(__dirname, "../shared/uploads")));
+
 app.use(cors());
 
 // This change is made by akhil
@@ -63,7 +60,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs))
 
 const accessLogStream = rfs.createStream("access.log", {
     interval: "1h",
-    path: path.join(__dirname, "../logs"),
+    path: path.join(__dirname, "/logs"),
 });
 
 

@@ -78,7 +78,7 @@ const router = express.Router();
 // multer 
 const storage = multer.diskStorage({
     destination: function (req, file, callback) {
-        callback(null, "../shared/uploads/images");
+        callback(null, "./shared/uploads/images");
     },
     filename: (req, file, callback) => {
         callback(
