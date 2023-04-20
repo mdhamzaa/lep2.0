@@ -1,2 +1,0 @@
-::ffff:127.0.0.1 - - [03/Apr/2023:06:14:51 +0000] "GET /api/other/allReview HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
-::ffff:127.0.0.1 - - [03/Apr/2023:06:14:51 +0000] "GET /api/other/allReview HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"

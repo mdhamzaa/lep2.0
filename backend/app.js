@@ -16,8 +16,13 @@ import morgan from "morgan";
 import rfs from "rotating-file-stream"
 import rateLimit from "express-rate-limit"
 import helmet from "helmet";
+
+import dotenv from 'dotenv';
+dotenv.config();
+
 database();
 
+const port = process.env.PORT || 5001
 const app = express();
 
 // this change made by warmish
@@ -27,14 +32,15 @@ app.use("/imageUpload", express.static(path.join(__dirname, "./shared/uploads"))
 
 
 app.use(express.urlencoded({ extended: false }));
-// 8dcqSkTLgSG3DZx0
-// mongodb+srv://Hamza:8dcqSkTLgSG3DZx0@cluster0.igiec7d.mongodb.net/test
+
 
 app.use(express.json());
 
 app.use(cors());
 
 // This change is made by akhil
+
+
 
 // another change
 const options = {
@@ -67,6 +73,11 @@ const accessLogStream = rfs.createStream("access.log", {
 app.use(morgan("combined", { stream: accessLogStream }));
 
 
+
+app.get('/', (req, res) => {
+    res.send("<h1>lep server is running </h1>")
+})
+
 const limiter = rateLimit({
     windowMs: 60 * 1000, // 1 minute
     max: 100 // limit each IP to 100 requests per minute
@@ -86,7 +97,7 @@ app.use('/api/other', otherRoutes)
 
 
 
-app.listen(5001, () => {
-    console.log("Server is started at 5001");
+app.listen(port, () => {
+    console.log(`Server is started at ${port}`);
 })
 

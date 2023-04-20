@@ -111,7 +111,7 @@ function RegisterEmployee() {
             const ageDifMs = Date.now() - new Date(values.dob).getTime();
             const ageDate = new Date(ageDifMs);
             const age = Math.abs(ageDate.getUTCFullYear() - 1970);
-            if (age < 1) {
+            if (age < 18) {
                 errors.dob = "Date of Birth should be greater than 18 for registering the website"
             }
             // console.log(age);
