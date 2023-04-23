@@ -2,9 +2,6 @@ import axios from 'axios';
 
 // http://127.0.0.1:3003/user?username=ABC
 // http://127.0.0.1:3003/user?pincode_like=517541&&level=Employer
-
-
-
 // export const url = "http://localhost:5001";
 
 export const url = "https://lepserver.onrender.com";

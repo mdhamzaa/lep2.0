@@ -10,7 +10,7 @@ import { useNavigate, useParams } from "react-router-dom";
 // import { getUsers } from '../service/api';
 import { useSelector } from "react-redux";
 import { selectAllUser } from '../features/userSlice.js'
-import { REACT_APP_IMAGE_PATH } from '../const.js';
+import { url } from '../service/api.js';
 
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -69,7 +69,7 @@ function Profile() {
 
 
     let navigate = useNavigate();
-    console.log(REACT_APP_IMAGE_PATH + image)
+    console.log(url + image)
 
     return (
         <div style={{ position: 'absolute', top: "8vw" }}>
@@ -80,7 +80,7 @@ function Profile() {
                         anchorOrigin={{ vertical: 'bottom', horizontal: 'right', }}
                         variant="dot"
                     >
-                        <Avatar style={{ marginTop: '6vh' }} alt={user.fname} src={user.pic ? `${REACT_APP_IMAGE_PATH}${user.pic}` : "https://i.ibb.co/6BcDTmn/dp.jpg"} />
+                        <Avatar style={{ marginTop: '6vh' }} alt={user.fname} src={user.pic ? `${url}${user.pic}` : "https://i.ibb.co/6BcDTmn/dp.jpg"} />
                     </StyledBadge>
                 </Stack>
                 <Rating name="read-only" value={3} readOnly style={{ marginLeft: '36vw', marginTop: '15vh', scale: '1.5' }} />

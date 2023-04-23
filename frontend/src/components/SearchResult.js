@@ -5,14 +5,14 @@
 // import Modal from './Modal';
 import '../App.css';
 import profile from '../Images/dummyImg.png'
-import { REACT_APP_IMAGE_PATH } from '../const.js';
+import { url } from '../service/api.js';
 function SearchResult(props) {
 
     return (
         <div>
             <div className="resultCard">
                 <div className="userIntro">
-                    <img className='profileImg' src={props.data.pic ? `${REACT_APP_IMAGE_PATH}${props.data.pic}` : "https://i.ibb.co/6BcDTmn/dp.jpg"} />
+                    <img className='profileImg' src={props.data.pic ? `${url}${props.data.pic}` : "https://i.ibb.co/6BcDTmn/dp.jpg"} />
                     <div className="userNp">
                         <span className="userName">{props.data.username}</span>
                         <span className="profession">{props.data.skills}</span>
