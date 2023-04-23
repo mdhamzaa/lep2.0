@@ -80,7 +80,7 @@ function Profile() {
                         anchorOrigin={{ vertical: 'bottom', horizontal: 'right', }}
                         variant="dot"
                     >
-                        <Avatar style={{ marginTop: '6vh' }} alt={user.fname} src={user.pic ? `${url}${user.pic}` : "https://i.ibb.co/6BcDTmn/dp.jpg"} />
+                        <Avatar style={{ marginTop: '6vh' }} alt={user.fname} src={user.pic ? `${url}/${user.pic}` : "https://i.ibb.co/6BcDTmn/dp.jpg"} />
                     </StyledBadge>
                 </Stack>
                 <Rating name="read-only" value={3} readOnly style={{ marginLeft: '36vw', marginTop: '15vh', scale: '1.5' }} />

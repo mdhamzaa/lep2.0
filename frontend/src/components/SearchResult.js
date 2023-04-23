@@ -12,7 +12,7 @@ function SearchResult(props) {
         <div>
             <div className="resultCard">
                 <div className="userIntro">
-                    <img className='profileImg' src={props.data.pic ? `${url}${props.data.pic}` : "https://i.ibb.co/6BcDTmn/dp.jpg"} />
+                    <img className='profileImg' src={props.data.pic ? `${url}/${props.data.pic}` : "https://i.ibb.co/6BcDTmn/dp.jpg"} />
                     <div className="userNp">
                         <span className="userName">{props.data.username}</span>
                         <span className="profession">{props.data.skills}</span>
