@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import ReviewCard from "./ReviewCard";
 import maleImg from "../Images/noProfileImgIconMale.png"
 import femaleImg from "../Images/noProfileImgIconFemale.png"
+import { url } from "../service/api";
 
 export default function ReviewBox() {
   const mountedCheck = true;
 
 
   useEffect(() => {
-    fetch("/api/other/allReview").then((res) => {
+    fetch(`${url}/api/other/allReview`).then((res) => {
       return res.json()
     }).then((data) => {
       // console.log(data)
