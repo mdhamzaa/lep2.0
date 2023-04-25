@@ -8,7 +8,7 @@ import "../CSS/Checkout.css"
 import { useNavigate } from "react-router-dom";
 
 let stripePromise;
-let navigate = useNavigate();
+
 const getStripe = () => {
   if (!stripePromise) {
     stripePromise = loadStripe("pk_test_51MAu9jSHqCPqJqeTeyq2JrGkkj1KBLUI6ZZK2xUlUNoEdZfaVjC3HOPWLr07QJcNqKMQtF8Lz8bZLY5uJWd8Jkev00Msz1z1nu");
@@ -18,10 +18,6 @@ const getStripe = () => {
 };
 
 
-const handleSuccess = () => {
-  // Navigate to success page
-  navigate("/success");
-};
 
 const Checkout = () => {
   const [stripeError, setStripeError] = useState(null);
@@ -30,7 +26,12 @@ const Checkout = () => {
     price: "price_1MCXFfSHqCPqJqeTbkxRMKlp",
     quantity: 1
   };
+  const handleSuccess = () => {
+    // Navigate to success page
+    navigate("/success");
+  };
 
+  let navigate = useNavigate();
   const checkoutOptions = {
     lineItems: [item],
     mode: "payment",
