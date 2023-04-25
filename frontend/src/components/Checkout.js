@@ -5,15 +5,22 @@ import CardIcon from "../Images/credit-card.svg";
 import ProductImage from "../Images/axiscard.png";
 
 import "../CSS/Checkout.css"
+import { useNavigate } from "react-router-dom";
 
 let stripePromise;
-
+let navigate = useNavigate();
 const getStripe = () => {
   if (!stripePromise) {
     stripePromise = loadStripe("pk_test_51MAu9jSHqCPqJqeTeyq2JrGkkj1KBLUI6ZZK2xUlUNoEdZfaVjC3HOPWLr07QJcNqKMQtF8Lz8bZLY5uJWd8Jkev00Msz1z1nu");
   }
 
   return stripePromise;
+};
+
+
+const handleSuccess = () => {
+  // Navigate to success page
+  navigate("/success");
 };
 
 const Checkout = () => {
@@ -27,7 +34,7 @@ const Checkout = () => {
   const checkoutOptions = {
     lineItems: [item],
     mode: "payment",
-    successUrl: `https://lep2.netlify.app/success`,
+    successUrl: window.location.origin,
     cancelUrl: `https://lep2.netlify.app/cancel`
   };
 
@@ -61,7 +68,9 @@ const Checkout = () => {
         />
         <button
           className="w-30 mt-6 text-white bg-red-900 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-8 py-2.5 text-center "
-          onClick={redirectToCheckout}
+          onClick={() => {
+            redirectToCheckout().then(handleSuccess);
+          }}
         // disabled={isLoading}
         >
 
