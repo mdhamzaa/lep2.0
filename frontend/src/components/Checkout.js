@@ -5,7 +5,6 @@ import CardIcon from "../Images/credit-card.svg";
 import ProductImage from "../Images/axiscard.png";
 
 import "../CSS/Checkout.css"
-import { useNavigate } from "react-router-dom";
 
 let stripePromise;
 
@@ -17,8 +16,6 @@ const getStripe = () => {
   return stripePromise;
 };
 
-
-
 const Checkout = () => {
   const [stripeError, setStripeError] = useState(null);
   const [isLoading, setLoading] = useState(false);
@@ -26,16 +23,11 @@ const Checkout = () => {
     price: "price_1MCXFfSHqCPqJqeTbkxRMKlp",
     quantity: 1
   };
-  const handleSuccess = () => {
-    // Navigate to success page
-    navigate("/success");
-  };
 
-  let navigate = useNavigate();
   const checkoutOptions = {
     lineItems: [item],
     mode: "payment",
-    successUrl: window.location.origin,
+    successUrl: `https://lep2.netlify.app/success`,
     cancelUrl: `https://lep2.netlify.app/cancel`
   };
 
@@ -69,9 +61,7 @@ const Checkout = () => {
         />
         <button
           className="w-30 mt-6 text-white bg-red-900 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-8 py-2.5 text-center "
-          onClick={() => {
-            redirectToCheckout().then(handleSuccess);
-          }}
+          onClick={redirectToCheckout}
         // disabled={isLoading}
         >
 
