@@ -82,7 +82,7 @@ router.route('/allReview').get(async (req, res) => {
     else {
         const allReview = await Review.find({});
 
-        client.set('allReview', JSON.stringify(allReview));
+        await client.set('allReview', JSON.stringify(allReview));
         return res
             .status(200)
             .send(allReview)

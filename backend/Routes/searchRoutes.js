@@ -123,7 +123,7 @@ router.route('/search').post(async (req, res) => {
     }
     else {
         const allemployee = await Employee.find(searchDetail);
-        client.set(`${req.body.skills}`, JSON.stringify(allemployee));
+        await client.set(`${req.body.skills}`, JSON.stringify(allemployee));
         return res
             .status(200)
             .send(allemployee)

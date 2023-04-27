@@ -5,7 +5,7 @@ const client = createClient({
     socket: {
         host: 'redis-16056.c305.ap-south-1-1.ec2.cloud.redislabs.com',
         port: 16056,
-        timeout: null
+        timeout: 2147483647
     }
 });
 client.connect()
