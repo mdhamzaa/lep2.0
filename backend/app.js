@@ -27,7 +27,9 @@ const app = express();
 
 app.use(cors({
 
+
     origin: ['https://lep2.netlify.app', 'http://localhost:3000', 'https://lepserver.onrender.com']
+
 
 }));
 
