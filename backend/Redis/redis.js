@@ -7,7 +7,7 @@ const client = createClient({
         port: 16056
     }
 });
-
+client.connect()
 client.on('connect', () => {
     console.log('Redis client connected');
 }
