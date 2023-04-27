@@ -16,11 +16,13 @@ import morgan from "morgan";
 import rfs from "rotating-file-stream"
 import rateLimit from "express-rate-limit"
 import helmet from "helmet";
-
+import client from "./Redis/redis.js";
 import dotenv from 'dotenv';
 dotenv.config();
 
 database();
+
+// client()
 
 const port = process.env.PORT || 5001
 const app = express();

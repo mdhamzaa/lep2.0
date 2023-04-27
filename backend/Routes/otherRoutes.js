@@ -5,6 +5,9 @@ import Admin from '../public/models/admin.js';
 import Booking from '../public/models/order.js';
 import Query from '../public/models/query.js';
 import Review from '../public/models/review.js'
+import client from "../Redis/redis.js";
+
+
 
 
 
@@ -64,11 +67,26 @@ const router = express.Router();
 
 
 router.route('/allReview').get(async (req, res) => {
+
+
     console.log(req.body)
     const allReview = await Review.find({});
-    return res
-        .status(200)
-        .send(allReview)
+
+    const cachedData = await client.get('allReview');
+    if (cachedData) {
+        console.log('serving from cache');
+        return res
+            .status(200)
+            .send(JSON.parse(cachedData))
+    }
+    else {
+        const allReview = await Review.find({});
+
+        client.set('allReview', JSON.stringify(allReview));
+        return res
+            .status(200)
+            .send(allReview)
+    }
 
 });
 
