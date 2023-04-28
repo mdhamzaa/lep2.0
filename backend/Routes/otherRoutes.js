@@ -70,23 +70,22 @@ router.route('/allReview').get(async (req, res) => {
 
 
     console.log(req.body)
+
+    // const cachedData = await client.get('allReview');
+    // if (cachedData) {
+    //     console.log('serving from cache');
+    //     return res
+    //         .status(200)
+    //         .send(JSON.parse(cachedData))
+    // }
+    // else {
     const allReview = await Review.find({});
 
-    const cachedData = await client.get('allReview');
-    if (cachedData) {
-        console.log('serving from cache');
-        return res
-            .status(200)
-            .send(JSON.parse(cachedData))
-    }
-    else {
-        const allReview = await Review.find({});
-
-        await client.set('allReview', JSON.stringify(allReview));
-        return res
-            .status(200)
-            .send(allReview)
-    }
+    // await client.set('allReview', JSON.stringify(allReview));
+    return res
+        .status(200)
+        .send(allReview)
+    // }
 
 });
 
