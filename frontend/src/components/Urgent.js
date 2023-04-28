@@ -4,8 +4,6 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { MdLocalFireDepartment } from 'react-icons/md'
 import { SpinnerCircular } from 'spinners-react';
 
 
@@ -38,10 +36,6 @@ export default function Urgent() {
   useEffect(() => {
     customerOrdersConfig()
   }, [customerOrders])
-
-  function toCamelCase(word) {
-    return word[0].toUpperCase() + word.slice(1).toLowerCase();
-  }
 
   async function completeOrder(order) {
     // console.log(id._id)

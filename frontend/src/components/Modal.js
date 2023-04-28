@@ -1,11 +1,10 @@
 import { cleanup } from '@testing-library/react';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import { getOrders, postOrder } from "../service/api"
-import { DelSearchDetails, selectAllDetails } from '../features/userSlice';
+import { selectAllDetails } from '../features/userSlice';
 
 
 function Modal({ setModalIsOpen, employee, pincode }) {

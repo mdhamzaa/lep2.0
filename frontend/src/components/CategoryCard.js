@@ -1,8 +1,7 @@
 import React from "react";
-import { getSearch } from "../service/api";
 import { useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { SetSearchDetails, selectAllUser } from "../features/userSlice";
+import { useDispatch } from 'react-redux'
+import { SetSearchDetails } from "../features/userSlice";
 
 export default function CategoryCard(props) {
     const dispatch=useDispatch();

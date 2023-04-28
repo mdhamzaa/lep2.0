@@ -13,7 +13,6 @@ import { ProSidebarProvider } from 'react-pro-sidebar';
 import Bookings from "./components/Bookings";
 import History from "./components/History";
 import Profile from "./components/Profile";
-import JoinUs from "./components/JoinUs";
 import Admin from "./components/Admin";
 import Analytics from "./components/Analytics";
 import Employees from "./components/Employees";
@@ -22,7 +21,6 @@ import UpdateEmployer from "./components/UpdateEmployee";
 import UpdateEmployee from "./components/UpdateEmployee";
 
 import Workhistory from "./components/Workhistory"
-import PaymentPage from "./components/PaymentPage";
 import RegistrationChoice from "./components/RegistrationChoice";
 import NoPage from "./components/NoPage";
 import Actions from "./components/Actions";

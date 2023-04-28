@@ -5,7 +5,6 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import { useState } from 'react';
-import { url } from '../service/api'
 import { useEffect } from 'react';
 
 
