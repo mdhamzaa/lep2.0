@@ -47,7 +47,7 @@ export default function ReviewBox() {
         let translateDis = cnt1 * -32.5;
         reviewCards.style.transform = `translate(${translateDis}vw,0)`;
       }
-      if (currEle == length) {
+      if (currEle === length) {
         slideBtn2.style.display = "none";
       }
       if (currEle > 1) {

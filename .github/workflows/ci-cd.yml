@@ -1,0 +1,22 @@
+name: Node Continuous Integration
+
+on:
+  pull_request:
+    branches: [ "main" ]
+  push:
+    branches: [ "main" ]  
+
+
+jobs:
+  test_pull_request:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm ci --prefix frontend
+      - run: npm ci --prefix backend
+      # - run: npm test --prefix backend
+      # - run: npm run build --prefix frontend
+      - run: docker-compose up -d

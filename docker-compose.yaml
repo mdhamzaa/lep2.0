@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  frontend:
+    build:
+      context: './frontend'
+      dockerfile: Dockerfile
+
+    ports: 
+      - 3000:3000
+
+    container_name: 'lep-frontend'
+
+    networks:
+      - lep-network
+
+    volumes:
+      - ./frontend:/app
+
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: './backend'
+      dockerfile: Dockerfile
+
+    ports:
+      - 5001:5001 
+
+    container_name: 'lep-backend'
+
+    networks:
+      - lep-network
+
+    volumes:
+      - ./backend:/app
+                       
+networks:
+  lep-network:
+    driver: bridge

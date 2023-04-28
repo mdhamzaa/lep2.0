@@ -44,3 +44,5 @@
 ::1 - - [27/Apr/2023:16:24:24 +0000] "GET /imageUpload/images/2023-04-20T16_52_03.178Z-IMG_20201115_183731.jpg HTTP/1.1" 404 206 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
 ::1 - - [27/Apr/2023:16:24:25 +0000] "POST /api/find/search HTTP/1.1" 200 1397 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
 ::1 - - [27/Apr/2023:16:45:59 +0000] "GET /imageUpload/images/2023-04-20T16_52_03.178Z-IMG_20201115_183731.jpg HTTP/1.1" 404 206 "http://localhost:3000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+::ffff:127.0.0.1 - - [28/Apr/2023:02:12:43 +0000] "POST /api/find/search HTTP/1.1" 200 2 "-" "-"
+::ffff:127.0.0.1 - - [28/Apr/2023:02:19:01 +0000] "POST /api/find/search HTTP/1.1" 200 2 "-" "-"
