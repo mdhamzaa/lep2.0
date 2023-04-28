@@ -114,20 +114,20 @@ router.route('/search').post(async (req, res) => {
 
     }
 
-    const cachedData = await client.get(`${req.body.skills}`);
-    if (cachedData) {
-        console.log('serving from cache');
-        return res
-            .status(200)
-            .send(JSON.parse(cachedData))
-    }
-    else {
-        const allemployee = await Employee.find(searchDetail);
-        await client.set(`${req.body.skills}`, JSON.stringify(allemployee));
-        return res
-            .status(200)
-            .send(allemployee)
-    }
+    // const cachedData = await client.get(`${req.body.skills}`);
+    // if (cachedData) {
+    //     console.log('serving from cache');
+    //     return res
+    //         .status(200)
+    //         .send(JSON.parse(cachedData))
+    // }
+    // else {
+    const allemployee = await Employee.find(searchDetail);
+    // await client.set(`${req.body.skills}`, JSON.stringify(allemployee));
+    return res
+        .status(200)
+        .send(allemployee)
+    // }
 });
 
 
